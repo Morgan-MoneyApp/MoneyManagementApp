@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = com.zipcode.\
+    moneyapp.config.SqlTestContainersSpringContextCustomizerFactory
