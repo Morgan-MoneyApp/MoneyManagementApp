@@ -50,6 +50,14 @@ public class CacheConfiguration {
             createCache(cm, com.zipcode.moneyapp.domain.User.class.getName());
             createCache(cm, com.zipcode.moneyapp.domain.Authority.class.getName());
             createCache(cm, com.zipcode.moneyapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.zipcode.moneyapp.domain.UserProfile.class.getName());
+            createCache(cm, com.zipcode.moneyapp.domain.UserProfile.class.getName() + ".bankAccounts");
+            createCache(cm, com.zipcode.moneyapp.domain.Address.class.getName());
+            createCache(cm, com.zipcode.moneyapp.domain.Address.class.getName() + ".userProfiles");
+            createCache(cm, com.zipcode.moneyapp.domain.BankAccount.class.getName());
+            createCache(cm, com.zipcode.moneyapp.domain.BankAccount.class.getName() + ".transactionsOuts");
+            createCache(cm, com.zipcode.moneyapp.domain.BankAccount.class.getName() + ".transactionsIns");
+            createCache(cm, com.zipcode.moneyapp.domain.Transaction.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
