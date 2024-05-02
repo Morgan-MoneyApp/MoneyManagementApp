@@ -12,6 +12,7 @@ import Registration from './Registration';
 import PageAccounts from './PageAccounts';
 import PageWelcome from './PageWelcome';
 import PageGoalSaving from './PageGoalSaving';
+import PageError from './PageError';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,11 +23,11 @@ root.render(
     <LoginBox />
     <Accounts />
     <Footer />
-    <Registration /> */}
+    // <Registration /> */}
     {/* <PageAccounts /> */}
     <PageWelcome />
     {/* <PageGoalSaving /> */}
     {/* <Team /> */}
-    {/* <App /> */}
+    {/* <App /> */}?
   </React.StrictMode>,
 );
