@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240502191530"
+  },
+  "applications": "*",
+  "documentation": "User Profile entity",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "UserProfile",
+  "relationships": [
+    {
+      "documentation": "Associate each UserProfile with a User",
+      "options": {
+        "id": true,
+        "onDelete": "CASCADE"
+      },
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userProfile",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "documentation": "Associate each BankAccount with a UserProfile",
+      "otherEntityName": "bankAccount",
+      "otherEntityRelationshipName": "accountHolder",
+      "relationshipName": "bankAccount",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "address",
+      "relationshipName": "address",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}
