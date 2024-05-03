@@ -19,8 +19,18 @@ export const RegisterPage = () => {
     [],
   );
 
-  const handleValidSubmit = ({ username, email, firstPassword }) => {
-    dispatch(handleRegister({ login: username, email, password: firstPassword, langKey: 'en' }));
+  const handleValidSubmit = ({ username, email, firstPassword, firstName, lastName, dob }) => {
+    dispatch(
+      handleRegister({
+        login: username,
+        email: email,
+        password: firstPassword,
+        firstname: firstName,
+        lastname: lastName,
+        dob: dob,
+        langKey: 'en',
+      }),
+    );
   };
 
   const updatePassword = event => setPassword(event.target.value);
@@ -100,6 +110,37 @@ export const RegisterPage = () => {
               }}
               data-cy="secondPassword"
             />
+            <ValidatedField
+              name="firstName"
+              label="First name"
+              placeholder="First name"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your first name is required.' },
+              }}
+              data-cy="firstName"
+            />
+            <ValidatedField
+              name="lastName"
+              label="Last name"
+              placeholder="Last name"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your last name is required.' },
+              }}
+              data-cy="lastName"
+            />
+            <ValidatedField
+              name="dob"
+              label="Date of birth"
+              placeholder="01-01-1970"
+              type="date"
+              validate={{
+                required: { value: true, message: 'Your date of birth is required.' },
+              }}
+              data-cy="dob"
+            />
+
             <Button id="register-submit" color="primary" type="submit" data-cy="submit">
               Register
             </Button>
