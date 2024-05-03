@@ -25,9 +25,9 @@ root.render(
     <Footer />
     // <Registration /> */}
     {/* <PageAccounts /> */}
-    <PageWelcome />
+    {/* <PageWelcome /> */}
     {/* <PageGoalSaving /> */}
-    {/* <Team /> */}
+    <Team />
     {/* <App /> */}?
   </React.StrictMode>,
 );
