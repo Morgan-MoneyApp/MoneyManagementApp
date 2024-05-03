@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './styles/savingstracker.css'; // Ensure the CSS file is imported
-import PotGold from './images/money.png';
+import '../styles/savingstracker.css'; // Ensure the CSS file is imported
+import PotGold from '../images/money.png';
 
 function SavingsTracker() {
   const goal = 1000; // Example total goal

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/accounts.css';
+import '../styles/accounts.css';
 
 function Accounts() {
   const accounts = {

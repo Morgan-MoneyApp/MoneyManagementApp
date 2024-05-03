@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Accounts from './Accounts';
-import Footer from './Footer';
+import Navbar from '../components/Navbar';
+import Accounts from '../components/Accounts';
+import Footer from '../components/Footer';
 
 const PageAccounts = () => {
   return (

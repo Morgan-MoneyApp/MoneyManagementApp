@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import Team from './Team';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Team from '../components/Team';
 
 const PageMeetTheTeam = () => {
   return (

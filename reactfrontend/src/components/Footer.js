@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/footer.css';
+import '../styles/footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
