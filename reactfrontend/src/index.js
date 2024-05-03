@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
+import App from './App';
 import LoginBox from './LoginBox';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -17,17 +17,6 @@ import PageError from './PageError';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <Navbar />
-    <Team />
-    <SavingsTracker />
-    <LoginBox />
-    <Accounts />
-    <Footer />
-    // <Registration /> */}
-    {/* <PageAccounts /> */}
-    {/* <PageWelcome /> */}
-    {/* <PageGoalSaving /> */}
-    <Team />
-    {/* <App /> */}?
+    <App />
   </React.StrictMode>,
 );
