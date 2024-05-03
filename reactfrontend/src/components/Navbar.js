@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles/navbar.css';
-import LogoNoBg from './images/logonobk.png';
+import '../styles/navbar.css';
+import LogoNoBg from '../images/logonobk.png';
 
-function Navbar({ savings = 1000, checking = 500 }) {
+function Navbar() {
   // example balances
   return (
     <nav className="navbar">
       <img src={LogoNoBg} alt="Logo" className="navbar-logo" />
+      {/* <img src={BankName} alt="Bank" className="navbar-bankname" /> */}
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/">Home</Link>
@@ -25,11 +26,7 @@ function Navbar({ savings = 1000, checking = 500 }) {
           <Link to="/register">Sign Up</Link>
         </li>
       </ul>
-      <div className="account-info">
-        <span>
-          Savings: ${savings} | Checking: ${checking}
-        </span>
-      </div>
+      <div className="account-info"></div>
       <div className="nav-item logout-button">
         <button onClick={() => console.log('Logging out...')}>Logout</button>
       </div>

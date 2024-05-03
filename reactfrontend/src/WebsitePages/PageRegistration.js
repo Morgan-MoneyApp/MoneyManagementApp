@@ -1,6 +1,6 @@
-import Navbar from './Navbar';
-import Registration from './Registration';
-import Footer from './Footer';
+import Navbar from '../components/Navbar';
+import Registration from '../components/Registration';
+import Footer from '../components/Footer';
 
 const PageRegistration = () => {
   return (

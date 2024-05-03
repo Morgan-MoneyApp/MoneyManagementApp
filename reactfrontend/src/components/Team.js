@@ -1,8 +1,8 @@
 import React from 'react';
-import './styles/team.css';
+import '../styles/team.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import Photo from './images/profilepic.png';
+import Photo from '../images/profilepic.png';
 
 const teamMembers = [
   {

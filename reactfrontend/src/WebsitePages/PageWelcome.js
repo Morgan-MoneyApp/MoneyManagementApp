@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './Navbar';
-import LoginBox from './LoginBox';
-import Footer from './Footer';
-import ChatBox from './ChatBox';
+import Navbar from '../components/Navbar';
+import LoginBox from '../components/LoginBox';
+import Footer from '../components/Footer';
+import ChatBox from '../components/ChatBox';
 
 const PageWelcome = () => {
   return (

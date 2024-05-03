@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles/loginbox.css';
-import Logo from './images/logo.png';
+import '../styles/loginbox.css';
+import Logo from '../images/logo.png';
 
 const Welcome = () => {
   return (

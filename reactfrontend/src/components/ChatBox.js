@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/chatbox.css'; // Import the CSS for styling
+import '../styles/chatbox.css'; // Import the CSS for styling
 
 const Chatbox = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +33,10 @@ const Chatbox = () => {
       {isOpen && !isExited && (
         <div className="chatbox">
           <div className="chatbox-header">
-            <h2>How can we help?</h2>
-            <button onClick={toggleChat}>Close</button>
+            <h2>FAQ's</h2>
+            <button className="exit-button" onClick={toggleChat}>
+              X
+            </button>
           </div>
           <div className="chatbox-messages">
             {messages.map(msg => (
@@ -44,15 +46,24 @@ const Chatbox = () => {
             ))}
           </div>
           <div className="chatbox-options">
-            <button onClick={() => handleQuestionClick('What are your hours?')}>What are your hours?</button>
-            <button onClick={() => handleQuestionClick('How do I contact support?')}>Contact support</button>
-            <button onClick={() => handleQuestionClick('Where can I find pricing information?')}>Pricing info</button>
+            <button className="faq-button" onClick={() => handleQuestionClick('Where can I find the routing number?')}>
+              Routing Number
+            </button>
+            <button className="faq-button" onClick={() => handleQuestionClick('Support')}>
+              Contact Support
+            </button>
+            <button className="faq-button" onClick={() => handleQuestionClick('Is there a minimum balance required?')}>
+              Minimum Balance
+            </button>
+            <button className="faq-button" onClick={() => handleQuestionClick('What are the bank fees?')}>
+              Fees
+            </button>
           </div>
         </div>
       )}
       {!isExited && (
         <button className="chat-icon" onClick={() => setIsExited(false)}>
-          Chat
+          {/* Chat */}
         </button>
       )}
     </div>
@@ -60,3 +71,8 @@ const Chatbox = () => {
 };
 
 export default Chatbox;
+
+//            //ANSWERS:
+//Our routing number is #123456789.
+//You can reach us directly at 800-302-1234 or via email MorganBank@zipcode.com
+//Theres no minimum balance required.
