@@ -3,13 +3,16 @@ package com.zipcode.moneyapp.service;
 import com.zipcode.moneyapp.config.Constants;
 import com.zipcode.moneyapp.domain.Authority;
 import com.zipcode.moneyapp.domain.User;
+import com.zipcode.moneyapp.domain.UserProfile;
 import com.zipcode.moneyapp.repository.AuthorityRepository;
+import com.zipcode.moneyapp.repository.UserProfileRepository;
 import com.zipcode.moneyapp.repository.UserRepository;
 import com.zipcode.moneyapp.security.AuthoritiesConstants;
 import com.zipcode.moneyapp.security.SecurityUtils;
 import com.zipcode.moneyapp.service.dto.AdminUserDTO;
 import com.zipcode.moneyapp.service.dto.UserDTO;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,16 +44,20 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
+    private final UserProfileRepository userProfileRepository;
+
     public UserService(
         UserRepository userRepository,
         PasswordEncoder passwordEncoder,
         AuthorityRepository authorityRepository,
-        CacheManager cacheManager
+        CacheManager cacheManager,
+        UserProfileRepository userProfileRepository
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.userProfileRepository = userProfileRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -93,7 +100,7 @@ public class UserService {
             });
     }
 
-    public User registerUser(AdminUserDTO userDTO, String password) {
+    public User registerUser(AdminUserDTO userDTO, String password, String fname, String lname, LocalDate dob) {
         userRepository
             .findOneByLogin(userDTO.getLogin().toLowerCase())
             .ifPresent(existingUser -> {
@@ -130,6 +137,7 @@ public class UserService {
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+        userProfileRepository.save(new UserProfile().firstName(fname).lastName(lname).dateOfBirth(dob).user(newUser));
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;

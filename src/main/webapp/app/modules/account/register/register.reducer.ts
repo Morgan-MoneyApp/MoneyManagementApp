@@ -17,8 +17,18 @@ export type RegisterState = Readonly<typeof initialState>;
 
 export const handleRegister = createAsyncThunk(
   'register/create_account',
-  async (data: { login: string; email: string; password: string; firstname: string; lastname: string; dob: string; langKey?: string }) =>
-    axios.post<any>('api/register', data),
+  async (data: {
+    login: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: any;
+    langKey?: string;
+  }) => {
+    console.log(data);
+    await axios.post<any>('api/register', data);
+  },
   { serializeError: serializeAxiosError },
 );
 

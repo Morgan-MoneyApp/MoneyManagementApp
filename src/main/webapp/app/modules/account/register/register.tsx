@@ -19,15 +19,16 @@ export const RegisterPage = () => {
     [],
   );
 
-  const handleValidSubmit = ({ username, email, firstPassword, firstName, lastName, dob }) => {
+  const handleValidSubmit = ({ username, email, firstPassword, firstName, lastName, dateOfBirth }) => {
+    console.log(firstName, lastName);
     dispatch(
       handleRegister({
         login: username,
         email: email,
         password: firstPassword,
-        firstname: firstName,
-        lastname: lastName,
-        dob: dob,
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
         langKey: 'en',
       }),
     );
@@ -131,14 +132,14 @@ export const RegisterPage = () => {
               data-cy="lastName"
             />
             <ValidatedField
-              name="dob"
+              name="dateOfBirth"
               label="Date of birth"
-              placeholder="01-01-1970"
+              placeholder="1970-01-01"
               type="date"
               validate={{
                 required: { value: true, message: 'Your date of birth is required.' },
               }}
-              data-cy="dob"
+              data-cy="dateOfBirth"
             />
 
             <Button id="register-submit" color="primary" type="submit" data-cy="submit">
