@@ -23,9 +23,11 @@ public class AdminUserDTO implements Serializable {
     @Size(min = 1, max = 50)
     private String login;
 
+    @NotNull
     @Size(max = 50)
     private String firstName;
 
+    @NotNull
     @Size(max = 50)
     private String lastName;
 
