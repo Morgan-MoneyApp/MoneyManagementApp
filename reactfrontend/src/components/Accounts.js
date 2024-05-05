@@ -18,7 +18,7 @@ function Accounts() {
   };
 
   return (
-    <div>
+    <div className="outer-div">
       <h1>Account Balances</h1>
       <div className="accounts-container">
         {Object.entries(accounts).map(([key, { balance }]) => (
