@@ -1,0 +1,43 @@
+.login-container {
+  width: 30%;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.logo-image {
+  width: 300px;
+  height: 210px;
+}
+
+.login-container img#new-line {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.password-login,
+.username-login {
+  font-size: 30px;
+}
+
+.password-login {
+  margin-bottom: 20px;
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+  box-sizing: border-box;
+}
+.signup-button,
+.login-button {
+  background-color: #2a76a578;
+}

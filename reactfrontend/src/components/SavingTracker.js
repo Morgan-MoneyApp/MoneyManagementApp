@@ -3,7 +3,8 @@ import '../styles/savingstracker.css'; // Ensure the CSS file is imported
 import PotGold from '../images/money.png';
 
 function SavingsTracker() {
-  const goal = 1000; // Example total goal
+  const [goal, setGoal] = useState(1000); // Make the goal adjustable
+  const [purpose, setPurpose] = useState(''); // Purpose of the savings
   const [saved, setSaved] = useState(0); // Amount currently saved
   const progress = (saved / goal) * 100; // Calculate progress as a percentage
 
@@ -14,19 +15,33 @@ function SavingsTracker() {
     }
   };
 
+  const handleGoalChange = event => {
+    setGoal(Number(event.target.value));
+  };
+
+  const handlePurposeChange = event => {
+    setPurpose(event.target.value);
+  };
+
   return (
-    <div className="goal-tracker">
-      <h1 className="title">Savings Goal Tracker</h1>
-      <div className="progress-bar-background">
-        <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
-        <img src={PotGold} className="pot-of-gold" alt="Pot of Gold" />
+    <div className="savings-container">
+      <div className="savings-form">
+        <h2>Set Your Savings Goal</h2>
+        <input type="number" placeholder="Enter your goal amount" value={goal} onChange={handleGoalChange} />
+        <input type="text" placeholder="What are you saving for?" value={purpose} onChange={handlePurposeChange} />
+        <button onClick={addSavings}>Add $100</button>
       </div>
-      <p className="saved-amount">
-        Saved: ${saved} of ${goal}
-      </p>
-      <button className="add-savings" onClick={addSavings}>
-        Add $100
-      </button>
+      <div className="goal-tracker">
+        <h1 className="title">Savings Goal Tracker: {purpose}</h1>
+        <div className="progress-bar-background">
+          <div className="progress-bar-fill" style={{ width: `${progress}%` }}>
+            <img src={PotGold} className="pot-of-gold" alt="Pot of Gold" style={{ left: `${progress}%`, transform: 'translateX(-50%)' }} />
+          </div>
+        </div>
+        <p className="saved-amount">
+          Saved: ${saved} of ${goal}
+        </p>
+      </div>
     </div>
   );
 }

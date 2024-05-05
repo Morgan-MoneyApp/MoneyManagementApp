@@ -25,12 +25,16 @@ function Accounts() {
           <div key={key} className="account-card">
             <h2>{key.charAt(0).toUpperCase() + key.slice(1)} Account</h2>
             <p>Balance: ${balance}</p>
-            <button className="account-button" onClick={() => handleSelectAccount(key)}>
-              Select {key.charAt(0).toUpperCase() + key.slice(1)} Account
-            </button>
+            <button onClick={() => handleSelectAccount(key)}>Select {key.charAt(0).toUpperCase() + key.slice(1)} Account</button>
           </div>
         ))}
       </div>
+      {selectedAccount && (
+        <div>
+          <h3>Selected Account: {selectedAccount.charAt(0).toUpperCase() + selectedAccount.slice(1)}</h3>
+          <p>Balance: ${accounts[selectedAccount].balance}</p>
+        </div>
+      )}
     </div>
   );
 }

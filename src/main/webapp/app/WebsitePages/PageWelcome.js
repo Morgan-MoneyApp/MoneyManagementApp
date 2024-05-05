@@ -1,16 +1,16 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 import LoginBox from '../components/LoginBox';
-import WelcomeFooter from '../components/WelcomeFooter';
+import Footer from '../components/Footer';
 import ChatBox from '../components/ChatBox';
-import WelcomeNavbar from '../components/WelcomeNavbar';
 
 const PageWelcome = () => {
   return (
     <div>
-      <WelcomeNavbar />
+      <Navbar />
       <LoginBox />
-      <WelcomeFooter />
-      {/* <ChatBox /> */}
+      <ChatBox />
+      <Footer />
     </div>
   );
 };

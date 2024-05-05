@@ -3,14 +3,13 @@ import '../styles/team.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Photo from '../images/profilepic.png';
-import AlicePhoto from '../images/AlicePhoto.jpeg';
 
 const teamMembers = [
   {
     name: 'Alice Gonzalez',
-    bio: 'Alice is a Junior Software Developer who also has over 10 years of experience in healthcare, both in clinical and administrative roles.',
-    photo: AlicePhoto,
-    linkedinUrl: 'https://www.linkedin.com/in/alicegonzalezcodes/',
+    bio: 'John is a senior developer with over 10 years of experience in web development.',
+    photo: Photo,
+    linkedinUrl: 'https://www.linkedin.com/in/johndoe',
   },
   {
     name: 'Jake LastName',
