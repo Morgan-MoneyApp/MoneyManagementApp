@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 50px; /* Specify a height for the navbar */
+  height: 70px; /* Specify a height for the navbar */
   background-color: #2a76a578; /* Background color, adjust as needed */
   width: 100%; /* Ensure the navbar spans the full width of the viewport */
   position: fixed; /* Fix navbar to the top */
@@ -20,6 +20,6 @@
 }
 
 .navbar-logo {
-  height: auto; /* Maintain the image's aspect ratio */
-  max-width: 300px; /* Maximum width of the logo, adjust as needed */
+  height: 100px;
+  width: auto;
 }

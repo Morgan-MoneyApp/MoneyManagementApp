@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/loginbox.css';
-import BankServicesImage from '../images/bank-services.jpeg'; // Ensure this is the correct path
+import '../styles/loginbox.css'; // Ensure this path is correct
+import BankServicesImage from '../images/bank-services.jpeg';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -16,6 +16,9 @@ const Welcome = () => {
 
   return (
     <div className="welcome-container">
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
       <div className="content-container">
         <div className="services-section">
           <img src={BankServicesImage} alt="Bank Services" className="services-image" />
@@ -23,6 +26,7 @@ const Welcome = () => {
           <p>Balance inquiries, fund transfers, transaction history, savings tracking, and more—all at your fingertips.</p>
         </div>
         <div className="login-container">
+          <h2>Member Login</h2>
           <form className="login-form">
             <input type="text" id="username" name="username" required placeholder="Username" />
             <input type="password" id="password" name="password" required placeholder="Password" />
@@ -32,7 +36,6 @@ const Welcome = () => {
             <button onClick={handleSignUp} className="signup-button" type="button">
               Sign Up
             </button>
-            <p>Forgot Password?</p>
           </form>
         </div>
       </div>
