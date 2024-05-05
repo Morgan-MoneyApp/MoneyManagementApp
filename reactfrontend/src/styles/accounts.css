@@ -4,7 +4,9 @@
   align-items: center; /* This aligns the cards vertically at the same level */
   margin: 20px; /* Add some margin around the container for better spacing */
 }
-
+.outer-div {
+  padding-top: 60px;
+}
 .account-card {
   background-color: #fff;
   border-radius: 10px;

@@ -1,4 +1,7 @@
 /* Savings Tracker Styles */
+.savings-container {
+  padding-top: 90px;
+}
 .goal-tracker {
   max-width: 600px;
   margin: 40px auto;
