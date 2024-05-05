@@ -1,11 +1,8 @@
 import React from 'react';
+import '../styles/transactionsaving.css';
 
 const TransactionSaving = () => {
-  return (
-    <div>
-      <h1>This page is for Saving Transaction History</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default TransactionSaving;

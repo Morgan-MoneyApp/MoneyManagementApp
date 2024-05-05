@@ -1,64 +1,48 @@
 .welcome-container {
   position: relative; /* Use relative for parent container */
-  width: 100%; /* Full width to contain fixed children properly */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Full width */
   min-height: 100vh; /* Full viewport height */
+  padding: 20px; /* Add padding for spacing */
 }
 
 .content-container {
   display: flex;
-  justify-content: space-between; /* Align children to start and end of container */
-  padding-top: 80px; /* Padding to avoid overlap with the fixed logo */
+  justify-content: center; /* Align children to center of container */
+  align-items: center; /* Vertically align items */
+  max-width: 1200px; /* Maximum width of the content */
+  width: 100%; /* Full width */
+}
+
+.services-section {
+  flex: 1; /* Take equal space as login-container */
+  padding: 20px; /* Consistent padding */
+}
+
+.services-image {
+  width: 100%;
+  max-width: 600px; /* Limit the size of the image */
+  height: auto;
 }
 
 .login-container {
-  position: fixed; /* Fixing login container on the right */
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  flex: 1;
-  padding: 20px;
-  z-index: 1000;
+  flex: 1; /* Take equal space as services-section */
+  padding: 20px; /* Consistent padding */
 }
-/* .services-section {
-  flex: 3;
-  padding: 20px;
-  padding-top: 80px;
-} */
 
-/* .services-image {
-  width: 100%;
-  max-width: 600px;
-} */
+input[type='text'],
+input[type='password'] {
+  margin-bottom: 10px; /* Space between inputs */
+}
 
-/* .logo-image {
-  width: 50%;
-  height: auto;
-  margin: 0 auto 20px;
-} */
+button {
+  width: 100%; /* Make button full width of container */
+  padding: 10px; /* Better touch target */
+  margin-top: 10px; /* Space above button */
+}
 
-/* input[type="text"],
-input[type="password"] {
-  margin-bottom: 10px;
-} */
-
-/* button {
-  width: 200px;
-  margin-top: 10px;
-  background-color: #2a76a5;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-/* button:hover {
-  background-color: #2a76d9;
+button:hover {
   cursor: pointer;
-} */
-
-/* .login-button, .signup-button {
-  background-color: #2a76a578;
-} */
-
-/* p {
-  font-size: 20px;
-} */
+}

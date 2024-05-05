@@ -1,11 +1,8 @@
 import React from 'react';
+import '../styles/transactionchecking.css';
 
 const TransactionChecking = () => {
-  return (
-    <div>
-      <h1>This page is for Cheking Transaction History</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default TransactionChecking;

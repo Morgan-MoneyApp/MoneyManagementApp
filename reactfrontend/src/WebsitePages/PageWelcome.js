@@ -10,7 +10,7 @@ const PageWelcome = () => {
       <WelcomeNavbar />
       <LoginBox />
       <WelcomeFooter />
-      {/* <ChatBox /> */}
+      <ChatBox />
     </div>
   );
 };

@@ -70,11 +70,7 @@ const Chatbox = () => {
           </div>
         </div>
       )}
-      {!isExited && (
-        <button className="chat-icon" onClick={() => setIsExited(false)}>
-          {/* Chat */}
-        </button>
-      )}
+      {!isExited && <button className="chat-icon" onClick={() => setIsExited(false)}></button>}
     </div>
   );
 };
