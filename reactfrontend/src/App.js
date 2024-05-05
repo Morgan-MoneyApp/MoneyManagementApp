@@ -7,6 +7,7 @@ import PageGoalSaving from './WebsitePages/PageGoalSaving';
 import PageMeetTheTeam from './WebsitePages/PageMeetTheTeam';
 import PageCheckingAcct from './WebsitePages/PageCheckingAcct';
 import PageSavingAcct from './WebsitePages/PageSavingAcct';
+import PageMoneyMarketAcct from './WebsitePages/PageMoneyMarketAcct';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<PageRegistration />} />
           <Route path="/checking" element={<PageCheckingAcct />} />
           <Route path="/saving" element={<PageSavingAcct />} />
+          <Route path="/moneymarket" element={<PageMoneyMarketAcct />} />
         </Routes>
       </div>
     </Router>

@@ -46,7 +46,7 @@
 }
 
 .nav-item a:hover {
-  font-weight: bolder;
+  font-weight: \;;
 }
 .logout-button button:hover {
   width: 200px;

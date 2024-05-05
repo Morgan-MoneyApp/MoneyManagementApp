@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/accounts.css';
 import { useNavigate } from 'react-router-dom';
 
 function Accounts() {
   const navigate = useNavigate();
 
-  // Direct navigation functions for each account type
+  // Navigation functions for each account type
   const goToChecking = () => {
-    navigate('/checking'); // Navigate directly to the checking account route
+    navigate('/checking');
   };
 
   const goToSavings = () => {
-    navigate('/saving'); // Navigate directly to the savings account route
+    navigate('/saving');
+  };
+
+  const goToMoneyMarket = () => {
+    navigate('/moneymarket'); // Assuming you have a route for Money Market Account
   };
 
   const accounts = {
     checking: {
-      balance: 1500, // example checking account balance
-      onClick: goToChecking, // Assign direct function for checking
+      balance: 1500,
+      onClick: goToChecking,
     },
     savings: {
-      balance: 3000, // example savings account balance
-      onClick: goToSavings, // Assign direct function for savings
+      balance: 3000,
+      onClick: goToSavings,
+    },
+    moneyMarket: {
+      // New account type added
+      balance: 5000, // Example balance
+      onClick: goToMoneyMarket,
     },
   };
 
