@@ -5,8 +5,8 @@ import PageRegistration from './WebsitePages/PageRegistration';
 import PageAccounts from './WebsitePages/PageAccounts';
 import PageGoalSaving from './WebsitePages/PageGoalSaving';
 import PageMeetTheTeam from './WebsitePages/PageMeetTheTeam';
-import TransactionChecking from './components/TransactionChecking';
-import TransactionSaving from './components/TransactionSaving';
+import PageCheckingAcct from './WebsitePages/PageCheckingAcct';
+import PageSavingAcct from './WebsitePages/PageSavingAcct';
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
           <Route path="/tracker" element={<PageGoalSaving />} />
           <Route path="/team" element={<PageMeetTheTeam />} />
           <Route path="/signup" element={<PageRegistration />} />
-          <Route path="/checking" element={<TransactionChecking />} />
-          <Route path="/saving" element={<TransactionSaving />} />
+          <Route path="/checking" element={<PageCheckingAcct />} />
+          <Route path="/saving" element={<PageSavingAcct />} />
         </Routes>
       </div>
     </Router>

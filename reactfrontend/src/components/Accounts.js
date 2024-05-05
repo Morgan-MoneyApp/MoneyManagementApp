@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/accounts.css';
 import { useNavigate } from 'react-router-dom';
 
 function Accounts() {
   const navigate = useNavigate();
 
+  // Direct navigation functions for each account type
+  const goToChecking = () => {
+    navigate('/checking'); // Navigate directly to the checking account route
+  };
+
+  const goToSavings = () => {
+    navigate('/saving'); // Navigate directly to the savings account route
+  };
+
   const accounts = {
     checking: {
       balance: 1500, // example checking account balance
-      onClick: () => navigate('/checking'), // Example route for signup
+      onClick: goToChecking, // Assign direct function for checking
     },
     savings: {
       balance: 3000, // example savings account balance
-      onClick: () => navigate('/saving'), // Example route for accounts management
+      onClick: goToSavings, // Assign direct function for savings
     },
-  };
-
-  const [selectedAccount, setSelectedAccount] = useState(null); // Store the selected account
-
-  const handleSelectAccount = accountType => {
-    setSelectedAccount(accountType); // Set the selected account
-    accounts[accountType].onClick(); // Invoke the click handler specific to the account
   };
 
   return (
@@ -31,8 +33,8 @@ function Accounts() {
           <div key={key} className="account-card">
             <h2>{key.charAt(0).toUpperCase() + key.slice(1)} Account</h2>
             <p>Balance: ${balance}</p>
-            <button className="account-button" onClick={() => handleSelectAccount(key)}>
-              Select {key.charAt(0).toUpperCase() + key.slice(1)} Account
+            <button className="account-button" onClick={onClick}>
+              Go to {key.charAt(0).toUpperCase() + key.slice(1)} Account
             </button>
           </div>
         ))}
