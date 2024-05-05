@@ -15,7 +15,7 @@ function App() {
           <Route path="/accounts" element={<PageAccounts />} />
           <Route path="/tracker" element={<PageGoalSaving />} />
           <Route path="/team" element={<PageMeetTheTeam />} />
-          <Route path="/signup" element={<PageRegistration />} />
+          <Route path="/register" element={<PageRegistration />} />
         </Routes>
       </div>
     </Router>

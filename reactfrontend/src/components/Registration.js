@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/registration.css';
+import '../styles/registration.css'; // Ensure your CSS is set up to handle inline fields
 
 function Registration() {
   const [formData, setFormData] = useState({
@@ -7,7 +7,11 @@ function Registration() {
     lastName: '',
     dob: '',
     phoneNumber: '',
-    address: '',
+    house: '',
+    street: '',
+    city: '',
+    state: '',
+    zipcode: '',
   });
 
   const handleChange = e => {
@@ -20,46 +24,35 @@ function Registration() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // Here, you might want to send the formData to a backend server
     console.log(formData);
     alert('Account Created!');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>New user registration:</h1>
-      <label>
-        First Name:
-        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Last Name:
-        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Date of Birth:
-        <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Phone Number:
-        <input
-          type="tel"
-          name="phoneNumber"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          title="Enter a phone number in the format: 123-456-7890"
-          value={formData.phoneNumber}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Address:
-        <input type="text" name="address" value={formData.address} onChange={handleChange} />
-      </label>
-      <br />
+    <form onSubmit={handleSubmit} className="registration-form">
+      <h1>New User Registration:</h1>
+      <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
+      <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
+      <input type="date" name="dob" placeholder="Date of Birth" value={formData.dob} onChange={handleChange} required />
+      <input
+        type="tel"
+        name="phoneNumber"
+        placeholder="Phone Number"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        title="Enter a phone number in the format: 123-456-7890"
+        value={formData.phoneNumber}
+        onChange={handleChange}
+        required
+      />
+      <div className="inline-fields">
+        <input type="text" name="house" placeholder="House Number" value={formData.house} onChange={handleChange} required />
+        <input type="text" name="street" placeholder="Street" value={formData.street} onChange={handleChange} required />
+      </div>
+      <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required />
+      <div className="inline-fields">
+        <input type="text" name="state" placeholder="State" value={formData.state} onChange={handleChange} required />
+        <input type="text" name="zipcode" placeholder="Zipcode" value={formData.zipcode} onChange={handleChange} required />
+      </div>
       <button type="submit">Create Account</button>
     </form>
   );

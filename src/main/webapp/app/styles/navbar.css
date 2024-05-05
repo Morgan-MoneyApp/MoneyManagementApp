@@ -33,6 +33,11 @@
     background-color 0.3s;
 }
 
+.nav-item a:hover,
+.logout-button button:hover {
+  color: black; /* Light yellow for hover */
+}
+
 .account-info {
   color: white;
 }
@@ -43,17 +48,4 @@
 .navbar-bankname {
   height: 50px; /* Adjust the height as needed */
   width: auto; /* Maintains the aspect ratio of the image */
-}
-
-.nav-item a:hover,
-.logout-button button:hover {
-  color: black; /* Light yellow for hover */
-  width: 200px;
-  margin-top: 10px;
-  background-color: #2a76a578;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #2a76d9;
-  cursor: pointer;
 }

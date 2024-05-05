@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
-import LogoNoBg from '../images/logoandname.png';
+import LogoNoBg from '../images/logonobk.png';
 
 function Navbar() {
   // example balances
   return (
     <nav className="navbar">
       <img src={LogoNoBg} alt="Logo" className="navbar-logo" />
+      {/* <img src={BankName} alt="Bank" className="navbar-bankname" /> */}
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/">Home</Link>
@@ -20,6 +21,9 @@ function Navbar() {
         </li>
         <li className="nav-item">
           <Link to="/team">Meet The Team</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/register">Sign Up</Link>
         </li>
       </ul>
       <div className="account-info"></div>

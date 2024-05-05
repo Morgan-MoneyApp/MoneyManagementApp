@@ -1,3 +1,4 @@
+/* Savings Tracker Styles */
 .goal-tracker {
   max-width: 600px;
   margin: 40px auto;
@@ -19,19 +20,19 @@
   height: 30px;
   background-color: #ddd;
   border-radius: 15px;
-  overflow: hidden;
+  overflow: visible; /* Change from 'hidden' to 'visible' to allow image to overlap */
 }
 
 .progress-bar-fill {
   height: 100%;
   background: linear-gradient(
     to right,
-    rgb(55, 127, 215),
-    rgb(92, 188, 220),
-    rgb(0, 255, 140),
-    rgb(98, 217, 98),
-    rgb(255, 255, 0),
-    rgb(255, 244, 94)
+    rgb(163, 194, 232),
+    rgb(101, 154, 211),
+    rgb(87, 148, 223),
+    rgb(69, 124, 220),
+    rgb(46, 98, 209),
+    rgb(26, 84, 230)
   );
   border-radius: 15px;
   transition: width 0.3s ease-in-out;
@@ -39,11 +40,11 @@
 
 .pot-of-gold {
   position: absolute;
-  right: 0;
-  bottom: -10px; /* Adjust according to your image */
-  width: 40px; /* Adjust according to your design */
-  height: 40px; /* Adjust according to your design */
-  transition: all 0.3s ease-in-out;
+  right: calc(-30px); /* Adjust this value to better align with the right end of the progress bar */
+  bottom: 0; /* Adjust based on the specific overlap needed */
+  width: 60px;
+  height: 60px;
+  transition: right 0.3s ease-in-out; /* Ensures the image moves smoothly with the progress bar */
 }
 
 .saved-amount {
@@ -53,21 +54,24 @@
 }
 
 .add-savings {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  width: 200px;
+  margin-top: 10px;
+  background-color: #2a76a578;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  width: 200px;
+  margin-top: 10px;
+  background-color: #2a76a5;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  background-color: #2a76d9;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.add-savings:hover {
-  background-color: #0056b3;
-}
-
-.pot-of-gold {
-  width: 60px;
-  height: 60px;
 }
