@@ -45,15 +45,15 @@
   width: auto; /* Maintains the aspect ratio of the image */
 }
 
-.nav-item a:hover,
+.nav-item a:hover {
+  font-weight: bolder;
+}
 .logout-button button:hover {
-  color: black; /* Light yellow for hover */
   width: 200px;
   margin-top: 10px;
-  background-color: #2a76a578;
+  background-color: #2a76a5;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-color: #2a76d9;
   cursor: pointer;
 }
