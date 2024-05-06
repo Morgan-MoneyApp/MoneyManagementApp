@@ -5,7 +5,6 @@ import com.zipcode.moneyapp.domain.Address;
 import com.zipcode.moneyapp.domain.Authority;
 import com.zipcode.moneyapp.domain.User;
 import com.zipcode.moneyapp.domain.UserProfile;
-import com.zipcode.moneyapp.repository.AddressRepository;
 import com.zipcode.moneyapp.repository.AuthorityRepository;
 import com.zipcode.moneyapp.repository.UserProfileRepository;
 import com.zipcode.moneyapp.repository.UserRepository;
