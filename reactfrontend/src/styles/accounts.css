@@ -1,12 +1,15 @@
 .accounts-container {
+  padding: 50px;
   display: flex;
   justify-content: space-around; /* This will space out the account cards evenly */
   align-items: center; /* This aligns the cards vertically at the same level */
   margin: 20px; /* Add some margin around the container for better spacing */
 }
+
 .outer-div {
   padding-top: 60px;
 }
+
 .account-card {
   background-color: #fff;
   border-radius: 10px;
@@ -14,6 +17,7 @@
   padding: 20px;
   width: 30%; /* Adjust the width as needed */
   transition: transform 0.3s ease;
+  text-align: center; /* Center-aligns text within the card */
 }
 
 .account-card:hover {
@@ -28,8 +32,39 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+  display: block; /* Makes the button a block element to take the full width */
+  margin: 10px auto; /* Centers the button horizontally within the card */
 }
 
 button:hover {
   background-color: #2a76a5;
+}
+
+.title {
+  padding: 50px;
+  text-align: center; /* Center-aligns the title */
+}
+
+p {
+  font-size: 25px;
+}
+
+.account-button {
+  font-size: 20px;
+  width: fit-content;
+  background-color: #89b4d0;
+}
+
+.account-button button:hover {
+  background-color: #2a76a5;
+  font-weight: bolder;
+}
+
+.content.div {
+  padding-left: 80px;
+}
+.content-div h2,
+.content-div p {
+  font-size: 30px;
+  margin-left: 80px; /* Adjust this value to get the desired right shift */
 }
