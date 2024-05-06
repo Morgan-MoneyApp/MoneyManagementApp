@@ -1,5 +1,6 @@
 package com.zipcode.moneyapp.web.rest.vm;
 
+import com.zipcode.moneyapp.domain.Address;
 import com.zipcode.moneyapp.service.dto.AdminUserDTO;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
@@ -18,6 +19,15 @@ public class ManagedUserVM extends AdminUserDTO {
 
     private String firstName, lastName;
     private LocalDate dateOfBirth;
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     @Override
     public void setFirstName(String firstName) {
