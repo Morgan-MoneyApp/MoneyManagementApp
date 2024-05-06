@@ -25,6 +25,14 @@ export const handleRegister = createAsyncThunk(
     lastName: string;
     dateOfBirth: any;
     langKey?: string;
+    address: {
+      houseNumber: number;
+      street: string;
+      apartmentNumber?: number;
+      city: string;
+      state: string;
+      zip: number;
+    };
   }) => {
     console.log(data);
     await axios.post<any>('api/register', data);

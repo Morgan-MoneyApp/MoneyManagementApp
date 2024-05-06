@@ -1,6 +1,7 @@
 package com.zipcode.moneyapp.service;
 
 import com.zipcode.moneyapp.config.Constants;
+import com.zipcode.moneyapp.domain.Address;
 import com.zipcode.moneyapp.domain.Authority;
 import com.zipcode.moneyapp.domain.User;
 import com.zipcode.moneyapp.domain.UserProfile;
@@ -46,18 +47,22 @@ public class UserService {
 
     private final UserProfileRepository userProfileRepository;
 
+    private final AddressService addressService;
+
     public UserService(
         UserRepository userRepository,
         PasswordEncoder passwordEncoder,
         AuthorityRepository authorityRepository,
         CacheManager cacheManager,
-        UserProfileRepository userProfileRepository
+        UserProfileRepository userProfileRepository,
+        AddressService addressService
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
         this.userProfileRepository = userProfileRepository;
+        this.addressService = addressService;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -100,7 +105,7 @@ public class UserService {
             });
     }
 
-    public User registerUser(AdminUserDTO userDTO, String password, String fname, String lname, LocalDate dob) {
+    public User registerUser(AdminUserDTO userDTO, String password, String fname, String lname, LocalDate dob, Address a) {
         userRepository
             .findOneByLogin(userDTO.getLogin().toLowerCase())
             .ifPresent(existingUser -> {
@@ -137,7 +142,8 @@ public class UserService {
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
-        userProfileRepository.save(new UserProfile().firstName(fname).lastName(lname).dateOfBirth(dob).user(newUser));
+        Address addrWithId = addressService.findOrCreate(a);
+        userProfileRepository.save(new UserProfile().firstName(fname).lastName(lname).dateOfBirth(dob).user(newUser).address(addrWithId));
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;

@@ -67,7 +67,8 @@ public class AccountResource {
             managedUserVM.getPassword(),
             managedUserVM.getFirstName(),
             managedUserVM.getLastName(),
-            managedUserVM.getDateOfBirth()
+            managedUserVM.getDateOfBirth(),
+            managedUserVM.getAddress()
         );
         mailService.sendActivationEmail(user);
     }
