@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/savingstracker.css'; // Ensure the CSS file is imported
-import PotGold from '../images/money.png';
+import PotGold from '../images/tracker.png';
 
 function SavingsTracker() {
   const [goal, setGoal] = useState(1000); // Make the goal adjustable
@@ -25,22 +25,31 @@ function SavingsTracker() {
 
   return (
     <div className="savings-container">
-      <div className="savings-form">
-        <h2>Set Your Savings Goal</h2>
-        <input type="number" placeholder="Enter your goal amount" value={goal} onChange={handleGoalChange} />
-        <input type="text" placeholder="What are you saving for?" value={purpose} onChange={handlePurposeChange} />
-        <button onClick={addSavings}>Add $100</button>
-      </div>
-      <div className="goal-tracker">
-        <h1 className="title">Savings Goal Tracker: {purpose}</h1>
-        <div className="progress-bar-background">
-          <div className="progress-bar-fill" style={{ width: `${progress}%` }}>
-            <img src={PotGold} className="pot-of-gold" alt="Pot of Gold" style={{ left: `${progress}%`, transform: 'translateX(-50%)' }} />
-          </div>
+      <div className="savings-content">
+        {' '}
+        {/* Flex container for both elements */}
+        <div className="savings-form">
+          <h1>Set Your Savings Goal</h1>
+          <input type="number" placeholder="Enter your goal amount" value={goal} onChange={handleGoalChange} />
+          <input type="text" placeholder="What are you saving for?" value={purpose} onChange={handlePurposeChange} />
+          <button onClick={addSavings}>Add $100</button>
         </div>
-        <p className="saved-amount">
-          Saved: ${saved} of ${goal}
-        </p>
+        <div className="goal-tracker">
+          <h1 className="title">Savings Goal Tracker: {purpose}</h1>
+          <div className="progress-bar-background">
+            <div className="progress-bar-fill" style={{ width: `${progress}%` }}>
+              <img
+                src={PotGold}
+                className="pot-of-gold"
+                alt="Pot of Gold"
+                style={{ left: `${progress}%`, transform: 'translateX(-50%)' }}
+              />
+            </div>
+          </div>
+          <p className="saved-amount">
+            Saved: ${saved} of ${goal}
+          </p>
+        </div>
       </div>
     </div>
   );
