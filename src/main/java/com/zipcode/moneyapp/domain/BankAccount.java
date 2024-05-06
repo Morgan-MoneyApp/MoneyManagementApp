@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  * BankAccount entity
@@ -231,5 +233,50 @@ public class BankAccount implements Serializable {
             ", balance=" + getBalance() +
             ", type='" + getType() + "'" +
             "}";
+    }
+
+    private void addBalance(Double amount) {
+        this.balance += amount;
+    }
+
+    public ResponseEntity<String> withdraw(Double amount) {
+        if (amount == null) {
+            return new ResponseEntity<>("418", HttpStatus.I_AM_A_TEAPOT);
+        }
+        if (amount > this.balance) {
+            return new ResponseEntity<>("Insufficient funds", HttpStatus.BAD_REQUEST);
+        } else if (amount <= 0 || amount.isInfinite() || amount.isNaN()) {
+            return new ResponseEntity<>("Invalid amount to withdraw", HttpStatus.BAD_REQUEST);
+        } else {
+            this.balance -= amount;
+            return new ResponseEntity<>("Withdraw successful", HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<String> deposit(Double amount) {
+        if (amount == null) {
+            return new ResponseEntity<>("418", HttpStatus.I_AM_A_TEAPOT);
+        }
+        if (amount <= 0 || amount.isInfinite() || amount.isNaN()) {
+            return new ResponseEntity<>("Invalid amount to deposit", HttpStatus.BAD_REQUEST);
+        } else {
+            this.balance += amount;
+            return new ResponseEntity<>("Deposit successful", HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<String> transfer(Double amount, BankAccount destinationAccount) {
+        if (amount == null) {
+            return new ResponseEntity<>("418", HttpStatus.I_AM_A_TEAPOT);
+        }
+        if (amount > this.balance) {
+            return new ResponseEntity<>("Insufficient funds", HttpStatus.BAD_REQUEST);
+        } else if (amount <= 0 || amount.isInfinite() || amount.isNaN()) {
+            return new ResponseEntity<>("Invalid amount to transfer", HttpStatus.BAD_REQUEST);
+        } else {
+            this.balance -= amount;
+            destinationAccount.addBalance(amount);
+            return new ResponseEntity<>("Transfer successful", HttpStatus.OK);
+        }
     }
 }
