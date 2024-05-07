@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Photo from '../images/profilepic.png';
 import AlicePhoto from '../images/AlicePhoto.jpeg';
+import JakePhoto from '../images/JakePhoto.JPG';
 
 const teamMembers = [
   {
@@ -13,10 +14,10 @@ const teamMembers = [
     linkedinUrl: 'https://www.linkedin.com/in/alicegonzalezcodes/',
   },
   {
-    name: 'Jake LastName',
-    bio: 'Jane is a project manager who specializes in managing large tech teams and projects.',
-    photo: Photo,
-    linkedinUrl: 'https://www.linkedin.com/in/janesmith',
+    name: 'Jake Brennan',
+    bio: 'Jake is an aspiring Software Developer who has experience in retail, with customer service and UX assessment skills.',
+    photo: JakePhoto,
+    linkedinUrl: 'https://www.linkedin.com/in/jacob-brennan/',
   },
   {
     name: 'Jennifer LastName',
