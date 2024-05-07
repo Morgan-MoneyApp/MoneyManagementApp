@@ -46,6 +46,8 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties(value = { "accountHolder", "transactionsOuts", "transactionsIns" }, allowSetters = true)
     private BankAccount destination;
 
+    private String description = null;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -139,5 +141,26 @@ public class Transaction implements Serializable {
             "id=" + getId() +
             ", transactionValue=" + getTransactionValue() +
             "}";
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String generateDescription() {
+        if (source == null && destination == null) {
+            this.description = null;
+        } else if (source == null && destination != null) {
+            this.description = "Deposit into " + this.destination.getType().toString();
+        } else if (source != null && destination == null) {
+            this.description = "Withdrawal from " + this.source.getType().toString();
+        } else {
+            this.description = "Transfer from " + this.source.getType().toString() + " to " + destination.getType().toString();
+        }
+        return description;
     }
 }
