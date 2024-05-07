@@ -81,7 +81,9 @@ public class TransactionResource {
         @RequestBody Transaction transaction
     ) throws URISyntaxException {
         log.debug("REST request to update Transaction : {}, {}", id, transaction);
-        transaction.transactionDate(new java.sql.Date(transaction.getTransactionDate().getTime()));
+        //        log.debug(transaction.getTransactionDate().toString());
+        transaction.transactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+        //        log.debug(transaction.getTransactionDate().toString());
         if (transaction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -134,6 +136,10 @@ public class TransactionResource {
                     existingTransaction.setTransactionValue(transaction.getTransactionValue());
                 }
 
+                if (transaction.getTransactionDate() != null) {
+                    existingTransaction.setTransactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+                }
+
                 return existingTransaction;
             })
             .map(transactionRepository::save);
@@ -154,6 +160,14 @@ public class TransactionResource {
     public ResponseEntity<List<Transaction>> getAllTransactions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Transactions");
         Page<Transaction> page = transactionRepository.findAll(pageable);
+        // Debug purposes
+        //        for (Transaction t : page.getContent()) {
+        //            if (t.getTransactionDate() != null) {
+        //                log.info(t.getTransactionDate().toString());
+        //            } else {
+        //                log.info("Transaction with id {} has no date", t.getId());
+        //            }
+        //        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

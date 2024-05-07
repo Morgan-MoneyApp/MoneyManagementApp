@@ -234,11 +234,8 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [BrowserSync]: https://www.browsersync.io/
 [Jest]: https://facebook.github.io/jest/
 [Leaflet]: https://leafletjs.com/
-
-# [DefinitelyTyped]: https://definitelytyped.org/
+[DefinitelyTyped]: https://definitelytyped.org/
 
 # MoneyManagementApp
 
 Demo Day Project
-
-> > > > > > > 7d137bf2a35b2da5a925387e5c059f7cb2847564
