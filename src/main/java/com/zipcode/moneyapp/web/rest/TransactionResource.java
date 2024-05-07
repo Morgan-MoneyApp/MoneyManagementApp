@@ -136,6 +136,10 @@ public class TransactionResource {
                     existingTransaction.setTransactionValue(transaction.getTransactionValue());
                 }
 
+                if (transaction.getTransactionDate() != null) {
+                    existingTransaction.setTransactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+                }
+
                 return existingTransaction;
             })
             .map(transactionRepository::save);
@@ -156,13 +160,14 @@ public class TransactionResource {
     public ResponseEntity<List<Transaction>> getAllTransactions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Transactions");
         Page<Transaction> page = transactionRepository.findAll(pageable);
-        for (Transaction t : page.getContent()) {
-            if (t.getTransactionDate() != null) {
-                log.info(t.getTransactionDate().toString());
-            } else {
-                log.info("Transaction with id {} has no date", t.getId());
-            }
-        }
+        // Debug purposes
+        //        for (Transaction t : page.getContent()) {
+        //            if (t.getTransactionDate() != null) {
+        //                log.info(t.getTransactionDate().toString());
+        //            } else {
+        //                log.info("Transaction with id {} has no date", t.getId());
+        //            }
+        //        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
