@@ -1,4 +1,60 @@
-/* savingstracker.css */
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.registration-form {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.registration-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registration-form input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.inline-fields {
+  display: flex;
+}
+
+.inline-fields input {
+  flex: 1;
+  margin-right: 5px;
+}
+
+.inline-fields input:last-child {
+  margin-right: 0;
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #0056b3;
+}
+
+/*  ALICE CODE 
 .savings-container {
   display: flex;
   justify-content: space-around;
@@ -40,11 +96,11 @@
 .pot-of-gold {
   position: absolute;
   bottom: -50px; /* Adjust based on your image size */
-}
+/* } */
 
-input {
+/* input {
   display: block;
   width: calc(100% - 20px);
   margin-bottom: 10px;
   padding: 10px;
-}
+}  */

@@ -1,0 +1,60 @@
+table.GeneratedTable {
+  width: 80%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-style: solid;
+  color: #585454;
+  width: 80%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-style: solid;
+  color: #585454;
+  margin: 30px 120px; /* Reduced top margin from 200px to 100px */
+}
+
+table.GeneratedTable td,
+table.GeneratedTable th {
+  border-width: 2px;
+  border-color: #cfd0d1;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.GeneratedTable thead {
+  background-color: #65a8d740;
+}
+
+.date-column {
+  width: 70px;
+}
+
+.amount-column {
+  width: 70px;
+}
+
+.description-column {
+  width: 300px;
+}
+.button-container {
+  display: flex;
+  justify-content: center; /* Centers buttons horizontally */
+  gap: 5px; /* Adds space between buttons */
+  margin-top: 120px; /* Lowers the buttons on the page */
+}
+
+button {
+  width: 200px;
+  padding: 12px; /* Adds padding inside the buttons for a better appearance */
+  font-size: 16px; /* Sets a readable font size */
+  background-color: #4caf50; /* Example button color, change as needed */
+  color: white; /* Text color for the buttons */
+  border: none; /* Removes the border */
+  border-radius: 5px; /* Optionally rounds the corners of the buttons */
+  cursor: pointer; /* Changes the cursor to a pointer when over the button */
+}
+
+button:hover {
+  background-color: #45a049; /* Darkens the button on hover for a visual effect */
+}
