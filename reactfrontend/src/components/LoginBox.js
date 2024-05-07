@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/loginbox.css'; // Ensure this path is correct
 import BankServicesImage from '../images/bank-services.jpeg';
+
+import { login } from '../utils/authUtils';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const Welcome = () => {
   };
 
   const handleLogin = () => {
+    login('admin', 'admin', true);
     navigate('/accounts');
   };
 
@@ -22,7 +25,7 @@ const Welcome = () => {
       <div className="content-container">
         <div className="services-section">
           <img src={BankServicesImage} alt="Bank Services" className="services-image" />
-          <h2>Explore Our Services</h2>
+          <h2 className="title">Explore Our Services</h2>
           <p>Balance inquiries, fund transfers, transaction history, savings tracking, and more—all at your fingertips.</p>
         </div>
         <div className="login-container">

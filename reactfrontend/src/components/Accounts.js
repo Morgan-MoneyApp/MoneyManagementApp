@@ -36,7 +36,12 @@ function Accounts() {
 
   return (
     <div className="outer-div">
-      <h1>Account Balances</h1>
+      <div className="content-div">
+        {' '}
+        <h1 className="title">Account Balances</h1>
+        <p>Welcome!</p>
+        <p>Please select the account you would like to view from the list below to see all recent transactions.</p>
+      </div>
       <div className="accounts-container">
         {Object.entries(accounts).map(([key, { balance, onClick }]) => (
           <div key={key} className="account-card">
