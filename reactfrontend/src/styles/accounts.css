@@ -65,6 +65,6 @@ p {
 }
 .content-div h2,
 .content-div p {
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 80px; /* Adjust this value to get the desired right shift */
 }

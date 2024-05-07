@@ -12,18 +12,16 @@ import PageMoneyMarketAcct from './WebsitePages/PageMoneyMarketAcct';
 function App() {
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<PageWelcome />} />
-          <Route path="/accounts" element={<PageAccounts />} />
-          <Route path="/tracker" element={<PageGoalSaving />} />
-          <Route path="/team" element={<PageMeetTheTeam />} />
-          <Route path="/signup" element={<PageRegistration />} />
-          <Route path="/checking" element={<PageCheckingAcct />} />
-          <Route path="/saving" element={<PageSavingAcct />} />
-          <Route path="/moneymarket" element={<PageMoneyMarketAcct />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<PageWelcome />} />
+        <Route path="/accounts" element={<PageAccounts />} />
+        <Route path="/tracker" element={<PageGoalSaving />} />
+        <Route path="/team" element={<PageMeetTheTeam />} />
+        <Route path="/signup" element={<PageRegistration />} />
+        <Route path="/checking" element={<PageCheckingAcct />} />
+        <Route path="/saving" element={<PageSavingAcct />} />
+        <Route path="/moneymarket" element={<PageMoneyMarketAcct />} />
+      </Routes>
     </Router>
   );
 }
