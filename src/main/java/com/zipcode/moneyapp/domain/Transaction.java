@@ -105,12 +105,12 @@ public class Transaction implements Serializable {
     }
 
     public Transaction transactionDate(Date transactionDate) {
-        this.setTransactionDate(transactionDate);
+        this.setTransactionDate(Date.valueOf(transactionDate.toString()));
         return this;
     }
 
     public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+        this.transactionDate = Date.valueOf(transactionDate.toString());
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
