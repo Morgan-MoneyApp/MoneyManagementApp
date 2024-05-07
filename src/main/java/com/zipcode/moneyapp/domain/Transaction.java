@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,6 +28,9 @@ public class Transaction implements Serializable {
 
     @Column(name = "transaction_value")
     private Double transactionValue;
+
+    @Column(name = "transaction_date")
+    private Date transactionDate;
 
     /**
      * Associate each Transaction with a source BankAccount
@@ -93,6 +98,19 @@ public class Transaction implements Serializable {
     public Transaction destination(BankAccount bankAccount) {
         this.setDestination(bankAccount);
         return this;
+    }
+
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public Transaction transactionDate(Date transactionDate) {
+        this.setTransactionDate(transactionDate);
+        return this;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

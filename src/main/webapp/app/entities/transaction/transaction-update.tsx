@@ -61,6 +61,7 @@ export const TransactionUpdate = () => {
       ...values,
       source: bankAccounts.find(it => it.id.toString() === values.source?.toString()),
       destination: bankAccounts.find(it => it.id.toString() === values.destination?.toString()),
+      transactionDate: values.transactionDate,
     };
 
     if (isNew) {
@@ -77,6 +78,7 @@ export const TransactionUpdate = () => {
           ...transactionEntity,
           source: transactionEntity?.source?.id,
           destination: transactionEntity?.destination?.id,
+          date: transactionEntity?.date,
         };
 
   return (
@@ -122,6 +124,14 @@ export const TransactionUpdate = () => {
                     ))
                   : null}
               </ValidatedField>
+              <ValidatedField
+                name="transactionDate"
+                id="transaction-transactionDate"
+                data-cy="transactionDate"
+                label="Transaction Date"
+                type="datetime-local"
+                validate={{ required: { value: true, message: 'Please enter a date' } }}
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/transaction" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

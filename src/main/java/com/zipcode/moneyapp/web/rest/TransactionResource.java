@@ -5,6 +5,8 @@ import com.zipcode.moneyapp.repository.TransactionRepository;
 import com.zipcode.moneyapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,6 +58,7 @@ public class TransactionResource {
         if (transaction.getId() != null) {
             throw new BadRequestAlertException("A new transaction cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
         transaction = transactionRepository.save(transaction);
         return ResponseEntity.created(new URI("/api/transactions/" + transaction.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, transaction.getId().toString()))
@@ -78,6 +81,7 @@ public class TransactionResource {
         @RequestBody Transaction transaction
     ) throws URISyntaxException {
         log.debug("REST request to update Transaction : {}, {}", id, transaction);
+        transaction.transactionDate(new java.sql.Date(transaction.getTransactionDate().getTime()));
         if (transaction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
