@@ -52,11 +52,11 @@ p {
 .account-button {
   font-size: 20px;
   width: fit-content;
-  background-color: #89b4d0;
+  background-color: #89b4d0; /*when button is at idle it is a lighter blue matching w/nav bar*/
 }
 
-.account-button button:hover {
-  background-color: #2a76a5;
+.account-button:hover {
+  background-color: #2a76a5; /*when we hover over buttton it will turn darker blue*/
   font-weight: bolder;
 }
 
