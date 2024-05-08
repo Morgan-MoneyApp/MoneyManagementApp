@@ -1,6 +1,7 @@
 package com.zipcode.moneyapp.web.rest;
 
 import com.zipcode.moneyapp.domain.Transaction;
+import com.zipcode.moneyapp.repository.BankAccountRepository;
 import com.zipcode.moneyapp.repository.TransactionRepository;
 import com.zipcode.moneyapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -39,9 +40,12 @@ public class TransactionResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
+    private final BankAccountRepository bankAccountRepository;
+
     private final TransactionRepository transactionRepository;
 
-    public TransactionResource(TransactionRepository transactionRepository) {
+    public TransactionResource(BankAccountRepository bankAccountRepository, TransactionRepository transactionRepository) {
+        this.bankAccountRepository = bankAccountRepository;
         this.transactionRepository = transactionRepository;
     }
 
@@ -58,6 +62,9 @@ public class TransactionResource {
         if (transaction.getId() != null) {
             throw new BadRequestAlertException("A new transaction cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        transaction.source(bankAccountRepository.findById(transaction.getSource().getId()).get());
+        transaction.destination(bankAccountRepository.findById(transaction.getDestination().getId()).get());
+
         transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
         transaction = transactionRepository.save(transaction);
         return ResponseEntity.created(new URI("/api/transactions/" + transaction.getId()))
