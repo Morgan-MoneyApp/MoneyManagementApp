@@ -63,4 +63,12 @@
     <changeSet id="20240507151000" author="matt">
         <modifyDataType tableName="transaction" columnName="transaction_date" newDataType="java.sql.Types.DATETIME"/>
     </changeSet>
+
+    <changeSet id="20240508104200" author="Matt/Jake">
+        <addColumn tableName="transaction">
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

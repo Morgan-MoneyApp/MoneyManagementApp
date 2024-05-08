@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -223,7 +225,11 @@ public class BankAccountResource {
 
         // Get the account from the Optional<>
         BankAccount bankAccount = ob.get();
+        transaction.source(bankAccountRepository.findById(transaction.getSource().getId()).get());
+        transaction.destination(bankAccountRepository.findById(transaction.getDestination().getId()).get());
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
 
+        transactionRepository.save(transaction);
         // If the transaction source is the account in the Optional<>
         if (src.isPresent() && src.get().getId().equals(bankAccount.getId())) {
             // Add the transaction to the account's list of outgoing transactions

@@ -132,6 +132,7 @@ export const TransactionUpdate = () => {
                 type="datetime-local"
                 validate={{ required: { value: true, message: 'Please enter a date' } }}
               />
+              <ValidatedField name="description" id="transaction-description" data-cy="description" label="Description" type="text" />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/transaction" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
