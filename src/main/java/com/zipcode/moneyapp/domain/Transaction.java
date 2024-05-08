@@ -151,6 +151,11 @@ public class Transaction implements Serializable {
         this.description = description;
     }
 
+    public Transaction description(String description) {
+        this.setDescription(description);
+        return this;
+    }
+
     public String generateDescription() {
         if (source == null && destination == null) {
             this.description = null;
