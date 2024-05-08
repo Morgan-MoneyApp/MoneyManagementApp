@@ -36,10 +36,6 @@ button {
   margin: 10px auto; /* Centers the button horizontally within the card */
 }
 
-button:hover {
-  background-color: #2a76a5;
-}
-
 .title {
   padding: 50px;
   text-align: center; /* Center-aligns the title */

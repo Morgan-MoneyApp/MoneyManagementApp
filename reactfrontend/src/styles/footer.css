@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+body,
+html {
+  min-height: 100vh;
+  padding-bottom: 100px; /* Adjust based on the height of your footer */
+  overflow-x: hidden;
+  overflow-y: auto; /* Ensures vertical scrolling is enabled */
+}
+@media (max-width: 768px) {
+  body,
+  html {
+    padding-bottom: 150px; /* Increase padding for smaller screens if needed */
+  }
+}
+.footer {
+  z-index: 10; /* Lower than modal overlays or similar components */
+}
+
 html {
   height: 100%;
 }
@@ -12,7 +29,7 @@ body {
 }
 
 .container {
-  flex: 1; /* This makes the container take up all available space */
+  flex: 1 0 auto; /* This makes the container take up all available space */
 }
 
 body {
@@ -127,7 +144,7 @@ ul {
 }
 
 /* Responsive styles */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .footer-col {
     width: 50%;
     margin-bottom: 30px;

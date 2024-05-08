@@ -42,14 +42,23 @@ ul {
 }
 
 .navbar a::after {
-  content: '';
+  /* content: '';
   position: absolute;
   width: 0;
   height: 2px;
   display: block;
   margin-top: 5px;
   background: #000;
-  transition: width 0.3s;
+  transition: width 0.3s; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Cool blue gradient */
+  position: relative;
+  z-index: 1000;
+  color: white;
 }
 
 .navbar a:hover::after {
@@ -71,14 +80,22 @@ ul {
 
 .nav-item a,
 .logout-button button {
-  color: white;
+  /* color: white;
   background: transparent;
   border: none;
   text-decoration: none;
   font-size: 20px;
   letter-spacing: 0.5px;
   padding: 10px 15px; /* Added padding for better clickability */
-  border-radius: 5px; /* Rounded corners for a modern look */
+
+  color: white; /* Changed to white for better visibility */
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  padding: 10px 15px;
+  border-radius: 5px;
   transition:
     color 0.3s,
     background-color 0.3s,
