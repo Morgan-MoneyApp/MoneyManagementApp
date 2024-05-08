@@ -1,0 +1,66 @@
+html,
+body {
+  height: 100%; /* Ensures the full height of the viewport */
+  margin: 0; /* Remove default margin */
+}
+h4 {
+  text-decoration: underline;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* Ensures minimum height for the application */
+}
+
+.footer {
+  margin-top: auto; /* Automatically adjust the margin to push the footer down */
+  background-color: #2a76a5; /* Dark navy background */
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1 1 200px; /* Flex basis of 200px, grow and shrink */
+  margin: 10px;
+  padding: 5px;
+  min-width: 180px; /* Minimum width for small screens */
+}
+
+.footer-section h4 {
+  color: white; /* Light yellow to match the border */
+  margin-bottom: 15px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.footer-section a,
+.footer-section p {
+  color: inherit;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block; /* Make links and texts take the full width */
+}
+
+.footer-section a:hover {
+  font-weight: bold; /* Highlight on hover */
+}
+
+.social-media-icons {
+  display: flex; /* Aligns the child elements (icons) in a row */
+  justify-content: start; /* Starts icons from the left */
+  padding-top: 10px; /* Adds space above the icons */
+}
+
+.social-media a {
+  font-size: 24px; /* Larger icons for visibility */
+  margin-right: 15px; /* Spacing between icons */
+  transition: transform 0.3s ease; /* Smooth transform on hover */
+}
+
+.social-media a:hover {
+  transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
