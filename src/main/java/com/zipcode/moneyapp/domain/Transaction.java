@@ -51,6 +51,8 @@ public class Transaction implements Serializable {
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
+    public Transaction() {}
+
     public Long getId() {
         return this.id;
     }
@@ -159,13 +161,19 @@ public class Transaction implements Serializable {
 
     public String generateDescription() {
         if (source == null && destination == null) {
+            System.out.println("both null");
             this.description = null;
         } else if (source == null && destination != null) {
+            System.out.println("source null, dest nonnull");
             this.description = "Deposit into " + this.destination.getType().toString();
         } else if (source != null && destination == null) {
+            System.out.println("source nonnull, dest null");
             this.description = "Withdrawal from " + this.source.getType().toString();
         } else {
-            this.description = "Transfer from " + this.source.getType().toString() + " to " + destination.getType().toString();
+            System.out.println("both nonnull");
+            System.out.println(this.source);
+            System.out.println(this.destination);
+            this.description = "Transfer from " + this.source.getType().toString() + " to " + this.destination.getType().toString();
         }
         return description;
     }
