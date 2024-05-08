@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -27,6 +29,9 @@ public class Transaction implements Serializable {
     @Column(name = "transaction_value")
     private Double transactionValue;
 
+    @Column(name = "transaction_date")
+    private Date transactionDate;
+
     /**
      * Associate each Transaction with a source BankAccount
      */
@@ -40,6 +45,8 @@ public class Transaction implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "accountHolder", "transactionsOuts", "transactionsIns" }, allowSetters = true)
     private BankAccount destination;
+
+    private String description = null;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -95,6 +102,19 @@ public class Transaction implements Serializable {
         return this;
     }
 
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public Transaction transactionDate(Date transactionDate) {
+        this.setTransactionDate(Date.valueOf(transactionDate.toString()));
+        return this;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = Date.valueOf(transactionDate.toString());
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -121,5 +141,26 @@ public class Transaction implements Serializable {
             "id=" + getId() +
             ", transactionValue=" + getTransactionValue() +
             "}";
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String generateDescription() {
+        if (source == null && destination == null) {
+            this.description = null;
+        } else if (source == null && destination != null) {
+            this.description = "Deposit into " + this.destination.getType().toString();
+        } else if (source != null && destination == null) {
+            this.description = "Withdrawal from " + this.source.getType().toString();
+        } else {
+            this.description = "Transfer from " + this.source.getType().toString() + " to " + destination.getType().toString();
+        }
+        return description;
     }
 }

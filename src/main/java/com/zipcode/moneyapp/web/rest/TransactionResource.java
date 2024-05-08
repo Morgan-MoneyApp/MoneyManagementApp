@@ -5,6 +5,8 @@ import com.zipcode.moneyapp.repository.TransactionRepository;
 import com.zipcode.moneyapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,6 +58,7 @@ public class TransactionResource {
         if (transaction.getId() != null) {
             throw new BadRequestAlertException("A new transaction cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
         transaction = transactionRepository.save(transaction);
         return ResponseEntity.created(new URI("/api/transactions/" + transaction.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, transaction.getId().toString()))
@@ -78,6 +81,9 @@ public class TransactionResource {
         @RequestBody Transaction transaction
     ) throws URISyntaxException {
         log.debug("REST request to update Transaction : {}, {}", id, transaction);
+        //        log.debug(transaction.getTransactionDate().toString());
+        transaction.transactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+        //        log.debug(transaction.getTransactionDate().toString());
         if (transaction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -130,6 +136,10 @@ public class TransactionResource {
                     existingTransaction.setTransactionValue(transaction.getTransactionValue());
                 }
 
+                if (transaction.getTransactionDate() != null) {
+                    existingTransaction.setTransactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+                }
+
                 return existingTransaction;
             })
             .map(transactionRepository::save);
@@ -150,6 +160,14 @@ public class TransactionResource {
     public ResponseEntity<List<Transaction>> getAllTransactions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Transactions");
         Page<Transaction> page = transactionRepository.findAll(pageable);
+        // Debug purposes
+        //        for (Transaction t : page.getContent()) {
+        //            if (t.getTransactionDate() != null) {
+        //                log.info(t.getTransactionDate().toString());
+        //            } else {
+        //                log.info("Transaction with id {} has no date", t.getId());
+        //            }
+        //        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
