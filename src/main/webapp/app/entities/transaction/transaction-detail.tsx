@@ -31,6 +31,10 @@ export const TransactionDetail = () => {
             <span id="transactionValue">Transaction Value</span>
           </dt>
           <dd>{transactionEntity.transactionValue}</dd>
+          <dt>Date</dt>
+          <dd>{transactionEntity.transactionDate}</dd>
+          <dt>Description</dt>
+          <dd>{transactionEntity.description}</dd>
           <dt>Source</dt>
           <dd>{transactionEntity.source ? transactionEntity.source.id : ''}</dd>
           <dt>Destination</dt>

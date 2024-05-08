@@ -123,6 +123,7 @@ export const Transaction = () => {
                 <th>
                   Date <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>Description</th>
                 <th />
               </tr>
             </thead>
@@ -144,6 +145,7 @@ export const Transaction = () => {
                     )}
                   </td>
                   <td>{transaction.transactionDate}</td>
+                  <td>{transaction.description}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/transaction/${transaction.id}`} color="info" size="sm" data-cy="entityDetailsButton">
