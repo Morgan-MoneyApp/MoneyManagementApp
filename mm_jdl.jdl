@@ -1,0 +1,83 @@
+/**
+*    User Profile entity
+*/
+entity UserProfile {
+    firstName String required,
+    lastName String required,
+    dateOfBirth LocalDate required
+}
+
+/**
+*    Address entity
+*/
+entity Address {
+    houseNumber Integer min(1) required,
+    street String required pattern(/[a-zA-Z]+\s(St|Rd|Ave|Blvd|Cir|Dr|Pl|Sq)./),
+    apartmentNumber Integer min(1),
+    city String required pattern(/[a-zA-Z]+/),
+    state String required pattern(/[a-zA-Z]{2}/),
+    zip String required pattern(/[0-9]{5}/)
+}
+
+/**
+*    BankAccount entity
+*/
+entity BankAccount {
+    accountNumber Long min(0) max(999999999) unique,
+    routingNumber Integer min(123456789) max(123456789),
+    @defaultValue(0)
+    balance Double,
+    type Type required
+}
+
+/**
+*    BankAccount type enum
+*/
+enum Type {
+    CHECKING,
+    SAVINGS,
+    PLACEHOLDER,
+    MONEY_MARKET_CHECKING
+}
+
+/**
+*    Transaction entity
+*/
+entity Transaction {
+    @defaultValue(0)
+    transactionValue Double
+}
+
+
+relationship OneToOne {
+    /**
+    *    Associate each UserProfile with a User
+    */
+    UserProfile to @OnDelete("CASCADE") @Id User with builtInEntity
+}
+
+relationship OneToMany {
+    /**
+    *    Associate each UserProfile with an Address
+    */
+    Address to UserProfile{address}
+    
+    /**
+    *    Associate each BankAccount with a UserProfile
+    */
+    UserProfile to BankAccount{accountHolder}
+}
+
+relationship ManyToOne {
+    /**
+    *    Associate each Transaction with a source BankAccount
+    */
+    Transaction{source} to BankAccount{transactionsOut}
+    
+    /**
+    *    Associate each Transaction with a destination BankAccount
+    */
+    Transaction{destination} to BankAccount{transactionsIn}
+}
+
+paginate BankAccount, Transaction with pagination

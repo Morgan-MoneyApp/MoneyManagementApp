@@ -1,0 +1,57 @@
+{
+  "annotations": {
+    "changelogDate": "20240502191531"
+  },
+  "applications": "*",
+  "documentation": "Address entity",
+  "fields": [
+    {
+      "fieldName": "houseNumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "required"],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "street",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "[a-zA-Z]+\\s(St|Rd|Ave|Blvd|Cir|Dr|Pl|Sq)."
+    },
+    {
+      "fieldName": "apartmentNumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "[a-zA-Z]+"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "[a-zA-Z]{2}"
+    },
+    {
+      "fieldName": "zip",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "[0-9]{5}"
+    }
+  ],
+  "name": "Address",
+  "relationships": [
+    {
+      "documentation": "Associate each UserProfile with an Address",
+      "otherEntityName": "userProfile",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "userProfile",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

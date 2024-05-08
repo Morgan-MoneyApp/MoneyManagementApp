@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20240502191533"
+  },
+  "applications": "*",
+  "documentation": "Transaction entity",
+  "fields": [
+    {
+      "fieldName": "transactionValue",
+      "fieldType": "Double",
+      "options": {
+        "defaultValue": true
+      }
+    }
+  ],
+  "name": "Transaction",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Associate each Transaction with a source BankAccount",
+      "otherEntityName": "bankAccount",
+      "otherEntityRelationshipName": "transactionsOut",
+      "relationshipName": "source",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "documentation": "Associate each Transaction with a destination BankAccount",
+      "otherEntityName": "bankAccount",
+      "otherEntityRelationshipName": "transactionsIn",
+      "relationshipName": "destination",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}
