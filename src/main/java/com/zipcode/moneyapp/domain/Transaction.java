@@ -46,6 +46,7 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties(value = { "accountHolder", "transactionsOuts", "transactionsIns" }, allowSetters = true)
     private BankAccount destination;
 
+    @org.springframework.data.annotation.Transient
     private String description = null;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

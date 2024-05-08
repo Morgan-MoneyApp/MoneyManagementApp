@@ -58,7 +58,7 @@ public class TransactionResource {
         if (transaction.getId() != null) {
             throw new BadRequestAlertException("A new transaction cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
         transaction = transactionRepository.save(transaction);
         return ResponseEntity.created(new URI("/api/transactions/" + transaction.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, transaction.getId().toString()))
@@ -82,7 +82,7 @@ public class TransactionResource {
     ) throws URISyntaxException {
         log.debug("REST request to update Transaction : {}, {}", id, transaction);
         //        log.debug(transaction.getTransactionDate().toString());
-        transaction.transactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+        transaction.transactionDate(Date.valueOf("" + transaction.getTransactionDate())).generateDescription();
         //        log.debug(transaction.getTransactionDate().toString());
         if (transaction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
