@@ -1,0 +1,25 @@
+/* welcomenavbar.css */
+.navbar {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 70px; /* Specify a height for the navbar */
+  background-color: #2a76a578; /* Background color, adjust as needed */
+  width: 100%; /* Ensure the navbar spans the full width of the viewport */
+  position: fixed; /* Fix navbar to the top */
+  top: 0; /* Align top edge at the top of the viewport */
+  left: 0; /* Align left edge at the left of the viewport */
+  z-index: 1000; /* Ensures the navbar is above other content */
+}
+
+.navbar-content {
+  display: flex; /* Use Flexbox within this container as well */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Take up the full width of its parent */
+}
+
+.navbar-logo {
+  height: 100px;
+  width: auto;
+}

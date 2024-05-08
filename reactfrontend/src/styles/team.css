@@ -1,0 +1,54 @@
+/* Team.css */
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 80px;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 48%; /* Adjusts to fit 2 per row with some space in between */
+  margin: 1%; /* Small margin for spacing */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px); /* Lifts the card up slightly */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for better effect */
+}
+
+.member-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.member-info {
+  flex: 1;
+  padding: 10px;
+}
+
+.member-info a {
+  color: #0077b5; /* LinkedIn brand color */
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Removes underline */
+  margin-top: 10px; /* Space from the bio */
+}
+
+.member-info a:hover {
+  text-decoration: underline; /* Adds interaction feedback */
+}
+
+.member-info svg {
+  margin-right: 8px; /* Space between icon and text */
+}

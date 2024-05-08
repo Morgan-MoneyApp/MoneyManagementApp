@@ -56,11 +56,20 @@ public class AccountResource {
      */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerAccount(@Valid @RequestBody ManagedUserVM managedUserVM) {
+    // WHAT THE LITERAL ♥♥♥♥ IS WRONG WHY DID I HAVE TO REMOVE @VALID
+    public void registerAccount(@RequestBody ManagedUserVM managedUserVM) {
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
-        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        System.out.println(managedUserVM.getFirstName());
+        User user = userService.registerUser(
+            managedUserVM,
+            managedUserVM.getPassword(),
+            managedUserVM.getFirstName(),
+            managedUserVM.getLastName(),
+            managedUserVM.getDateOfBirth(),
+            managedUserVM.getAddress()
+        );
         mailService.sendActivationEmail(user);
     }
 

@@ -19,8 +19,40 @@ export const RegisterPage = () => {
     [],
   );
 
-  const handleValidSubmit = ({ username, email, firstPassword }) => {
-    dispatch(handleRegister({ login: username, email, password: firstPassword, langKey: 'en' }));
+  const handleValidSubmit = ({
+    username,
+    email,
+    firstPassword,
+    firstName,
+    lastName,
+    dateOfBirth,
+    houseNumber,
+    street,
+    apartmentNumber,
+    city,
+    state,
+    zip,
+  }) => {
+    console.log(firstName, lastName);
+    dispatch(
+      handleRegister({
+        login: username,
+        email: email,
+        password: firstPassword,
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
+        langKey: 'en',
+        address: {
+          houseNumber: houseNumber,
+          street: street,
+          apartmentNumber: apartmentNumber || null,
+          city: city,
+          state: state,
+          zip: zip,
+        },
+      }),
+    );
   };
 
   const updatePassword = event => setPassword(event.target.value);
@@ -100,6 +132,108 @@ export const RegisterPage = () => {
               }}
               data-cy="secondPassword"
             />
+            <ValidatedField
+              name="firstName"
+              label="First name"
+              placeholder="First name"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your first name is required.' },
+              }}
+              data-cy="firstName"
+            />
+            <ValidatedField
+              name="lastName"
+              label="Last name"
+              placeholder="Last name"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your last name is required.' },
+              }}
+              data-cy="lastName"
+            />
+            <ValidatedField
+              name="dateOfBirth"
+              label="Date of birth"
+              placeholder="1970-01-01"
+              type="date"
+              validate={{
+                required: { value: true, message: 'Your date of birth is required.' },
+              }}
+              data-cy="dateOfBirth"
+            />
+            <ValidatedField
+              name="houseNumber"
+              label="House Number"
+              placeholder="0"
+              type="number"
+              validate={{
+                required: { value: true, message: 'Your house number is required.' },
+                min: 1,
+              }}
+              data-cy="houseNumber"
+            />
+            <ValidatedField
+              name="street"
+              label="Street"
+              placeholder="Street"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your Street Name is required.' },
+                pattern: {
+                  value: /^[a-zA-Z0-9\s]+?(St|Rd|Ave|Blvd|Cir|Dr|Pl|Sq)\.$/,
+                  message: 'Your format is wrong, please use only letters and abbreviate Street type(ex: St. Rd.)',
+                },
+              }}
+              data-cy="street"
+            />
+            <ValidatedField
+              name="apartmentNumber"
+              label="Apartment number"
+              placeholder="0"
+              type="number"
+              validate={{
+                min: 1,
+              }}
+              data-cy="apartmentNumber"
+            />
+            <ValidatedField
+              name="city"
+              label="City"
+              placeholder="City"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your city is required.' },
+                pattern: { value: /[a-zA-Z]+/, message: 'Your city should be letters only.' },
+              }}
+              data-cy="city"
+            />
+            <ValidatedField
+              name="state"
+              label="State"
+              placeholder="??"
+              type="text"
+              validate={{
+                required: { value: true, message: 'Your state is required.' },
+                pattern: { value: /[a-zA-Z]+/, message: 'Your state must be letters.' },
+                maxLength: { value: 2, message: 'Please use a two-letter abbreviation.' },
+                minLength: { value: 2, message: 'Please use a two-letter abbreviation.' },
+              }}
+              data-cy="state"
+            />
+            <ValidatedField
+              name="zip"
+              label="Zip code"
+              placeholder="00000"
+              type="number"
+              validate={{
+                required: { value: true, message: 'Your zip code is required.' },
+                minLength: 5,
+                maxLength: 5,
+              }}
+              data-cy="zip"
+            />
+
             <Button id="register-submit" color="primary" type="submit" data-cy="submit">
               Register
             </Button>

@@ -1,0 +1,62 @@
+{
+  "annotations": {
+    "changelogDate": "20240502191532"
+  },
+  "applications": "*",
+  "documentation": "BankAccount entity",
+  "fields": [
+    {
+      "fieldName": "accountNumber",
+      "fieldType": "Long",
+      "fieldValidateRules": ["min", "max", "unique"],
+      "fieldValidateRulesMax": "999999999",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "routingNumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "123456789",
+      "fieldValidateRulesMin": "123456789"
+    },
+    {
+      "fieldName": "balance",
+      "fieldType": "Double",
+      "options": {
+        "defaultValue": true
+      }
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Type",
+      "fieldTypeDocumentation": "BankAccount type enum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CHECKING,SAVINGS,PLACEHOLDER,MONEY_MARKET_CHECKING"
+    }
+  ],
+  "name": "BankAccount",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "userProfile",
+      "relationshipName": "accountHolder",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "source",
+      "relationshipName": "transactionsOut",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "destination",
+      "relationshipName": "transactionsIn",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

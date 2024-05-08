@@ -1,0 +1,111 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Make the container fill the entire height of the viewport */
+  width: 100%; /* Full width */
+  position: relative; /* Needed for positioning the background and content correctly */
+  overflow: hidden; /* Prevents any overflow from the moving backgrounds */
+}
+
+.bg,
+.bg2,
+.bg3 {
+  position: fixed;
+  top: 0;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  background-image: linear-gradient(-60deg, rgba(189, 225, 247, 0.884) 50%, rgb(254, 255, 255) 50%);
+  opacity: 0.5;
+  z-index: -1;
+  animation: slide 3s ease-in-out infinite alternate;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  align-items: center; /* Vertical centering */
+  justify-content: space-around; /* Distribute space around items */
+  width: 100%; /* Take full width of the container */
+  max-width: 1200px; /* Maximum content width */
+  padding: 20px; /* Padding around the content */
+}
+
+.services-section,
+.login-container {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.services-image {
+  width: 100%; /* Responsive image */
+  height: auto;
+}
+
+input[type='text'],
+input[type='password'],
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.login-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 30%; /* Adjust the width as needed */
+  transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 20px;
+}
+.signup-button,
+.login-button {
+  background-color: #89b4d0;
+}
+.signup-button:hover {
+  background-color: #2a76a5;
+  font-weight: bolder;
+}
+.login-button:hover {
+  background-color: #2a76a5;
+  font-weight: bolder;
+}
