@@ -33,7 +33,7 @@ public class Address implements Serializable {
     private Integer houseNumber;
 
     @NotNull
-    @Pattern(regexp = "[a-zA-Z]+\\s(St|Rd|Ave|Blvd|Cir|Dr|Pl|Sq).")
+    @Pattern(regexp = "[a-zA-Z0-9\\s]+?(St|Rd|Ave|Blvd|Cir|Dr|Pl|Sq)\\.")
     @Column(name = "street", nullable = false)
     private String street;
 
