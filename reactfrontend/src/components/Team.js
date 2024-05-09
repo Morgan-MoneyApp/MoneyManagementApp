@@ -5,6 +5,9 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Photo from '../images/profilepic.png';
 import AlicePhoto from '../images/AlicePhoto.jpeg';
 import JakePhoto from '../images/JakePhoto.JPG';
+import MattPhoto from '../images/MattPhoto.jpg';
+import JorrisPhoto from '../images/JorrisPhoto.jpg';
+import JenniferAzer from '../images/JenniferAzer.jpg';
 
 const teamMembers = [
   {
@@ -20,22 +23,22 @@ const teamMembers = [
     linkedinUrl: 'https://www.linkedin.com/in/jacob-brennan/',
   },
   {
-    name: 'Jennifer LastName',
-    bio: 'Emily is an expert in digital marketing with a focus on growing tech startups.',
-    photo: Photo,
-    linkedinUrl: 'https://www.linkedin.com/in/emilyjohnson',
+    name: 'Jennifer Azer',
+    bio: 'Jennifer is a Junior Developer, commited to bringing value to customers with her vast customer experience of 8 years from Banking,Travel,and the Aviation sector    .',
+    photo: JenniferAzer,
+    linkedinUrl: 'https://www.linkedin.com/in/jennifer-azer/',
   },
   {
-    name: 'Jorris LastName',
-    bio: 'Michael is a UX/UI designer with a keen eye for creating engaging digital experiences.',
-    photo: Photo,
-    linkedinUrl: 'https://www.linkedin.com/in/michaelbrown',
+    name: 'Jorris Ekoloko',
+    bio: 'Jorris is an Aspiring Software Developer with over 6 years in the culinary industry where he honed customer and teamwork skills and will apply them into the advancement of the tech field.',
+    photo: JorrisPhoto,
+    linkedinUrl: 'https://www.linkedin.com/in/jorrisekoloko/',
   },
   {
-    name: 'Matthew LastName',
-    bio: 'Sarah is our customer service leader, dedicated to improving user satisfaction and engagement.',
-    photo: Photo,
-    linkedinUrl: 'https://www.linkedin.com/in/sarahdavis',
+    name: 'Matthew Kramer',
+    bio: 'Matt is a Junior Software Developer with over 15 years in Aircraft maintenance and Controls Automation',
+    photo: MattPhoto,
+    linkedinUrl: 'https://www.linkedin.com/in/matthewkramer1230/',
   },
 ];
 
