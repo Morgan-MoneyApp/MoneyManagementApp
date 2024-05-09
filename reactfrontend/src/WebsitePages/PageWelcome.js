@@ -2,6 +2,7 @@ import React from 'react';
 import LoginBox from '../components/LoginBox';
 import WelcomeFooter from '../components/WelcomeFooter';
 import JChatBox from '../components/JChatBox';
+import ChatBox from '../components/ChatBox';
 import WelcomeNavbar from '../components/WelcomeNavbar';
 
 const PageWelcome = () => {
@@ -11,6 +12,7 @@ const PageWelcome = () => {
       <LoginBox />
       <WelcomeFooter />
       <JChatBox />
+      <ChatBox />
     </div>
   );
 };
