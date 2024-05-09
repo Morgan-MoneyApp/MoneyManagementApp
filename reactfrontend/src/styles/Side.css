@@ -1,0 +1,267 @@
+:root {
+  /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+  --primary: #0d6484;
+  --primaryLight: #064343;
+  --secondary: #234d05;
+  --secondaryLight: #1d5d92;
+  --headerColor: #1a1a1a;
+  --bodyTextColor: #4e4b66;
+  --bodyTextColorWhite: #fafbfc;
+  /* 13px - 16px */
+  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+  /* 31px - 49px */
+  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+  --bodyFontSize: 1rem;
+  /* 60px - 100px top and bottom */
+  --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+.cs-topper {
+  font-size: var(--topperFontSize);
+  line-height: 1.2em;
+  text-transform: uppercase;
+  text-align: inherit;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.cs-title {
+  font-size: var(--headerFontSize);
+  font-weight: 900;
+  line-height: 1.2em;
+  text-align: inherit;
+  max-width: 43.75rem;
+  margin: 0 0 1rem 0;
+  color: var(--headerColor);
+  position: relative;
+}
+
+.cs-text {
+  font-size: var(--bodyFontSize);
+  line-height: 1.5em;
+  text-align: inherit;
+  width: 100%;
+  max-width: 40.625rem;
+  margin: 0;
+  color: var(--bodyTextColor);
+}
+
+/*-- -------------------------- -->
+<---       Side By Side         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #RTsbs-415,
+  #RTsbsr-415,
+  #RTsbst-415 {
+    padding: var(--sectionPadding);
+    /* clips svg as the screen grows so it doesn't overflow */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  #RTsbs-415 .cs-container,
+  #RTsbsr-415 .cs-container,
+  #RTsbst-415 .cs-container {
+    width: 100%;
+    /* changes to 1280 at tablet */
+    max-width: 34.375rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 48px - 108px */
+    gap: clamp(3rem, 7.1vw, 6.75rem);
+  }
+  #RTsbs-415 .cs-content,
+  #RTsbsr-415 .cs-content,
+  #RTsbst-415 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: left;
+    width: 100%;
+    max-width: 33.875rem;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: flex-start;
+  }
+
+  #RTsbs-415 .cs-text,
+  #RTsbsr-415 .cs-text,
+  #RTsbst-415 .cs-text {
+    margin-bottom: 1rem;
+  }
+  #RTsbs-415 .cs-text:last-of-type,
+  #RTsbsr-415 .cs-text:last-of-type,
+  #RTsbst-415 .cs-text:last-of-type {
+    margin-bottom: 2rem;
+  }
+  #RTsbs-415 .cs-button-solid,
+  #RTsbsr-415 .cs-button-solid,
+  #RTsbst-415 .cs-button-solid {
+    font-size: 1rem;
+    /* 46px - 56px */
+    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    color: #fff;
+    min-width: 9.375rem;
+    padding: 0 1.5rem;
+    background-color: var(--primary);
+    border-radius: 0.25rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+  }
+  #RTsbs-415 .cs-button-solid:before,
+  #RTsbsr-415 .cs-button-solid:before,
+  #RTsbst-415 .cs-button-solid:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: #000;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 0.25rem;
+    transition: width 0.3s;
+  }
+  #RTsbs-415 .cs-button-solid:hover:before,
+  #RTsbsr-415 .cs-button-solid:hover:before,
+  #RTsbst-415 .cs-button-solid:hover:before {
+    width: 100%;
+  }
+  #RTsbs-415 .cs-image-group,
+  #RTsbsr-415 .cs-image-group,
+  #RTsbst-415 .cs-image-group {
+    font-size: min(2.5vw, 1em);
+    width: 36.1875em;
+    height: 33.875em;
+    /* sends it to the top of the flexbox */
+    order: -1;
+    position: relative;
+  }
+  #RTsbs-415 .cs-picture,
+  #RTsbsr-415 .cs-picture,
+  #RTsbst-415 .cs-picture {
+    border-radius: 1.25em;
+    /* clips the img tag corners */
+    overflow: hidden;
+    position: absolute;
+    display: block;
+  }
+  #RTsbs-415 .cs-picture:hover:before,
+  #RTsbsr-415 .cs-picture:hover:before,
+  #RTsbst-415 .cs-picture:hover:before {
+    opacity: 0.6;
+  }
+  #RTsbs-415 .cs-picture:hover img,
+  #RTsbsr-415 .cs-picture:hover img,
+  #RTsbst-415 .cs-picture:hover img {
+    transform: scale(1.1);
+  }
+  #RTsbs-415 .cs-picture:before,
+  #RTsbsr-415 .cs-picture:before,
+  #RTsbst-415 .cs-picture:before {
+    /* Hover Box */
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    opacity: 0;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: opacity 0.3s;
+  }
+  #RTsbs-415 .cs-picture img,
+  #RTsbsr-415 .cs-picture img,
+  #RTsbst-415 .cs-picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  #RTsbs-415 .cs-picture1,
+  #RTsbsr-415 .cs-picture1,
+  #RTsbst-415 .cs-picture1 {
+    width: 12.75em;
+    height: 19.625em;
+    top: 0;
+    left: 0;
+  }
+  #RTsbs-415 .cs-picture2,
+  #RTsbsr-415 .cs-picture2,
+  #RTsbst-415 .cs-picture2 {
+    width: 21.75em;
+    height: 19.625em;
+    top: 0;
+    right: 0;
+  }
+  #RTsbs-415 .cs-picture3,
+  #RTsbsr-415 .cs-picture3,
+  #RTsbst-415 .cs-picture3 {
+    width: 36.1875em;
+    height: 12.625em;
+    bottom: 0;
+    left: 0;
+  }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #RTsbs-415 .cs-container,
+  #RTsbsr-415 .cs-container,
+  #RTsbst-415 .cs-container {
+    max-width: 80rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  #RTsbs-415 .cs-content,
+  #RTsbsr-415 .cs-content,
+  #RTsbst-415 .cs-content {
+    width: 48%;
+  }
+  #RTsbs-415 .cs-image-group,
+  #RTsbsr-415 .cs-image-group,
+  #RTsbst-415 .cs-image-group {
+    font-size: min(1.15vw, 1em);
+    flex: none;
+  }
+}
+
+/*-- -------------------------- -->
+<---    Side By Side Reverse    -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #RTsbsr-415 {
+    background-color: #f7f7f7;
+  }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #RTsbsr-415 .cs-container {
+    justify-content: flex-end;
+  }
+  #RTsbsr-415 .cs-content {
+    /* sends it to the left */
+    order: -1;
+  }
+}

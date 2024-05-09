@@ -21,6 +21,9 @@ function Navbar() {
         <li className="nav-item">
           <Link to="/team">Meet The Team</Link>
         </li>
+        <li className="nav-item">
+          <Link to="/intro">Welcome</Link>
+        </li>
       </ul>
       <div className="account-info"></div>
       <div className="nav-item logout-button">

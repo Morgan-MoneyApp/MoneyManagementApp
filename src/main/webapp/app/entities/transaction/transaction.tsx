@@ -120,6 +120,7 @@ export const Transaction = () => {
                 <th>
                   Destination <FontAwesomeIcon icon="sort" />
                 </th>
+
                 <th>
                   Date <FontAwesomeIcon icon="sort" />
                 </th>
