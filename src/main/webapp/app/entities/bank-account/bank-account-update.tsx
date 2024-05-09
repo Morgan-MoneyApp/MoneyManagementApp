@@ -57,9 +57,9 @@ export const BankAccountUpdate = () => {
     if (values.accountNumber !== undefined && typeof values.accountNumber !== 'number') {
       values.accountNumber = Number(values.accountNumber);
     }
-    if (values.routingNumber !== undefined && typeof values.routingNumber !== 'number') {
-      values.routingNumber = Number(values.routingNumber);
-    }
+    //     if (values.routingNumber !== undefined && typeof values.routingNumber !== 'number') {
+    //       values.routingNumber = Number(values.routingNumber);
+    //     }
     if (values.balance !== undefined && typeof values.balance !== 'number') {
       values.balance = Number(values.balance);
     }
@@ -111,18 +111,6 @@ export const BankAccountUpdate = () => {
                 validate={{
                   min: { value: 0, message: 'This field should be at least 0.' },
                   max: { value: 999999999, message: 'This field cannot be more than 999999999.' },
-                  validate: v => isNumber(v) || 'This field should be a number.',
-                }}
-              />
-              <ValidatedField
-                label="Routing Number"
-                id="bank-account-routingNumber"
-                name="routingNumber"
-                data-cy="routingNumber"
-                type="text"
-                validate={{
-                  min: { value: 123456789, message: 'This field should be at least 123456789.' },
-                  max: { value: 123456789, message: 'This field cannot be more than 123456789.' },
                   validate: v => isNumber(v) || 'This field should be a number.',
                 }}
               />

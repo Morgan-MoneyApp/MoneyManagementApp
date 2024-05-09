@@ -26,7 +26,7 @@
 }
 
 button {
-  background-color: #2a76a5;
+  background-color: #89b4d0;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -36,27 +36,24 @@ button {
   margin: 10px auto; /* Centers the button horizontally within the card */
 }
 
-button:hover {
-  background-color: #2a76a5;
-}
-
 .title {
   padding: 50px;
   text-align: center; /* Center-aligns the title */
+  font-size: px;
 }
 
 p {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .account-button {
   font-size: 20px;
   width: fit-content;
-  background-color: #89b4d0;
+  background-color: #89b4d0; /*when button is at idle it is a lighter blue matching w/nav bar*/
 }
 
-.account-button button:hover {
-  background-color: #2a76a5;
+.account-button:hover {
+  background-color: #2a76a5; /*when we hover over buttton it will turn darker blue*/
   font-weight: bolder;
 }
 
@@ -67,4 +64,8 @@ p {
 .content-div p {
   font-size: 20px;
   margin-left: 80px; /* Adjust this value to get the desired right shift */
+}
+
+.welcome {
+  padding-top: 50px;
 }

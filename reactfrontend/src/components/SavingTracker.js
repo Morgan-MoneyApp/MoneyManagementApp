@@ -32,7 +32,9 @@ function SavingsTracker() {
           <h1>Set Your Savings Goal</h1>
           <input type="number" placeholder="Enter your goal amount" value={goal} onChange={handleGoalChange} />
           <input type="text" placeholder="What are you saving for?" value={purpose} onChange={handlePurposeChange} />
-          <button onClick={addSavings}>Add $100</button>
+          <button className="add100" onClick={addSavings}>
+            Add $100
+          </button>
         </div>
         <div className="goal-tracker">
           <h1 className="title">Savings Goal Tracker: {purpose}</h1>

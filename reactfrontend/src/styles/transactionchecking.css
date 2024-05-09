@@ -48,7 +48,7 @@ button {
   width: 200px;
   padding: 12px; /* Adds padding inside the buttons for a better appearance */
   font-size: 16px; /* Sets a readable font size */
-  background-color: #4caf50; /* Example button color, change as needed */
+  background-color: #89b4d0; /* Example button color, change as needed */
   color: white; /* Text color for the buttons */
   border: none; /* Removes the border */
   border-radius: 5px; /* Optionally rounds the corners of the buttons */
@@ -56,5 +56,5 @@ button {
 }
 
 button:hover {
-  background-color: #45a049; /* Darkens the button on hover for a visual effect */
+  background-color: #2a76a5; /* Darkens the button on hover for a visual effect */
 }
