@@ -62,3 +62,11 @@
   height: 60px;
   transition: left 0.3s ease-in-out;
 }
+
+.add100 {
+  background-color: #89b4d0; /*when button is at idle it is a lighter blue matching w/nav bar*/
+}
+
+.add100:hover {
+  background-color: #2a76a5; /*when we hover over buttton it will turn darker blue*/
+}

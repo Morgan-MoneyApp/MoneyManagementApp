@@ -80,9 +80,6 @@ button {
   border: none;
 }
 
-button:hover {
-  cursor: pointer;
-}
 .login-container {
   background-color: #ffffff;
   border-radius: 10px;
@@ -99,4 +96,16 @@ button:hover {
 
 .title {
   font-size: 20px;
+}
+.signup-button,
+.login-button {
+  background-color: #89b4d0;
+}
+.signup-button:hover {
+  background-color: #2a76a5;
+  font-weight: bolder;
+}
+.login-button:hover {
+  background-color: #2a76a5;
+  font-weight: bolder;
 }
