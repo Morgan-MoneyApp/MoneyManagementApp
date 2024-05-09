@@ -40,12 +40,11 @@ public class TransactionResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final BankAccountRepository bankAccountRepository;
+    //    private final BankAccountRepository bankAccountRepository;
 
     private final TransactionRepository transactionRepository;
 
     public TransactionResource(BankAccountRepository bankAccountRepository, TransactionRepository transactionRepository) {
-        this.bankAccountRepository = bankAccountRepository;
         this.transactionRepository = transactionRepository;
     }
 
@@ -62,6 +61,7 @@ public class TransactionResource {
         if (transaction.getId() != null) {
             throw new BadRequestAlertException("A new transaction cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         transaction.source(bankAccountRepository.findById(transaction.getSource().getId()).get());
         transaction.destination(bankAccountRepository.findById(transaction.getDestination().getId()).get());
 
@@ -167,6 +167,7 @@ public class TransactionResource {
     public ResponseEntity<List<Transaction>> getAllTransactions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Transactions");
         Page<Transaction> page = transactionRepository.findAll(pageable);
+
         // Debug purposes
         //        for (Transaction t : page.getContent()) {
         //            if (t.getTransactionDate() != null) {
