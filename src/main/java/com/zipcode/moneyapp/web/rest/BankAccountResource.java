@@ -37,6 +37,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @Transactional
 public class BankAccountResource {
 
+    private static final Integer ROUTING_NR = 123456789;
     private final Logger log = LoggerFactory.getLogger(BankAccountResource.class);
 
     private static final String ENTITY_NAME = "bankAccount";
@@ -65,6 +66,9 @@ public class BankAccountResource {
         log.debug("REST request to save BankAccount : {}", bankAccount);
         if (bankAccount.getId() != null) {
             throw new BadRequestAlertException("A new bankAccount cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (bankAccount.getRoutingNumber() == null) {
+            bankAccount.setRoutingNumber(ROUTING_NR);
         }
         bankAccount = bankAccountRepository.save(bankAccount);
         return ResponseEntity.created(new URI("/api/bank-accounts/" + bankAccount.getId()))
@@ -97,6 +101,9 @@ public class BankAccountResource {
 
         if (!bankAccountRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+        if (bankAccount.getRoutingNumber() == null) {
+            bankAccount.setRoutingNumber(ROUTING_NR);
         }
 
         bankAccount = bankAccountRepository.save(bankAccount);
