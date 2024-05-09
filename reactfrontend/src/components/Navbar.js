@@ -7,7 +7,7 @@ function Navbar() {
   // example balances
   return (
     <nav className="navbar">
-      <img src={LogoNoBg} alt="Logo" className="navbar-logo" />
+      {/* <img src={LogoNoBg} alt="Logo" className="navbar-logo" /> */}
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/">Home</Link>

@@ -1,39 +1,60 @@
 import React from 'react';
 import '../styles/footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import logo from '../images/logowhite.png'; // Ensure the logo image is in the correct path
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-section about-us">
-        <h4>About Us</h4>
-        <a href="#team">Meet the team</a>
-      </div>
-      <div className="footer-section contact-us">
-        <h4>Contact Us</h4>
-        <p>contact@morganbank.com</p>
-        <p>(123) 456-7890</p>
-        <p>123 Banking St, Finance City</p>
-      </div>
-      <div className="footer-section social-media">
-        <h4>Follow Us</h4>
-        <div className="social-media-icons">
-          {' '}
-          {/* New container for icons */}
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </a>
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
+      <div className="container">
+        <div className="row">
+          <div className="footer-col">
+            <img src={logo} alt="Company Logo" style={{ maxWidth: '100%', height: 'auto' }} />
+          </div>
+          <div className="footer-col right-align">
+            <h4>company</h4>
+            <ul>
+              <li>
+                <a href="#">about us</a>
+              </li>
+              <li>
+                <a href="#">our services</a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col right-align">
+            <h4>contact us</h4>
+            <ul>
+              <li>
+                <a href="#">FAQ</a>
+              </li>
+              <li>
+                <a href="#">Other</a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col right-align">
+            <h4>follow us</h4>
+            <div className="social-links">
+              <a href="#">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </a>
+              <a href="#">
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+              <a href="#">
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+              <a href="#">
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -36,17 +36,14 @@ button {
   margin: 10px auto; /* Centers the button horizontally within the card */
 }
 
-button:hover {
-  background-color: #2a76a5;
-}
-
 .title {
   padding: 50px;
   text-align: center; /* Center-aligns the title */
+  font-size: px;
 }
 
 p {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .account-button {
@@ -67,4 +64,8 @@ p {
 .content-div p {
   font-size: 20px;
   margin-left: 80px; /* Adjust this value to get the desired right shift */
+}
+
+.welcome {
+  padding-top: 50px;
 }

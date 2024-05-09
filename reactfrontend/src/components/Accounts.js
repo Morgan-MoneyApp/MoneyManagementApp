@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/accounts.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,9 +27,8 @@ function Accounts() {
       balance: 3000,
       onClick: goToSavings,
     },
-    moneyMarket: {
-      // New account type added
-      balance: 5000, // Example balance
+    market: {
+      balance: 5000,
       onClick: goToMoneyMarket,
     },
   };
@@ -37,10 +36,13 @@ function Accounts() {
   return (
     <div className="outer-div">
       <div className="content-div">
-        {' '}
-        <h1 className="title">Account Balances</h1>
-        <p>Welcome!</p>
-        <p>Please select the account you would like to view from the list below to see all recent transactions.</p>
+        {/* <p className="title">Welcome to your account dashboard!</p> */}
+        <p className="welcome">Welcome to your account dashboard!</p>
+        <br></br>
+        <p>
+          Here, you can manage all your banking needs in one convenient place. Simply select the account you wish to view, and click "View
+          Transactions" to see all recent activity and manage your finances effectively.{' '}
+        </p>
       </div>
       <div className="accounts-container">
         {Object.entries(accounts).map(([key, { balance, onClick }]) => (
@@ -48,7 +50,7 @@ function Accounts() {
             <h2>{key.charAt(0).toUpperCase() + key.slice(1)} Account</h2>
             <p>Balance: ${balance}</p>
             <button className="account-button" onClick={onClick}>
-              Go to {key.charAt(0).toUpperCase() + key.slice(1)} Account
+              View Transactions
             </button>
           </div>
         ))}
