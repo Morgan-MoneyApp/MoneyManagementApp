@@ -2,6 +2,7 @@ package com.zipcode.moneyapp;
 
 import com.zipcode.moneyapp.config.ApplicationProperties;
 import com.zipcode.moneyapp.config.CRLFLogConverter;
+import com.zipcode.moneyapp.web.rest.UserProfileResource;
 import jakarta.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -14,7 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
@@ -29,6 +32,15 @@ public class MoneyappApp {
 
     public MoneyappApp(Environment env) {
         this.env = env;
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void startupTasks() {
+        // Binary search for highest used account number, then add 1
+        // temporary
+        Long result = 500000000L;
+
+        UserProfileResource.setHighestAccountNumber(result + 1);
     }
 
     /**
