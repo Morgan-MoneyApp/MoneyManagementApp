@@ -1,6 +1,9 @@
 package com.zipcode.moneyapp.web.rest;
 
+import com.zipcode.moneyapp.domain.BankAccount;
 import com.zipcode.moneyapp.domain.UserProfile;
+import com.zipcode.moneyapp.domain.enumeration.Type;
+import com.zipcode.moneyapp.repository.BankAccountRepository;
 import com.zipcode.moneyapp.repository.UserProfileRepository;
 import com.zipcode.moneyapp.repository.UserRepository;
 import com.zipcode.moneyapp.web.rest.errors.BadRequestAlertException;
@@ -31,6 +34,9 @@ public class UserProfileResource {
     private final Logger log = LoggerFactory.getLogger(UserProfileResource.class);
 
     private static final String ENTITY_NAME = "userProfile";
+    private final BankAccountRepository bankAccountRepository;
+
+    private static Long highestAccountNumber;
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -39,9 +45,22 @@ public class UserProfileResource {
 
     private final UserRepository userRepository;
 
-    public UserProfileResource(UserProfileRepository userProfileRepository, UserRepository userRepository) {
+    public UserProfileResource(
+        UserProfileRepository userProfileRepository,
+        UserRepository userRepository,
+        BankAccountRepository bankAccountRepository
+    ) {
         this.userProfileRepository = userProfileRepository;
         this.userRepository = userRepository;
+        this.bankAccountRepository = bankAccountRepository;
+    }
+
+    public static Long getHighestAccountNumber() {
+        return highestAccountNumber;
+    }
+
+    public static void setHighestAccountNumber(Long highestAccountNumber) {
+        UserProfileResource.highestAccountNumber = highestAccountNumber;
     }
 
     /**
@@ -62,6 +81,27 @@ public class UserProfileResource {
         }
         Long userId = userProfile.getUser().getId();
         userRepository.findById(userId).ifPresent(userProfile::user);
+        BankAccount newMMC = new BankAccount()
+            .accountNumber(highestAccountNumber++)
+            .type(Type.MONEY_MARKET_CHECKING)
+            .balance(000000000000.0)
+            .accountHolder(userProfile);
+        BankAccount newChk = new BankAccount()
+            .accountNumber(highestAccountNumber++)
+            .type(Type.CHECKING)
+            .balance(000000000000.0)
+            .accountHolder(userProfile);
+        BankAccount newSvs = new BankAccount()
+            .accountNumber(highestAccountNumber++)
+            .type(Type.SAVINGS)
+            .balance(000000000000.0)
+            .accountHolder(userProfile);
+        System.out.println(newMMC);
+        System.out.println(newChk);
+        System.out.println(newSvs);
+        bankAccountRepository.save(newMMC);
+        bankAccountRepository.save(newChk);
+        bankAccountRepository.save(newSvs);
         userProfile = userProfileRepository.save(userProfile);
         return ResponseEntity.created(new URI("/api/user-profiles/" + userProfile.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, userProfile.getId().toString()))

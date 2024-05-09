@@ -64,6 +64,10 @@ public class BankAccount implements Serializable {
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
+    public BankAccount() {
+        this.routingNumber = 123456789;
+    }
+
     public Long getId() {
         return this.id;
     }

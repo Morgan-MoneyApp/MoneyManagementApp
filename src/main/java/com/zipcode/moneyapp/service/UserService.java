@@ -1,17 +1,17 @@
 package com.zipcode.moneyapp.service;
 
 import com.zipcode.moneyapp.config.Constants;
-import com.zipcode.moneyapp.domain.Address;
-import com.zipcode.moneyapp.domain.Authority;
-import com.zipcode.moneyapp.domain.User;
-import com.zipcode.moneyapp.domain.UserProfile;
+import com.zipcode.moneyapp.domain.*;
+import com.zipcode.moneyapp.domain.enumeration.Type;
 import com.zipcode.moneyapp.repository.AuthorityRepository;
+import com.zipcode.moneyapp.repository.BankAccountRepository;
 import com.zipcode.moneyapp.repository.UserProfileRepository;
 import com.zipcode.moneyapp.repository.UserRepository;
 import com.zipcode.moneyapp.security.AuthoritiesConstants;
 import com.zipcode.moneyapp.security.SecurityUtils;
 import com.zipcode.moneyapp.service.dto.AdminUserDTO;
 import com.zipcode.moneyapp.service.dto.UserDTO;
+import com.zipcode.moneyapp.web.rest.UserProfileResource;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -48,6 +48,7 @@ public class UserService {
     private final UserProfileRepository userProfileRepository;
 
     private final AddressService addressService;
+    private final BankAccountRepository bankAccountRepository;
 
     public UserService(
         UserRepository userRepository,
@@ -55,7 +56,8 @@ public class UserService {
         AuthorityRepository authorityRepository,
         CacheManager cacheManager,
         UserProfileRepository userProfileRepository,
-        AddressService addressService
+        AddressService addressService,
+        BankAccountRepository bankAccountRepository
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -63,6 +65,7 @@ public class UserService {
         this.cacheManager = cacheManager;
         this.userProfileRepository = userProfileRepository;
         this.addressService = addressService;
+        this.bankAccountRepository = bankAccountRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -143,7 +146,23 @@ public class UserService {
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         Address addrWithId = addressService.findOrCreate(a);
-        userProfileRepository.save(new UserProfile().firstName(fname).lastName(lname).dateOfBirth(dob).user(newUser).address(addrWithId));
+        UserProfile userProfile = new UserProfile().firstName(fname).lastName(lname).dateOfBirth(dob).user(newUser).address(addrWithId);
+        userProfileRepository.save(userProfile);
+        Long han = UserProfileResource.getHighestAccountNumber();
+        BankAccount newMMC = new BankAccount()
+            .accountNumber(han++)
+            .type(Type.MONEY_MARKET_CHECKING)
+            .balance(000000000000.0)
+            .accountHolder(userProfile);
+        BankAccount newChk = new BankAccount().accountNumber(han++).type(Type.CHECKING).balance(000000000000.0).accountHolder(userProfile);
+        BankAccount newSvs = new BankAccount().accountNumber(han++).type(Type.SAVINGS).balance(000000000000.0).accountHolder(userProfile);
+        UserProfileResource.setHighestAccountNumber(han);
+        System.out.println(newMMC);
+        System.out.println(newChk);
+        System.out.println(newSvs);
+        bankAccountRepository.save(newMMC);
+        bankAccountRepository.save(newChk);
+        bankAccountRepository.save(newSvs);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
