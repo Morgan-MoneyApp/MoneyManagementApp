@@ -1,8 +1,7 @@
 import React from 'react';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { SideBySide, SideBySideReverse, SideBySideTriplet } from '../components/Main';
+import SideBySide from './PictureCollage';
 import Footer from './Footer';
 import WelcomeNavbar from './WelcomeNavbar';
 
@@ -23,12 +22,6 @@ function CarouselComponent() {
 
       <div>
         <SideBySide />
-      </div>
-      <div>
-        <SideBySideReverse />
-      </div>
-      <div>
-        <SideBySideTriplet />
       </div>
 
       <Footer />

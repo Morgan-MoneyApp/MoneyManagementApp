@@ -37,7 +37,7 @@ public class BankAccount implements Serializable {
 
     @Min(value = 123456789)
     @Max(value = 123456789)
-    @Column(name = "routing_number")
+    @Column(name = "routing_number", columnDefinition = "integer default 123456789")
     private Integer routingNumber;
 
     @Column(name = "balance")
