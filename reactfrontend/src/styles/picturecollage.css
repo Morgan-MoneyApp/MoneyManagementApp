@@ -257,3 +257,39 @@
     order: -1;
   }
 }
+.cs-container {
+  display: flex;
+  justify-content: space-between; /* Distributes space between and around content items along the main-axis */
+  align-items: center; /* Aligns items vertically */
+  width: 100%;
+  max-width: 1200px; /* Adjust based on your design requirements */
+  margin: auto;
+  padding: 20px;
+}
+
+.cs-image-group {
+  flex: 3; /* Takes up 3 parts of the flex container */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cs-picture {
+  margin: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.login-container {
+  flex: 1; /* Takes up 1 part of the flex container */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (min-width: 1024px) {
+  .cs-container {
+    flex-direction: row; /* Sets a horizontal layout */
+  }
+}
