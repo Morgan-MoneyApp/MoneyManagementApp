@@ -1,10 +1,16 @@
 import React from 'react';
-import CarouselComponent from '../components/CarouselComponent';
+import LoginBox from '../components/LoginBox';
+import WelcomeFooter from '../components/WelcomeFooter';
+import ChatBox from '../components/ChatBox';
+import WelcomeNavbar from '../components/WelcomeNavbar';
 
 const PageWelcome = () => {
   return (
     <div>
-      <CarouselComponent />
+      <WelcomeNavbar />
+      <LoginBox />
+      <WelcomeFooter />
+      <ChatBox />
     </div>
   );
 };
