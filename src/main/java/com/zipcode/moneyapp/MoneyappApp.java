@@ -38,9 +38,7 @@ public class MoneyappApp {
     public void startupTasks() {
         // Binary search for highest used account number, then add 1
         // temporary
-        //        Long result = 500000000L;
-
-        Long result = BinarySearch.binarySearch(500000000L, 999999999L, 0L);
+        Long result = 500000000L;
 
         UserProfileResource.setHighestAccountNumber(result + 1);
     }
