@@ -90,7 +90,7 @@ public class BankAccountResource {
     /**
      * {@code PUT  /bank-accounts/:id} : Updates an existing bankAccount.
      *
-     * @param id the id of the bankAccount to save.
+     * @param id          the id of the bankAccount to save.
      * @param bankAccount the bankAccount to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated bankAccount,
      * or with status {@code 400 (Bad Request)} if the bankAccount is not valid,
@@ -126,7 +126,7 @@ public class BankAccountResource {
     /**
      * {@code PATCH  /bank-accounts/:id} : Partial updates given fields of an existing bankAccount, field will ignore if it is null
      *
-     * @param id the id of the bankAccount to save.
+     * @param id          the id of the bankAccount to save.
      * @param bankAccount the bankAccount to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated bankAccount,
      * or with status {@code 400 (Bad Request)} if the bankAccount is not valid,
@@ -264,68 +264,60 @@ public class BankAccountResource {
             .build();
     }
 
-    @PostMapping("/{id}/transaction")
-    public ResponseEntity<String> createTransaction(@PathVariable("id") Long id, @RequestBody Transaction transaction) {
+    @PostMapping("/transaction")
+    public ResponseEntity<String> createTransaction(@RequestBody Transaction transaction) {
+        //System.out.println("Im a teapot");
         // Attempt to find an account by ID
-        Optional<BankAccount> ob = bankAccountRepository.findById(id);
-        Optional<BankAccount> src = bankAccountRepository.findById(transaction.getSource().getId());
-        Optional<BankAccount> dst = bankAccountRepository.findById(transaction.getDestination().getId());
+        //        Optional<BankAccount> ob = bankAccountRepository.findById(id);
+        //        Optional<BankAccount> src = bankAccountRepository.findById(transaction.getSource().getId());
+        //        Optional<BankAccount> dst = bankAccountRepository.findById(transaction.getDestination().getId());
+        Long sID = transaction.getSource().getId();
+        Long dID = transaction.getSource().getId();
+        BankAccount source = null, dest = null;
+        System.out.println(sID);
+        System.out.println(dID);
 
-        //        System.out.println(transaction.getDestination().getId());
-        // If there isn't an account, 404
-        if (ob.isEmpty()) {
-            return new ResponseEntity<>("Account not found!", HttpStatus.NOT_FOUND);
+        //            source = bankAccountRepository.findById(sID).orElse(null);
+        //            dest = bankAccountRepository.findById(dID).orElse(null);
+
+        if (sID != null) {
+            source = bankAccountRepository.findById(sID).orElse(null);
+            System.out.println("SRC ID SET");
         }
+
+        if (dID != null) {
+            dest = bankAccountRepository.findById(dID).orElse(null);
+            System.out.println("DEST ID SET");
+        }
+
+        // System.out.println(transaction.getDestination().getId());
+        // If there isn't an account, 404
+        //        if (ob.isEmpty()) {
+        //            return new ResponseEntity<>("Account not found!", HttpStatus.NOT_FOUND);
+        //        }
 
         // If the source and destination accounts are equal:
-        if (src.isPresent() && dst.isPresent()) {
-            if (src.get().equals(dst.get())) {
-                // HTTP 409
-                return new ResponseEntity<>("Source and destination are the same", HttpStatus.CONFLICT);
-            }
+        if (source != null && source.equals(dest)) {
+            // HTTP 409
+            return new ResponseEntity<>("Source and destination are the same", HttpStatus.CONFLICT);
         }
         // Otherwise,
+        System.out.println("no exception after ob.get");
 
-        // Get the account from the Optional<>
-        BankAccount bankAccount = ob.get();
-        transaction.source(bankAccountRepository.findById(transaction.getSource().getId()).get());
-        transaction.destination(bankAccountRepository.findById(transaction.getDestination().getId()).get());
-        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
+        transaction.source(source).destination(dest);
 
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
+
+        System.out.println("no exception after set date");
         transactionRepository.save(transaction);
         // If the transaction source is the account in the Optional<>
-        if (src.isPresent() && src.get().getId().equals(bankAccount.getId())) {
-            // Add the transaction to the account's list of outgoing transactions
-            bankAccount.addTransactionsOut(transaction);
-
-            // BANK TELLER DIFFERENTIATING TRANSFER OR WITHDRAWAL
-            // If the transaction destination is null or nonexistent, it's a withdrawal
-            if (dst.isEmpty()) {
-                // therefore withdraw
-                return bankAccount.withdraw(transaction.getTransactionValue());
-            } else /* otherwise, it's a transfer: */{
-                // Add the transaction to the *other account's* list of incoming transactions
-                dst.get().addTransactionsIn(transaction);
-                // and transfer funds
-                return bankAccount.transfer(transaction.getTransactionValue(), dst.get());
-            }
-        } /* Else if the transaction destination
-        is the account in the Optional<> */else if (dst.isPresent() && dst.get().getId().equals(bankAccount.getId())) {
-            // Add the transaction to the account's list of incoming transactions
-            bankAccount.addTransactionsIn(transaction);
-
-            // BANK TELLER DIFFERENTIATING TRANSFER OR DEPOSIT
-            // If the transaction source is null, it's a deposit
-            if (src.isEmpty()) {
-                // therefore deposit
-                return bankAccount.deposit(transaction.getTransactionValue());
-            } else /* otherwise, it's a transfer: */{
-                // Add the transaction to the *other account's* list of outgoing transactions
-                src.get().addTransactionsOut(transaction);
-                // and transfer funds
-                return src.get().transfer(transaction.getTransactionValue(), bankAccount);
-            }
-        } else if (src.isEmpty() && dst.isEmpty()) {
+        if (source == null && dest != null) {
+            return dest.deposit(transaction.getTransactionValue());
+        } else if (source != null && dest == null) {
+            return source.withdraw(transaction.getTransactionValue());
+        } else if (source != null && dest != null) {
+            return source.transfer(transaction.getTransactionValue(), dest);
+        } else if (source == null && dest == null) {
             return new ResponseEntity<>("Source and destination cannot both be empty!", HttpStatus.BAD_REQUEST);
         } else {
             // Else, an unknown error occurred, return a 418 error
