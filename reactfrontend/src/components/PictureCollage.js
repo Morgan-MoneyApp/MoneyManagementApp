@@ -1,42 +1,15 @@
 import React from 'react';
-import '../styles/welcomeservices.css';
+import '../styles/picturecollage.css';
 import Womangroup from '../images/womangrouplaughing.jpg';
 import Manbuying from '../images/buying.jpg';
 import Transaction from '../images/transaction.jpg';
 import Savinggirl from '../images/savinggirl.jpg';
 import Familyhouse from '../images/housefamily.jpg';
 
-import { useNavigate } from 'react-router-dom';
-import { login } from '../utils/authUtils';
-
-const SideBySide = () => {
-  const navigate = useNavigate();
-
-  const handleSignUp = () => {
-    navigate('/signup');
-  };
-
-  const handleLogin = () => {
-    login('admin', 'admin', true);
-    navigate('/accounts');
-  };
-
+const PictureCollage = () => {
   return (
     <section id="RTsbs-415">
       <div className="cs-container">
-        <div className="login-container">
-          <h2>Member Login</h2>
-          <form className="login-form">
-            <input type="text" id="username" name="username" required placeholder="Username" />
-            <input type="password" id="password" name="password" required placeholder="Password" />
-            <button onClick={handleLogin} className="login-button" type="button">
-              Login
-            </button>
-            <button onClick={handleSignUp} className="signup-button" type="button">
-              Sign Up
-            </button>
-          </form>
-        </div>
         <div className="cs-image-group">
           <picture className="cs-picture cs-picture1">
             <source media="(max-width: 600px)" srcSet={Transaction} />
@@ -59,4 +32,4 @@ const SideBySide = () => {
   );
 };
 
-export { SideBySide };
+export default PictureCollage;

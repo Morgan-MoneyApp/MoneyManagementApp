@@ -1,0 +1,35 @@
+/* pagewelcome.css */
+.page-container {
+  width: 100%; /* Full width */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align the vertical stacking */
+}
+
+.main-container {
+  display: flex; /* Use flexbox to align children side by side */
+  align-items: start; /* Align items from the start of the cross axis */
+  justify-content: space-between; /* Maintain a small gap between components */
+  padding: 20px; /* Optional padding */
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Maximum width of the container */
+  margin: auto; /* Center the container horizontally */
+}
+
+.cs-image-group,
+.login-container {
+  flex: 1; /* Assign equal flex grow factor to both components */
+  flex-basis: 50%; /* Start with half the parent container's size */
+  min-width: 300px; /* Minimum width to prevent too much shrinking */
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column; /* Stack children vertically on smaller screens */
+    align-items: center; /* Center align items when stacked vertically */
+  }
+  .cs-image-group,
+  .login-container {
+    flex-basis: 100%; /* Each takes full width of the container when stacked */
+  }
+}

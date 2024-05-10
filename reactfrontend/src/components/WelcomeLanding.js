@@ -1,33 +1,29 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/welcomelanding.css';
-import Grouplaptop from '../images/grouplaptop.jpg';
+import Grouplaptop from '../images/grouplaptop1.png';
 import PiggyIcon from '../images/piggyicon.png';
 import Checking from '../images/checking.png';
 import Market from '../images/market.png';
-const WelcomeLanding = () => {
+
+const WelcomeLanding = ({ scrollToLogin }) => {
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    navigate('/welcome');
+  };
+
   return (
     <section id="hero-1618">
       <div className="cs-container">
         <div className="cs-content">
           <span className="cs-topper">
-            <svg className="cs-chevron" width="49" height="15" viewBox="0 0 49 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g opacity="0.7">
-                <path
-                  d="M0.621948 7.49889L6.40262 15L10.343 15L4.56231 7.49889L10.343 -4.2492e-07L6.40262 -2.52681e-07L0.621948 7.49889Z"
-                  fill="var(--chevronColor)"
-                />
-                {/* Other path elements */}
-              </g>
-            </svg>
-            OPEN AN ACCOUNT
-            <svg className="cs-chevron" width="49" height="15" viewBox="0 0 49 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g opacity="0.7">{/* Path elements */}</g>
-            </svg>
+            <p className="welcometo">Welcome to</p>
           </span>
           <h1 className="cs-title">Morgan Bank</h1>
-          <a href="" className="cs-button-solid">
-            Visit Us
-          </a>
+          <button onClick={scrollToLogin} className="cs-button-solid">
+            LOGIN
+          </button>
         </div>
         <ul className="cs-card-group">
           <li className="cs-item">

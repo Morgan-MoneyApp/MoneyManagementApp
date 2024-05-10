@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/welcomenavbar.css';
-import Logo from '../images/newlogo.png';
+import Logo from '../images/logowhite.png';
 
 function WelcomeNavbar() {
   return (

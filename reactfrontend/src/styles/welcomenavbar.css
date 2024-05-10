@@ -4,7 +4,7 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 70px; /* Specify a height for the navbar */
-  background-color: #2a76a5; /* Background color, adjust as needed */
+  background-color: #0d6484; /* Background color, adjust as needed */
   width: 100%; /* Ensure the navbar spans the full width */
   position: relative; /* Changed from 'fixed' to 'relative' */
   top: 0; /* Align top edge at its normal position */

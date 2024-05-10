@@ -24,7 +24,7 @@ body {
   bottom: 0;
   width: 100%; /* Footer takes full width of the viewport */
   padding: 20px 0; /* Padding top and bottom */
-  background-color: #2a76a5; /* Background color */
+  background-color: #0d6484; /* Background color */
   color: white; /* Text color */
   text-align: center; /* Center the text */
   z-index: 10; /* Keep footer above other content but below modals */

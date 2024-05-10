@@ -1,0 +1,73 @@
+.login-container {
+  width: 480px;
+  height: 600px;
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the form items */
+  gap: 0.5rem;
+}
+
+.input-field {
+  padding: 10px;
+  margin-bottom: 0.3em;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.cs-button-solid {
+  font-size: 16px; /* Adjusted for visibility */
+  line-height: normal; /* Adjusted for better fit */
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  padding: 10px 20px;
+  background-color: var(--primary);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  width: 100%; /* Full width of the form */
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+}
+
+.cs-button-solid:before {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #000;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 8px;
+  transition: width 0.3s;
+}
+
+.cs-button-solid:hover:before {
+  width: 100%;
+}
+
+.cs-button-solid:hover {
+  background-color: var(--primaryLight);
+  transform: scale(1.05);
+}

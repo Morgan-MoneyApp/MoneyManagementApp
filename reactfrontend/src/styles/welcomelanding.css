@@ -1,6 +1,3 @@
-/*-- -------------------------- -->
-<---           Hero             -->
-<--- -------------------------- -*/
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #hero-1618 {
@@ -9,6 +6,14 @@
     padding-top: clamp(12.5rem, 31.95vw, 18.75rem);
     position: relative;
     z-index: 1;
+  }
+
+  #hero-1618 .cs-h3 {
+    color: #2a76a5 !important;
+  }
+
+  #hero-1618 .welcometo {
+    font-size: 3em;
   }
   #hero-1618 .cs-container {
     width: 100%;
@@ -24,6 +29,7 @@
   #hero-1618 .cs-content {
     /* set text align to left if content needs to be left aligned */
     text-align: left;
+    margin-bottom: -7.5em;
     width: 100%;
     max-width: 48.75rem;
     display: flex;
