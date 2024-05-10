@@ -1,12 +1,12 @@
 import React from 'react';
 import '../styles/welcomenavbar.css';
-import LogoNoBg from '../images/logoandname.png';
+import Logo from '../images/newlogo.png';
 
 function WelcomeNavbar() {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-        <img src={LogoNoBg} alt="Logo" className="navbar-logo" />
+        <img src={Logo} alt="Logo" className="navbar-logo" />
       </div>
     </nav>
   );

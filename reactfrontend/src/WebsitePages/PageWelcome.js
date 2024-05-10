@@ -1,10 +1,17 @@
 import React from 'react';
-import CarouselComponent from '../components/CarouselComponent';
+import WelcomeLanding from '../components/WelcomeLanding';
+import { SideBySide, SideBySideReverse, SideBySideTriplet } from '../components/WelcomeServices';
+import Footer from '../components/Footer';
+import WelcomeNavbar from '../components/WelcomeNavbar';
+import '../styles/pagewelcome.css'; // assuming your CSS is in styles.css
 
 const PageWelcome = () => {
   return (
-    <div>
-      <CarouselComponent />
+    <div className="page-container">
+      <WelcomeNavbar />
+      <WelcomeLanding />
+      <SideBySide /> <SideBySideReverse /> <SideBySideTriplet />
+      <Footer />
     </div>
   );
 };
