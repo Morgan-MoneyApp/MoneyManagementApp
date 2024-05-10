@@ -8,7 +8,7 @@ public class BinarySearch {
 
     private static BankAccountRepository bankAccountRepository;
 
-    public BinarySearch(BankAccountRepository bankAccountRepository) {
+    public static void setBankAccountRepository(BankAccountRepository bankAccountRepository) {
         BinarySearch.bankAccountRepository = bankAccountRepository;
     }
 
