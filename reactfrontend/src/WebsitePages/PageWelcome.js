@@ -1,16 +1,17 @@
 import React from 'react';
-import LoginBox from '../components/LoginBox';
-import WelcomeFooter from '../components/WelcomeFooter';
-import ChatBox from '../components/ChatBox';
+import WelcomeLanding from '../components/WelcomeLanding';
+import { SideBySide } from '../components/WelcomeServices';
+import Footer from '../components/Footer';
 import WelcomeNavbar from '../components/WelcomeNavbar';
+import '../styles/pagewelcome.css'; // assuming your CSS is in styles.css
 
 const PageWelcome = () => {
   return (
-    <div>
+    <div className="page-container">
       <WelcomeNavbar />
-      <LoginBox />
-      <WelcomeFooter />
-      <ChatBox />
+      <WelcomeLanding />
+      <SideBySide />
+      <Footer />
     </div>
   );
 };

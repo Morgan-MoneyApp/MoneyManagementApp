@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import '../styles/loginbox.css'; // Ensure this path is correct
 import BankServicesImage from '../images/bank-services.jpeg';
 
+import { useNavigate } from 'react-router-dom';
 import { login } from '../utils/authUtils';
 
 const Welcome = () => {
