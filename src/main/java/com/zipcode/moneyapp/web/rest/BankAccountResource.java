@@ -1,9 +1,11 @@
 package com.zipcode.moneyapp.web.rest;
 
-import com.zipcode.moneyapp.domain.BankAccount;
-import com.zipcode.moneyapp.domain.Transaction;
+import com.zipcode.moneyapp.domain.*;
 import com.zipcode.moneyapp.repository.BankAccountRepository;
 import com.zipcode.moneyapp.repository.TransactionRepository;
+import com.zipcode.moneyapp.repository.UserProfileRepository;
+import com.zipcode.moneyapp.security.SecurityUtils;
+import com.zipcode.moneyapp.service.UserService;
 import com.zipcode.moneyapp.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -41,6 +43,8 @@ public class BankAccountResource {
     private final Logger log = LoggerFactory.getLogger(BankAccountResource.class);
 
     private static final String ENTITY_NAME = "bankAccount";
+    private final UserService userService;
+    private final UserProfileRepository userProfileRepository;
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -49,9 +53,16 @@ public class BankAccountResource {
 
     private final TransactionRepository transactionRepository;
 
-    public BankAccountResource(BankAccountRepository bankAccountRepository, TransactionRepository transactionRepository) {
+    public BankAccountResource(
+        BankAccountRepository bankAccountRepository,
+        TransactionRepository transactionRepository,
+        UserService userService,
+        UserProfileRepository userProfileRepository
+    ) {
         this.bankAccountRepository = bankAccountRepository;
         this.transactionRepository = transactionRepository;
+        this.userService = userService;
+        this.userProfileRepository = userProfileRepository;
     }
 
     /**
@@ -175,9 +186,30 @@ public class BankAccountResource {
     @GetMapping("")
     public ResponseEntity<List<BankAccount>> getAllBankAccounts(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of BankAccounts");
-        Page<BankAccount> page = bankAccountRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+        // Get current user
+        User curUser = userService.getUserWithAuthorities().orElse(null);
+        // If the user is not logged in
+        if (curUser == null) {
+            // HTTP 401
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        // Get the User Profile associated with that user
+        UserProfile holder = userProfileRepository.findByUser(curUser);
+        // Declare a page of bank accounts. This will be returned
+        Page<BankAccount> pg;
+
+        // If the current user is an ADMIN
+        if (SecurityUtils.hasCurrentUserThisAuthority("ROLE_ADMIN")) {
+            // They can see all accounts
+            pg = bankAccountRepository.findAll(pageable);
+        } else {
+            // Otherwise, they can only see their own
+            pg = bankAccountRepository.findAllByAccountHolder(holder, pageable);
+        }
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), pg);
+        return ResponseEntity.ok().headers(headers).body(pg.getContent());
     }
 
     /**
@@ -189,7 +221,31 @@ public class BankAccountResource {
     @GetMapping("/{id}")
     public ResponseEntity<BankAccount> getBankAccount(@PathVariable("id") Long id) {
         log.debug("REST request to get BankAccount : {}", id);
+        // Find a bank account
         Optional<BankAccount> bankAccount = bankAccountRepository.findById(id);
+
+        // If none
+        if (bankAccount.isEmpty()) {
+            // HTTP 404
+            return ResponseEntity.notFound().build();
+        } else {
+            // Otherwise, get the current user
+            User curUser = userService.getUserWithAuthorities().orElse(null);
+            // If null
+            if (curUser == null) {
+                // HTTP 401
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+            // Get the user profile
+            UserProfile holder = userProfileRepository.findByUser(curUser);
+            // If the user profile is not associated with the account, and the user isn't an ADMIN
+            if (!bankAccount.get().getAccountHolder().equals(holder) && !SecurityUtils.hasCurrentUserThisAuthority("ROLE_ADMIN")) {
+                // HTTP 401
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+        }
+
+        // Return the bank account
         return ResponseUtil.wrapOrNotFound(bankAccount);
     }
 
