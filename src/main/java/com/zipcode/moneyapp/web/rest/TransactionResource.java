@@ -40,12 +40,13 @@ public class TransactionResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    //    private final BankAccountRepository bankAccountRepository;
+    private final BankAccountRepository bankAccountRepository;
 
     private final TransactionRepository transactionRepository;
 
     public TransactionResource(BankAccountRepository bankAccountRepository, TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
+        this.bankAccountRepository = bankAccountRepository;
     }
 
     /**
