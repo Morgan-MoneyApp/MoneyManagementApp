@@ -248,6 +248,7 @@ public class BankAccount implements Serializable {
             return new ResponseEntity<>("418", HttpStatus.I_AM_A_TEAPOT);
         }
         if (amount > this.balance) {
+            System.out.println("Withdrawal");
             return new ResponseEntity<>("Insufficient funds", HttpStatus.BAD_REQUEST);
         } else if (amount <= 0 || amount.isInfinite() || amount.isNaN()) {
             return new ResponseEntity<>("Invalid amount to withdraw", HttpStatus.BAD_REQUEST);
