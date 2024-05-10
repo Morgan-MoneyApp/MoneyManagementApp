@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageWelcome from './WebsitePages/PageWelcome';
 import PageRegistration from './WebsitePages/PageRegistration';
@@ -9,8 +9,11 @@ import PageCheckingAcct from './WebsitePages/PageCheckingAcct';
 import PageSavingAcct from './WebsitePages/PageSavingAcct';
 import PageMoneyMarketAcct from './WebsitePages/PageMoneyMarketAcct';
 import WelcomeLanding from './components/WelcomeLanding';
+import LoginFromPrivate from './components/LoginFromPrivate';
 
 function App() {
+  const [auth, setAuth] = useState();
+
   return (
     <Router>
       <Routes>
@@ -23,6 +26,7 @@ function App() {
         <Route path="/saving" element={<PageSavingAcct />} />
         <Route path="/moneymarket" element={<PageMoneyMarketAcct />} />
         <Route path="/landing" element={<WelcomeLanding />} />
+        <Route path="/login" element={<LoginFromPrivate />} />
       </Routes>
     </Router>
   );

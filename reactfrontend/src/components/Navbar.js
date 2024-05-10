@@ -1,9 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
 import LogoNoBg from '../images/logoandname.png';
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = e => {
+    e.preventDefault();
+    localStorage.removeItem('id_token');
+    navigate('/');
+  };
+
   // example balances
   return (
     <nav className="navbar">
@@ -24,7 +32,7 @@ function Navbar() {
       </ul>
       <div className="account-info"></div>
       <div className="nav-item logout-button">
-        <button onClick={() => console.log('Logging out...')}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </nav>
   );

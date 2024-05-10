@@ -2,16 +2,20 @@ package com.zipcode.moneyapp;
 
 import com.zipcode.moneyapp.config.ApplicationProperties;
 import com.zipcode.moneyapp.config.CRLFLogConverter;
+import com.zipcode.moneyapp.domain.BankAccount;
+import com.zipcode.moneyapp.repository.BankAccountRepository;
 import com.zipcode.moneyapp.web.rest.UserProfileResource;
 import jakarta.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
@@ -29,16 +33,27 @@ public class MoneyappApp {
     private static final Logger log = LoggerFactory.getLogger(MoneyappApp.class);
 
     private final Environment env;
+    private final BankAccountRepository bankAccountRepository;
 
-    public MoneyappApp(Environment env) {
+    public MoneyappApp(Environment env, BankAccountRepository bankAccountRepository) {
         this.env = env;
+        this.bankAccountRepository = bankAccountRepository;
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void startupTasks() {
         // Binary search for highest used account number, then add 1
         // temporary
-        Long result = 500000000L;
+        List<BankAccount> list = bankAccountRepository.findAll();
+        Long result = 0L;
+        for (BankAccount acc : list) {
+            if (acc.getAccountNumber() > result) {
+                result = acc.getAccountNumber();
+            }
+        }
+        //        BinarySearch.setBankAccountRepository(bankAccountRepository);
+
+        //        Long result = BinarySearch.binarySearch(500000000L, 999999999L, 0L);
 
         UserProfileResource.setHighestAccountNumber(result + 1);
     }

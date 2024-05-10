@@ -4,15 +4,17 @@ import { serializeAxiosError } from '../utils/errorUtils';
 
 const AUTH_TOKEN_KEY = 'jhi-authenticationToken';
 
+const API_URL = 'http://localhost:8080';
+
 export const getSession = () => (dispatch, getState) => {
   dispatch(getAccount());
 };
 
-export const getAccount = createAsyncThunk('authentication/get_account', async () => axios.get('api/account'), {
+export const getAccount = createAsyncThunk('authentication/get_account', async () => axios.get(API_URL + '/api/account'), {
   serializeError: serializeAxiosError,
 });
 
-export const authenticate = createAsyncThunk('authentication/login', async auth => axios.post('/api/authenticate', auth), {
+export const authenticate = createAsyncThunk('authentication/login', async auth => axios.post(API_URL + '/api/authenticate', auth), {
   serializeError: serializeAxiosError,
 });
 

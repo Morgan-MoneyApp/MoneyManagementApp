@@ -1,0 +1,20 @@
+.login-wrapper {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding-top: 3em;
+}
+
+input[type='text'].align-custom,
+input[type='password'].align-custom {
+  width: 100%;
+}
+
+label * {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+button[type='submit'] {
+  margin-top: 2em;
+}

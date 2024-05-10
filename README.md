@@ -239,3 +239,5 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 # MoneyManagementApp
 
 Demo Day Project
+
+ignore anything from commit `bd21a09aad4c92e984882cc64f0c9dab40605632`
