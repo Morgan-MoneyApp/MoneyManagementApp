@@ -8,7 +8,6 @@ import PageMeetTheTeam from './WebsitePages/PageMeetTheTeam';
 import PageCheckingAcct from './WebsitePages/PageCheckingAcct';
 import PageSavingAcct from './WebsitePages/PageSavingAcct';
 import PageMoneyMarketAcct from './WebsitePages/PageMoneyMarketAcct';
-import PageIntro from './WebsitePages/PageIntro';
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
         <Route path="/checking" element={<PageCheckingAcct />} />
         <Route path="/saving" element={<PageSavingAcct />} />
         <Route path="/moneymarket" element={<PageMoneyMarketAcct />} />
-        <Route path="/intro" element={<PageIntro />} />
       </Routes>
     </Router>
   );

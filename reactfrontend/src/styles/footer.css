@@ -1,98 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body,
-html {
-  min-height: 100vh;
-  padding-bottom: 100px; /* Adjust based on the height of your footer */
-  overflow-x: hidden;
-  overflow-y: auto; /* Ensures vertical scrolling is enabled */
-}
-@media (max-width: 768px) {
-  body,
-  html {
-    padding-bottom: 150px; /* Increase padding for smaller screens if needed */
-  }
-}
-.footer {
-  z-index: 10; /* Lower than modal overlays or similar components */
-}
-
-html {
-  height: 100%;
-}
-
+html,
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* This makes the body at least as tall as the viewport */
-  margin: 0;
-}
-
-.container {
-  flex: 1 0 auto; /* This makes the container take up all available space */
-}
-
-body {
-  line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
-  padding-bottom: 70px;
-}
-
-* {
+  height: 100%; /* Full height of the viewport */
+  min-height: 100vh; /* Ensure minimum height is the full viewport height */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-family: 'Poppins', sans-serif; /* Applying global font */
 }
 
 .container {
-  max-width: 1170px;
-  margin: auto;
+  flex: 1 0 auto; /* Flex container to take available space */
+  max-width: 1170px; /* Max width for the main container */
+  margin: auto; /* Centering the main container */
+  display: flex;
+  flex-direction: column; /* Stack child elements vertically */
+}
+
+.footer {
+  position: relative; /* Footer is part of normal document flow */
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Footer takes full width of the viewport */
+  padding: 20px 0; /* Padding top and bottom */
+  background-color: #2a76a5; /* Background color */
+  color: white; /* Text color */
+  text-align: center; /* Center the text */
+  z-index: 10; /* Keep footer above other content but below modals */
+}
+
+.footer-col {
+  width: 20%; /* Default width */
+  padding: 0 15px; /* Padding for inner spacing */
+  margin-bottom: 0; /* Reset bottom margin */
+}
+
+@media (max-width: 768px) {
+  .footer-col {
+    width: 50%; /* Adjust width on medium screens */
+    margin-bottom: 30px; /* Space between columns */
+  }
+}
+
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%; /* Full width on small screens */
+  }
 }
 
 .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow rows to wrap on smaller screens */
 }
 
 ul {
-  list-style: none;
-}
-
-.footer {
-  position: fixed; /* Changed from default to fixed */
-  left: 0;
-  bottom: 0;
-  width: 100%; /* Ensure it stretches across the screen */
-  background-color: #2a76a5;
-  padding: 20px 0;
-  color: white;
+  list-style: none; /* Remove bullet points from lists */
 }
 
 .footer-col h4 {
-  font-size: 16px; /* Reduced from 18px to 16px */
-  margin-bottom: 20px; /* Reduced from 35px to 20px */
-}
-
-.footer-col ul li a {
-  font-size: 14px; /* Reduced from 16px to 14px */
-}
-
-.footer-col ul li:not(:last-child) {
-  margin-bottom: 5px; /* Reduced from 10px to 5px */
-}
-
-.footer-col {
-  width: 20%;
-  padding: 0 15px;
-}
-
-.footer-col h4 {
-  font-size: 18px;
-  color: #ffffff;
-  text-transform: capitalize;
-  margin-bottom: 35px;
-  font-weight: 500;
-  position: relative;
+  font-size: 18px; /* Heading size in footer */
+  color: white; /* Heading text color */
+  text-transform: capitalize; /* Capitalize heading text */
+  font-weight: 500; /* Font weight for heading */
+  margin-bottom: 35px; /* Space below heading */
 }
 
 .footer-col h4::before {
@@ -102,73 +73,41 @@ ul {
   bottom: -10px;
   background-color: white;
   height: 2px;
-  width: 50px;
-}
-
-.footer-col ul li:not(:last-child) {
-  margin-bottom: 10px;
+  width: 50px; /* Decorative underline width */
 }
 
 .footer-col ul li a {
-  font-size: 16px;
-  text-transform: capitalize;
-  color: white;
-  text-decoration: none;
-  font-weight: 300;
-  display: block;
-  transition: all 0.3s ease;
+  font-size: 16px; /* Font size for links */
+  color: white; /* Link color */
+  text-transform: capitalize; /* Capitalize link text */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: 300; /* Font weight for links */
+  display: block; /* Make links block to occupy full available width */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px; /* Space between list items */
 }
 
 .footer-col ul li a:hover {
-  color: #ffffff;
-  padding-left: 8px;
+  color: #ffffff; /* White color on hover */
+  padding-left: 8px; /* Move text slightly on hover */
 }
 
 .footer-col .social-links a {
   display: inline-block;
-  height: 40px;
-  width: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
+  height: 40px; /* Social icon height */
+  width: 40px; /* Social icon width */
+  background-color: rgba(255, 255, 255, 0.2); /* Translucent background */
   margin: 0 10px 10px 0;
   text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: #ffffff;
-  transition: all 0.5s ease;
-  padding-left:;
+  line-height: 40px; /* Align icon in the center */
+  border-radius: 50%; /* Circular icons */
+  color: white; /* Icon color */
+  transition: all 0.5s ease; /* Smooth transition for hover effects */
 }
 
 .footer-col .social-links a:hover {
-  color: white;
-  background-color: #2a76a5;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .footer-col {
-    width: 50%;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 574px) {
-  .footer-col {
-    width: 100%;
-  }
-}
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.right-align {
-  margin-left: auto; /* This will push the columns with this class to the right */
-}
-
-.footer-col {
-  padding: 0 15px;
+  background-color: #2a76a5; /* Change background on hover */
 }
