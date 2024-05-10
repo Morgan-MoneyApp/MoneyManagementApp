@@ -272,10 +272,8 @@ public class BankAccountResource {
         //        Optional<BankAccount> src = bankAccountRepository.findById(transaction.getSource().getId());
         //        Optional<BankAccount> dst = bankAccountRepository.findById(transaction.getDestination().getId());
         Long sID = transaction.getSource().getId();
-        Long dID = transaction.getSource().getId();
+        Long dID = transaction.getDestination().getId();
         BankAccount source = null, dest = null;
-        System.out.println(sID);
-        System.out.println(dID);
 
         //            source = bankAccountRepository.findById(sID).orElse(null);
         //            dest = bankAccountRepository.findById(dID).orElse(null);
@@ -301,21 +299,22 @@ public class BankAccountResource {
             // HTTP 409
             return new ResponseEntity<>("Source and destination are the same", HttpStatus.CONFLICT);
         }
-        // Otherwise,
-        System.out.println("no exception after ob.get");
 
         transaction.source(source).destination(dest);
 
         transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
 
-        System.out.println("no exception after set date");
         transactionRepository.save(transaction);
         // If the transaction source is the account in the Optional<>
         if (source == null && dest != null) {
+            dest.addTransactionsIn(transaction);
             return dest.deposit(transaction.getTransactionValue());
         } else if (source != null && dest == null) {
+            source.addTransactionsOut(transaction);
             return source.withdraw(transaction.getTransactionValue());
         } else if (source != null && dest != null) {
+            source.addTransactionsOut(transaction);
+            dest.addTransactionsIn(transaction);
             return source.transfer(transaction.getTransactionValue(), dest);
         } else if (source == null && dest == null) {
             return new ResponseEntity<>("Source and destination cannot both be empty!", HttpStatus.BAD_REQUEST);
