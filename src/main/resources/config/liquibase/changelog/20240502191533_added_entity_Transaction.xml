@@ -48,6 +48,8 @@
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
+<<<<<<< HEAD
+=======
 
     <changeSet id="20240507140400" author="jake/matt">
         <addColumn tableName="transaction">
@@ -71,4 +73,5 @@
             </column>
         </addColumn>
     </changeSet>
+>>>>>>> 0614006f60066c8dc158f1616b6ff6cbc040d4cc
 </databaseChangeLog>
