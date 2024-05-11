@@ -1,35 +1,230 @@
-.animated-footer {
-  position: static;
-  left: 0;
-  bottom: 0;
-  height: 110px;
-  width: 100%; /* Ensures it spans the entire width of the viewport */
-  z-index: 1000; /* Keeps it above other content */
-
-  text-align: center;
-  padding: 15px;
-  padding-bottom: 15px;
-  background-color: #2a76a5;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+:root {
+  /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+  --primary: #111533;
+  --primaryLight: #ffba43;
+  --secondary: #ffba43;
+  --secondaryLight: #ffba43;
+  --headerColor: #1a1a1a;
+  --bodyTextColor: #4e4b66;
+  --bodyTextColorWhite: #fafbfc;
+  /* 13px - 16px */
+  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+  /* 31px - 49px */
+  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+  --bodyFontSize: 1rem;
+  /* 60px - 100px top and bottom */
+  --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 }
 
-.social-links a {
-  margin: 0 10px;
-  transition:
-    transform 0.3s ease-in-out,
-    color 0.3s ease-in-out;
-  color: inherit; /* Inherits color from footer, can be set to specific colors */
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.social-links a:hover {
-  transform: scale(1.2); /* Enlarges the icon */
-  color: #ffffff; /* Changes icon color on hover */
+*,
+*:before,
+*:after {
+  /* prevents padding from affecting height and width */
+  box-sizing: border-box;
+}
+.cs-topper {
+  font-size: var(--topperFontSize);
+  line-height: 1.2em;
+  text-transform: uppercase;
+  text-align: inherit;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  display: block;
 }
 
-.feather {
-  height: 24px;
-  width: 24px;
+.cs-title {
+  font-size: var(--headerFontSize);
+  font-weight: 900;
+  line-height: 1.2em;
+  text-align: inherit;
+  max-width: 43.75rem;
+  margin: 0 0 1rem 0;
+  color: var(--headerColor);
+  position: relative;
+}
+
+.cs-text {
+  font-size: var(--bodyFontSize);
+  line-height: 1.5em;
+  text-align: inherit;
+  width: 100%;
+  max-width: 40.625rem;
+  margin: 0;
+  color: var(--bodyTextColor);
+}
+
+/*-- -------------------------- -->
+<---          Footer            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #footer-1147 {
+    padding: var(--sectionPadding);
+    position: relative;
+    z-index: 1;
+  }
+  #footer-1147 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #footer-1147 .cs-top {
+    width: 100%;
+    /* 32px - 40px */
+    margin-bottom: clamp(2rem, 4vw, 2.5rem);
+    padding-bottom: clamp(2rem, 4vw, 2.5rem);
+    border-bottom: 1px solid #484848;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  #footer-1147 .cs-ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.5rem;
+    /* 28px - 40px */
+    column-gap: clamp(1.75rem, 4vw, 2.5rem);
+  }
+  #footer-1147 .cs-li {
+    list-style: none;
+  }
+  #footer-1147 .cs-link {
+    /* 14px - 16px */
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.5em;
+    text-decoration: none;
+    margin: 0;
+    color: #2e2e2e;
+    display: block;
+    transition: color 0.3s;
+  }
+  #footer-1147 .cs-link:hover {
+    color: var(--secondary);
+  }
+  #footer-1147 .cs-logo {
+    width: 10.5rem;
+    height: auto;
+    display: block;
+  }
+  #footer-1147 .cs-logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #footer-1147 .cs-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  #footer-1147 .cs-social {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #footer-1147 .cs-social-li {
+    list-style: none;
+  }
+  #footer-1147 .cs-social-link {
+    width: 2rem;
+    height: 2rem;
+    background-color: #484848;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  #footer-1147 .cs-social-link:hover {
+    background-color: var(--secondary);
+  }
+  #footer-1147 .cs-social-link:hover .cs-social-icon {
+    filter: grayscale(1) brightness(0);
+    opacity: 1;
+  }
+  #footer-1147 .cs-social-icon {
+    width: 0.75rem;
+    height: auto;
+    display: block;
+    opacity: 0.5;
+  }
+  #footer-1147 .cs-copyright {
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0;
+    color: #000000;
+    display: block;
+  }
+  #footer-1147 .cs-copyright-link {
+    font-size: inherit;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+  }
+  #footer-1147 .cs-copyright-link:hover {
+    color: var(--secondary);
+  }
+  #footer-1147 .cs-background {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  #footer-1147 .cs-background:before {
+    /* background color overlay */
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #c8c7c7;
+    opacity: 0.79;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  #footer-1147 .cs-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* Makes img tag act as a background image */
+    object-fit: cover;
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #footer-1147 .cs-top {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  #footer-1147 .cs-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

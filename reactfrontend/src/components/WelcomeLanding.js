@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/welcomelanding.css';
 import Grouplaptop from '../images/grouplaptop.jpg';
-import PiggyIcon from '../images/piggyicon.png';
+import PiggyIcon from '../images/PiggyIcon.png';
 import Checking from '../images/checking.png';
 import Market from '../images/market.png';
 const WelcomeLanding = () => {

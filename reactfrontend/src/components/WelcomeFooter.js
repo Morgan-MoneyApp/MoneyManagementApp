@@ -1,66 +1,126 @@
 import React from 'react';
 import '../styles/WelcomeFooter.css'; // Ensure the CSS is updated accordingly
-
-const Footer = () => {
+import Logo from '../images/logo.png';
+import Skyscrapers from '../images/skyscrapers.jpg';
+function Footer() {
   return (
-    <footer className="animated-footer">
-      <div className="footer-content">
-        <div className="social-links">
-          <a href="http://twitter.com" target="_blank" rel="noopener noreferrer" className="twitter-icon">
-            {/* Inline SVG for Twitter Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-twitter"
-            >
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-            </svg>
+    <footer id="footer-1147">
+      <div className="cs-container">
+        <div className="cs-top">
+          <a aria-label="go back to home" className="cs-logo" href="">
+            <img className="cs-logo-img" loading="lazy" decoding="async" src={Logo} alt="logo" width="168" height="48" />
           </a>
-          <a href="http://facebook.com" target="_blank" rel="noopener noreferrer" className="facebook-icon">
-            {/* Inline SVG for Facebook Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-facebook"
-            >
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a2 2 0 011-1.73A2 2 0 0115 7v3h4z"></path>
-            </svg>
-          </a>
-          <a href="http://instagram.com" target="_blank" rel="noopener noreferrer" className="instagram-icon">
-            {/* Inline SVG for Instagram Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-instagram"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1012.5 8 4 4 0 0016 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
+          <ul className="cs-ul">
+            <li className="cs-li">
+              <a href="" className="cs-link">
+                Home
+              </a>
+            </li>
+            <li className="cs-li">
+              <a href="" className="cs-link">
+                About Us
+              </a>
+            </li>
+            <li className="cs-li">
+              <a href="" className="cs-link">
+                Services
+              </a>
+            </li>
+            <li className="cs-li">
+              <a href="" className="cs-link">
+                FAQ
+              </a>
+            </li>
+            <li className="cs-li">
+              <a href="" className="cs-link">
+                Events
+              </a>
+            </li>
+            <li className="cs-li">
+              <a href="" className="cs-link">
+                Contact
+              </a>
+            </li>
+          </ul>
         </div>
-        <div className="contact-section">
-          <p>Email: contact@morganbank.com</p>
-          <p>Phone: (123) 456-7890</p>
+        <div className="cs-bottom">
+          {/* Social */}
+          <ul className="cs-social">
+            <li className="cs-social-li">
+              <a href="" className="cs-social-link" aria-label="facebook" target="_blank" rel="noopener">
+                <img
+                  className="cs-social-icon cs-default"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/facebook-white.svg"
+                  alt="icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li className="cs-social-li">
+              <a href="" className="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
+                <img
+                  className="cs-social-icon cs-default"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/twitter-white.svg"
+                  alt="icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li className="cs-social-li">
+              <a href="" className="cs-social-link" aria-label="instagram" target="_blank" rel="noopener">
+                <img
+                  className="cs-social-icon cs-default"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-transparent.svg"
+                  alt="icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li className="cs-social-li">
+              <a href="" className="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
+                <img
+                  className="cs-social-icon cs-default"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/youtube-transparent2.svg"
+                  alt="icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+          </ul>
+          <span className="cs-copyright">
+            © Copyright 2024 -{' '}
+            <a href="" className="cs-copyright-link">
+              Morgan Bank
+            </a>
+          </span>
         </div>
       </div>
+      {/* Background */}
+      <picture className="cs-background">
+        {/* Mobile Image */}
+        <source media="(max-width: 600px)" srcSet={Skyscrapers} />
+        {/* Tablet and above Image */}
+        <source media="(min-width: 601px)" srcSet={Skyscrapers} />
+        <img loading="lazy" decoding="async" src={Skyscrapers} alt="kids" width="1280" height="568" />
+      </picture>
     </footer>
   );
-};
+}
 
 export default Footer;
