@@ -1,0 +1,48 @@
+.accounts-container {
+  padding: 50px;
+  display: flex;
+  justify-content: space-around; /* Evenly spaces the account cards */
+  align-items: center; /* Aligns cards vertically at the same level */
+}
+
+.outer-div {
+  padding-top: 60px;
+}
+
+.account-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 30%; /* Adjust the width as needed */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: center; /* Center-aligns text within the card */
+}
+
+.account-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.welcome,
+p {
+  text-align: center; /* Center-aligns text within the content-div */
+  font-size: 20px; /* Unified font size for simplicity and readability */
+}
+
+.content-div {
+  padding: 20px;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .account-card {
+    width: 90%; /* Makes cards full width on smaller screens */
+  }
+
+  .accounts-container {
+    flex-direction: column; /* Stacks cards vertically on smaller screens */
+  }
+}

@@ -17,7 +17,7 @@ const PageWelcome = () => {
         <PictureCollage />
         <WelcomeLoginRegister loginRef={loginRef} />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
