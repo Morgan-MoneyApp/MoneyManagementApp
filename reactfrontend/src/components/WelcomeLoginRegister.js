@@ -17,7 +17,7 @@ const WelcomeLoginRegister = ({ loginRef }) => {
     firstName: '',
     lastName: '',
     dob: '',
-    phoneNumber: '',
+    email: '',
     house: '',
     street: '',
     city: '',
@@ -99,12 +99,11 @@ const WelcomeLoginRegister = ({ loginRef }) => {
                 required
               />
               <input
-                type="tel"
-                name="phoneNumber"
-                placeholder="Phone Number"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                title="Enter a phone number in the format: 123-456-7890"
-                value={formData.phoneNumber}
+                className="input-field"
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
                 onChange={handleChange}
                 required
               />

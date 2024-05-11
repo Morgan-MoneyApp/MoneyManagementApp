@@ -9,8 +9,9 @@
 .main-container {
   display: flex; /* Use flexbox to align children side by side */
   align-items: start; /* Align items from the start of the cross axis */
-  justify-content: space-between; /* Maintain a small gap between components */
-  padding: 20px; /* Optional padding */
+  justify-content: center; /* Center children to bring them closer */
+  padding: 30px; /* Padding around the container */
+  padding-bottom: 10px; /* Reduced bottom padding to bring components closer to footer */
   width: 100%; /* Full width */
   max-width: 1200px; /* Maximum width of the container */
   margin: auto; /* Center the container horizontally */
@@ -21,6 +22,7 @@
   flex: 1; /* Assign equal flex grow factor to both components */
   flex-basis: 50%; /* Start with half the parent container's size */
   min-width: 300px; /* Minimum width to prevent too much shrinking */
+  margin-bottom: 0; /* Reduce or remove bottom margin if necessary */
 }
 
 @media (max-width: 768px) {
