@@ -6,6 +6,8 @@ const AUTH_TOKEN_KEY = 'jhi-authenticationToken';
 
 const API_URL = 'http://localhost:8080';
 
+const API_AUTH = API_URL + '/api/authenticate';
+
 export const getSession = () => (dispatch, getState) => {
   dispatch(getAccount());
 };
@@ -31,6 +33,41 @@ export const login =
       } else {
         Storage.session.set(AUTH_TOKEN_KEY, jwt);
       }
+    } else if (bearerToken) {
+      if (rememberMe) {
+        localStorage.setItem(AUTH_TOKEN_KEY, bearerToken);
+        // Storage.local.set(AUTH_TOKEN_KEY, bearerToken);
+      } else {
+        sessionStorage.setItem(AUTH_TOKEN_KEY, bearerToken);
+        // Storage.session.set(AUTH_TOKEN_KEY, bearerToken);
+      }
     }
     dispatch(getSession());
   };
+
+export default function login2(input = { username: '', password: '' }, rememberMe) {
+  let result = false;
+  if (input.username !== '' && input.password !== '') {
+    axios
+      .post(API_AUTH, { username: input.username, password: input.password, rememberMe: rememberMe })
+      .then(response => response.data)
+      .then(response => {
+        if (rememberMe) {
+          localStorage.setItem('id_token', response['id_token']);
+        } else {
+          sessionStorage.setItem('id_token', response['id_token']);
+        }
+        result = true;
+      })
+      .catch(reason => {
+        let resp = reason.response;
+        if (resp.status === 400) {
+          alert('bad request');
+        } else if (resp.status === 401) {
+          alert(resp.data.detail);
+        }
+        result = false;
+      });
+  }
+  return result;
+}

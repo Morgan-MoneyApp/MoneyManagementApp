@@ -239,7 +239,7 @@ public class BankAccountResource {
             // Get the user profile
             UserProfile holder = userProfileRepository.findByUser(curUser);
             // If the user profile is not associated with the account, and the user isn't an ADMIN
-            if (!bankAccount.get().getAccountHolder().equals(holder) && !SecurityUtils.hasCurrentUserThisAuthority("ROLE_ADMIN")) {
+            if (!bankAccount.orElseThrow().getAccountHolder().equals(holder) && !SecurityUtils.hasCurrentUserThisAuthority("ROLE_ADMIN")) {
                 // HTTP 401
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }

@@ -50,6 +50,7 @@ public class AccountResource {
      * {@code POST  /register} : register the user.
      *
      * @param managedUserVM the managed user View Model.
+     * @throws BadLoginException {@code 400 (Bad Request)} if the login is invalid. Solves test failures.
      * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
      * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
      * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
@@ -58,8 +59,14 @@ public class AccountResource {
     @ResponseStatus(HttpStatus.CREATED)
     // WHAT THE LITERAL ♥♥♥♥ IS WRONG WHY DID I HAVE TO REMOVE @VALID
     public void registerAccount(@RequestBody ManagedUserVM managedUserVM) {
+        if (isLoginInvalid(managedUserVM.getLogin())) {
+            throw new BadLoginException();
+        }
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
+        }
+        if (isEmailInvalid(managedUserVM.getEmail())) {
+            throw new InvalidEmailException();
         }
         System.out.println(managedUserVM.getFirstName());
         User user = userService.registerUser(
@@ -71,6 +78,14 @@ public class AccountResource {
             managedUserVM.getAddress()
         );
         mailService.sendActivationEmail(user);
+    }
+
+    private boolean isEmailInvalid(String email) {
+        return !email.matches("^[A-Za-z0-9\\-.]+@[A-Za-z0-9\\-.]+\\.[A-Za-z0-9\\-.]+$");
+    }
+
+    private boolean isLoginInvalid(String login) {
+        return !login.matches("^(?>[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)|(?>[_.@A-Za-z0-9-]+)$");
     }
 
     /**

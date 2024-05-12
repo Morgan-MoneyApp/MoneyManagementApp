@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zipcode.moneyapp.IntegrationTest;
 import com.zipcode.moneyapp.config.Constants;
+import com.zipcode.moneyapp.domain.Address;
 import com.zipcode.moneyapp.domain.User;
 import com.zipcode.moneyapp.repository.AuthorityRepository;
 import com.zipcode.moneyapp.repository.UserRepository;
@@ -17,6 +18,7 @@ import com.zipcode.moneyapp.service.dto.PasswordChangeDTO;
 import com.zipcode.moneyapp.web.rest.vm.KeyAndPasswordVM;
 import com.zipcode.moneyapp.web.rest.vm.ManagedUserVM;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -206,6 +208,10 @@ class AccountResourceIT {
         firstUser.setEmail("alice@example.com");
         firstUser.setImageUrl("http://placehold.it/50x50");
         firstUser.setLangKey(Constants.DEFAULT_LANGUAGE);
+        firstUser.setDateOfBirth(LocalDate.now());
+        firstUser.setAddress(
+            new Address().houseNumber(1).street("Test St.").city("Anywhereville").state("AA").zip("00000").apartmentNumber(1)
+        );
         firstUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         // Duplicate login, different email
@@ -221,6 +227,10 @@ class AccountResourceIT {
         secondUser.setCreatedDate(firstUser.getCreatedDate());
         secondUser.setLastModifiedBy(firstUser.getLastModifiedBy());
         secondUser.setLastModifiedDate(firstUser.getLastModifiedDate());
+        secondUser.setDateOfBirth(LocalDate.now());
+        secondUser.setAddress(
+            new Address().houseNumber(1).street("Test St.").city("Anywhereville").state("AA").zip("00000").apartmentNumber(1)
+        );
         secondUser.setAuthorities(new HashSet<>(firstUser.getAuthorities()));
 
         // First user
@@ -256,6 +266,10 @@ class AccountResourceIT {
         firstUser.setEmail("test-register-duplicate-email@example.com");
         firstUser.setImageUrl("http://placehold.it/50x50");
         firstUser.setLangKey(Constants.DEFAULT_LANGUAGE);
+        firstUser.setDateOfBirth(LocalDate.now());
+        firstUser.setAddress(
+            new Address().houseNumber(1).street("Test St.").city("Anywhereville").state("AA").zip("00000").apartmentNumber(1)
+        );
         firstUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         // Register first user
@@ -275,6 +289,10 @@ class AccountResourceIT {
         secondUser.setEmail(firstUser.getEmail());
         secondUser.setImageUrl(firstUser.getImageUrl());
         secondUser.setLangKey(firstUser.getLangKey());
+        secondUser.setDateOfBirth(LocalDate.now());
+        secondUser.setAddress(
+            new Address().houseNumber(1).street("Test St.").city("Anywhereville").state("AA").zip("00000").apartmentNumber(1)
+        );
         secondUser.setAuthorities(new HashSet<>(firstUser.getAuthorities()));
 
         // Register second (non activated) user
@@ -298,6 +316,10 @@ class AccountResourceIT {
         userWithUpperCaseEmail.setEmail("TEST-register-duplicate-email@example.com");
         userWithUpperCaseEmail.setImageUrl(firstUser.getImageUrl());
         userWithUpperCaseEmail.setLangKey(firstUser.getLangKey());
+        userWithUpperCaseEmail.setDateOfBirth(LocalDate.now());
+        userWithUpperCaseEmail.setAddress(
+            new Address().houseNumber(1).street("Test St.").city("Anywhereville").state("AA").zip("00000").apartmentNumber(1)
+        );
         userWithUpperCaseEmail.setAuthorities(new HashSet<>(firstUser.getAuthorities()));
 
         // Register third (not activated) user
@@ -331,6 +353,10 @@ class AccountResourceIT {
         validUser.setImageUrl("http://placehold.it/50x50");
         validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
         validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.ADMIN));
+        validUser.setDateOfBirth(LocalDate.now());
+        validUser.setAddress(
+            new Address().houseNumber(1).street("Test St.").city("Anywhereville").state("AA").zip("00000").apartmentNumber(1)
+        );
 
         restAccountMockMvc
             .perform(post("/api/register").contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(validUser)))

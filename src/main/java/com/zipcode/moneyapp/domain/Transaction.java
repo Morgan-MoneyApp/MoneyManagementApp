@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -109,12 +111,20 @@ public class Transaction implements Serializable {
     }
 
     public Transaction transactionDate(Date transactionDate) {
-        this.setTransactionDate(Date.valueOf(transactionDate.toString()));
+        try {
+            this.setTransactionDate(Date.valueOf(transactionDate.toString()));
+        } catch (NullPointerException e) {
+            this.transactionDate = null;
+        }
         return this;
     }
 
     public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = Date.valueOf(transactionDate.toString());
+        try {
+            this.transactionDate = Date.valueOf(transactionDate.toString());
+        } catch (NullPointerException e) {
+            this.transactionDate = null;
+        }
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
