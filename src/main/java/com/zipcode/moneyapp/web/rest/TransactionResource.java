@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -162,14 +161,13 @@ public class TransactionResource {
     /**
      * {@code GET  /transactions} : get all the transactions.
      *
-//     * @param pageable the pagination information.
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of transactions in body.
      */
-    @CrossOrigin(origins = "http://localhost:3000/*")
-    @GetMapping("getAll")
-    public ResponseEntity<Iterable<Transaction>> getAllTransactions() {
+    @GetMapping("")
+    public ResponseEntity<List<Transaction>> getAllTransactions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Transactions");
-        Iterable<Transaction> allTransactions = transactionRepository.findAll();
+        Page<Transaction> page = transactionRepository.findAll(pageable);
 
         // Debug purposes
         //        for (Transaction t : page.getContent()) {
@@ -179,9 +177,8 @@ public class TransactionResource {
         //                log.info("Transaction with id {} has no date", t.getId());
         //            }
         //        }
-        //        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        //        return ResponseEntity.ok().headers(headers).body(page.getContent());
-        return new ResponseEntity<>(allTransactions, HttpStatus.OK);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**

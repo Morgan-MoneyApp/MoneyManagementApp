@@ -7,7 +7,7 @@ import Savinggirl from '../images/savinggirl.jpg';
 import Familyhouse from '../images/housefamily.jpg';
 
 import { useNavigate } from 'react-router-dom';
-import login2 from '../utils/authUtils';
+import { login2, register } from '../utils/authUtils';
 
 const WelcomeLoginRegister = ({ loginRef }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -48,8 +48,9 @@ const WelcomeLoginRegister = ({ loginRef }) => {
   };
 
   const handleSignUp = e => {
-    console.log(formData);
-    alert('Account Created!');
+    register(formData);
+    // console.log(formData);
+    // alert('Account Created!');
     navigate('/accounts');
   };
 

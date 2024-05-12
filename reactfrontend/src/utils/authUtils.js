@@ -8,6 +8,8 @@ const API_URL = 'http://localhost:8080';
 
 const API_AUTH = API_URL + '/api/authenticate';
 
+const API_REG = API_URL + '/api/register';
+
 export const getSession = () => (dispatch, getState) => {
   dispatch(getAccount());
 };
@@ -45,7 +47,7 @@ export const login =
     dispatch(getSession());
   };
 
-export default function login2(input = { username: '', password: '' }, rememberMe) {
+export function login2(input = { username: '', password: '' }, rememberMe) {
   let result = false;
   if (input.username !== '' && input.password !== '') {
     axios
@@ -70,4 +72,57 @@ export default function login2(input = { username: '', password: '' }, rememberM
       });
   }
   return result;
+}
+
+export function register(
+  input = {
+    firstName: '',
+    lastName: '',
+    dob: '',
+    email: '',
+    house: '',
+    street: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    userName: '',
+    password: '',
+  },
+) {
+  if (
+    input.firstName &&
+    input.lastName &&
+    input.dob &&
+    input.email &&
+    input.house &&
+    input.street &&
+    input.city &&
+    input.state &&
+    input.zipcode &&
+    input.username &&
+    input.password
+  ) {
+    axios
+      .post(API_REG, {
+        firstName: input.firstName,
+        lastName: input.lastName,
+        password: input.password,
+        login: input.username,
+        email: input.email,
+        dateOfBirth: input.dob,
+        address: {
+          houseNumber: input.house,
+          street: input.street,
+          city: input.city,
+          state: input.state,
+          zip: input.zipcode,
+        },
+      })
+      .then(response => response.data)
+      .then(response => console.log(response))
+      .catch(reason => {
+        let resp = reason.response;
+        console.log(resp.status);
+      });
+  }
 }

@@ -53,7 +53,7 @@ public class AddressService {
                         addr.getCity().equals(address.getCity()) &&
                         addr.getState().equals(address.getState()) &&
                         addr.getZip().equals(address.getZip()) &&
-                        addr.getApartmentNumber().equals(address.getApartmentNumber()))
+                        (addr.getApartmentNumber() == null || addr.getApartmentNumber().equals(address.getApartmentNumber())))
             )
             .toList();
     }
