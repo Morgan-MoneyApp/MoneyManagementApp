@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/transactionchecking.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
@@ -34,12 +34,13 @@ function TransactionSaving() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-          </tr>
-          {/* More rows */}
+          {transactionHistory.map((transaction, index) => (
+            <tr key={index}>
+              <td>{transaction.date}</td>
+              <td>{transaction.description}</td>
+              <td>{transaction.amount}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -47,3 +48,26 @@ function TransactionSaving() {
 }
 
 export default TransactionSaving;
+
+//          </tr>  POSSIBLY THE FORMAT OF HOW TO GET THE DATA INTO EACH RESPECTIVE COLUMN
+//        </thead>
+//        <tbody>
+//          {transactionHistory.map((transaction, index) => (
+//            <tr key={index}>
+//              <td>{transaction.date}</td>
+//              <td>{transaction.description}</td>
+//              <td>{transaction.amount}</td>
+//            </tr>
+//          ))}
+//        </tbody>
+//      </table>
+//    </div>
+//  );
+//}
+//          <tr>
+//            <td>Cell</td>
+//            <td>Cell</td>
+//            <td>Cell</td>
+//          </tr>
+//          {/* More rows */}
+//        </tbody>

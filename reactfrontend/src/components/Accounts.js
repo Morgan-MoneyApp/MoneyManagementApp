@@ -20,15 +20,15 @@ function Accounts() {
 
   const accounts = {
     checking: {
-      balance: 1500,
+      balance: 1500, //Make /getbalance API call here for checking
       onClick: goToChecking,
     },
     savings: {
-      balance: 3000,
+      balance: 3000, // Make /getBalance API call here for savings
       onClick: goToSavings,
     },
     market: {
-      balance: 5000,
+      balance: 5000, //Make /getBalance API call here for MoneyMarket
       onClick: goToMoneyMarket,
     },
   };
