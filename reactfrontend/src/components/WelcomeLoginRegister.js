@@ -40,7 +40,6 @@ const WelcomeLoginRegister = ({ loginRef }) => {
   };
 
   const handleSignUp = e => {
-    e.preventDefault();
     console.log(formData);
     alert('Account Created!');
     navigate('/accounts');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/transactionchecking.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
@@ -35,9 +35,9 @@ function TransactionSaving() {
         </thead>
         <tbody>
           <tr>
-            <td>5/12/2024</td>
-            <td>Savings Account Transaction</td>
-            <td>$50.00</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
           </tr>
           {/* More rows */}
         </tbody>
