@@ -7,7 +7,7 @@ import Savinggirl from '../images/savinggirl.jpg';
 import Familyhouse from '../images/housefamily.jpg';
 
 import { useNavigate } from 'react-router-dom';
-import { login } from '../utils/authUtils';
+import login2 from '../utils/authUtils';
 
 const WelcomeLoginRegister = ({ loginRef }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -35,8 +35,14 @@ const WelcomeLoginRegister = ({ loginRef }) => {
 
   const handleLogin = e => {
     e.preventDefault();
-    login('admin', 'admin', true); //Dummy login function
-    navigate('/accounts');
+    let un = e.target[0].value;
+    let pw = e.target[1].value;
+    // Non-dummy login function
+    if (login2({ username: un, password: pw }, true)) {
+      navigate('/accounts');
+    } else {
+      navigate('/');
+    }
   };
 
   const handleSignUp = e => {
