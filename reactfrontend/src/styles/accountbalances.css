@@ -35,6 +35,10 @@ p {
 .content-div {
   padding: 20px;
 }
+.account-card.active {
+  border: 2px solid #0d6484; /* Highlight color */
+  background-color: rgba(13, 100, 132, 0.1); /* Light background using primary color */
+}
 
 /* Responsive styling for smaller screens */
 @media (max-width: 768px) {
