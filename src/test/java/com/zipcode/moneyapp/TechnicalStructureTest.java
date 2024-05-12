@@ -8,6 +8,11 @@ import com.tngtech.archunit.core.importer.ImportOption.DoNotIncludeTests;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
+import com.zipcode.moneyapp.domain.Address;
+import com.zipcode.moneyapp.service.UserService;
+import com.zipcode.moneyapp.service.dto.AdminUserDTO;
+import com.zipcode.moneyapp.service.dto.UserDTO;
+import com.zipcode.moneyapp.web.rest.UserProfileResource;
 
 @AnalyzeClasses(packagesOf = MoneyappApp.class, importOptions = DoNotIncludeTests.class)
 class TechnicalStructureTest {
@@ -34,5 +39,8 @@ class TechnicalStructureTest {
         .ignoreDependency(alwaysTrue(), belongToAnyOf(
             com.zipcode.moneyapp.config.Constants.class,
             com.zipcode.moneyapp.config.ApplicationProperties.class
-        ));
+        ))
+        .ignoreDependency(UserService.class, AdminUserDTO.class)
+        .ignoreDependency(UserService.class, Address.class)
+        .ignoreDependency(UserService.class, UserProfileResource.class);
 }

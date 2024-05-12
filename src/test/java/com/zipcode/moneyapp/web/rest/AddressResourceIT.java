@@ -34,8 +34,8 @@ class AddressResourceIT {
     private static final Integer DEFAULT_HOUSE_NUMBER = 1;
     private static final Integer UPDATED_HOUSE_NUMBER = 2;
 
-    private static final String DEFAULT_STREET = "jpy SqH";
-    private static final String UPDATED_STREET = "qExibt Drx";
+    private static final String DEFAULT_STREET = "jpy Sq.";
+    private static final String UPDATED_STREET = "qExibt Dr.";
 
     private static final Integer DEFAULT_APARTMENT_NUMBER = 1;
     private static final Integer UPDATED_APARTMENT_NUMBER = 2;
@@ -43,8 +43,8 @@ class AddressResourceIT {
     private static final String DEFAULT_CITY = "AAAAAAAAAA";
     private static final String UPDATED_CITY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_STATE = "AAAAAAAAAA";
-    private static final String UPDATED_STATE = "BBBBBBBBBB";
+    private static final String DEFAULT_STATE = "AA";
+    private static final String UPDATED_STATE = "BB";
 
     private static final String DEFAULT_ZIP = "86869";
     private static final String UPDATED_ZIP = "93849";

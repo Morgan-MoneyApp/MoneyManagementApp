@@ -4,6 +4,8 @@ import static com.zipcode.moneyapp.domain.BankAccountAsserts.*;
 import static com.zipcode.moneyapp.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -19,6 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -34,6 +37,9 @@ class BankAccountResourceIT {
 
     private static final Long DEFAULT_ACCOUNT_NUMBER = 0L;
     private static final Long UPDATED_ACCOUNT_NUMBER = 1L;
+
+    private static final HttpHeaders DEFAULT_HEADERS = new HttpHeaders();
+    private static final HttpHeaders ADMIN_HEADERS = new HttpHeaders();
 
     private static final Integer DEFAULT_ROUTING_NUMBER = 123456789;
     private static final Integer UPDATED_ROUTING_NUMBER = 123456790;
@@ -71,6 +77,16 @@ class BankAccountResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static BankAccount createEntity(EntityManager em) {
+        ADMIN_HEADERS.add(
+            "Authorization",
+            "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTU1MjcwNywiYXV0aCI6IlJPTEVfQURNSU4gUk9MRV9VU0VSIiwiaWF0IjoxNzE1NDY2MzA3fQ.5Wn-_3P4LcbPbbenuJuWubBu-E6ZfQxuMfEOxMqgfNsmPxI8oqcg_aCem0T8KL8NKxaVwYag5EUAFgQF2LxOOA"
+        );
+        DEFAULT_HEADERS.add("Cache-Control", "no-cache");
+        DEFAULT_HEADERS.add("Content-Type", "application/json");
+        DEFAULT_HEADERS.add("Accept", "*/*");
+        DEFAULT_HEADERS.add("Accept-Encoding", "gzip, deflate, br");
+        DEFAULT_HEADERS.add("Connection", "keep-alive");
+        ADMIN_HEADERS.addAll(DEFAULT_HEADERS);
         BankAccount bankAccount = new BankAccount()
             .accountNumber(DEFAULT_ACCOUNT_NUMBER)
             .routingNumber(DEFAULT_ROUTING_NUMBER)
@@ -158,9 +174,10 @@ class BankAccountResourceIT {
         // Initialize the database
         bankAccountRepository.saveAndFlush(bankAccount);
 
+        System.out.println(ADMIN_HEADERS.entrySet());
         // Get all the bankAccountList
         restBankAccountMockMvc
-            .perform(get(ENTITY_API_URL + "?sort=id,desc"))
+            .perform(get(ENTITY_API_URL + "?sort=id,desc").headers(ADMIN_HEADERS))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bankAccount.getId().intValue())))
@@ -176,9 +193,12 @@ class BankAccountResourceIT {
         // Initialize the database
         bankAccountRepository.saveAndFlush(bankAccount);
 
+        System.out.println(ADMIN_HEADERS.entrySet());
         // Get the bankAccount
         restBankAccountMockMvc
-            .perform(get(ENTITY_API_URL_ID, bankAccount.getId()))
+            .perform(
+                get(ENTITY_API_URL_ID, bankAccount.getId()).headers(ADMIN_HEADERS).with(user("admin").password("admin").roles("ADMIN"))
+            )
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(bankAccount.getId().intValue()))

@@ -63,8 +63,8 @@ public class TransactionResource {
             throw new BadRequestAlertException("A new transaction cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-        transaction.source(bankAccountRepository.findById(transaction.getSource().getId()).get());
-        transaction.destination(bankAccountRepository.findById(transaction.getDestination().getId()).get());
+        transaction.source(bankAccountRepository.findById(transaction.getSource().getId()).orElseThrow());
+        transaction.destination(bankAccountRepository.findById(transaction.getDestination().getId()).orElseThrow());
 
         transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
         transaction = transactionRepository.save(transaction);

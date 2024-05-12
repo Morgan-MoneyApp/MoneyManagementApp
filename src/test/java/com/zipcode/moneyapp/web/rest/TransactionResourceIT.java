@@ -9,9 +9,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zipcode.moneyapp.IntegrationTest;
+import com.zipcode.moneyapp.domain.BankAccount;
 import com.zipcode.moneyapp.domain.Transaction;
+import com.zipcode.moneyapp.domain.enumeration.Type;
+import com.zipcode.moneyapp.repository.BankAccountRepository;
 import com.zipcode.moneyapp.repository.TransactionRepository;
 import jakarta.persistence.EntityManager;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalUnit;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,6 +55,9 @@ class TransactionResourceIT {
     private TransactionRepository transactionRepository;
 
     @Autowired
+    private BankAccountRepository bankAccountRepository;
+
+    @Autowired
     private EntityManager em;
 
     @Autowired
@@ -60,8 +71,24 @@ class TransactionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Transaction createEntity(EntityManager em) {
-        Transaction transaction = new Transaction().transactionValue(DEFAULT_TRANSACTION_VALUE);
+    public Transaction createEntity(EntityManager em) {
+        Transaction transaction = new Transaction()
+            .transactionValue(DEFAULT_TRANSACTION_VALUE)
+            .source(
+                bankAccountRepository
+                    .findById(1L)
+                    .orElse(
+                        bankAccountRepository.save(new BankAccount().id(1L).balance(10 * DEFAULT_TRANSACTION_VALUE).type(Type.PLACEHOLDER))
+                    )
+            )
+            .destination(
+                bankAccountRepository
+                    .findById(2L)
+                    .orElse(
+                        bankAccountRepository.save(new BankAccount().id(2L).balance(10 * UPDATED_TRANSACTION_VALUE).type(Type.PLACEHOLDER))
+                    )
+            )
+            .transactionDate(Date.valueOf(LocalDate.now().minusDays(1L)));
         return transaction;
     }
 
@@ -71,8 +98,24 @@ class TransactionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Transaction createUpdatedEntity(EntityManager em) {
-        Transaction transaction = new Transaction().transactionValue(UPDATED_TRANSACTION_VALUE);
+    public Transaction createUpdatedEntity(EntityManager em) {
+        Transaction transaction = new Transaction()
+            .transactionValue(UPDATED_TRANSACTION_VALUE)
+            .source(
+                bankAccountRepository
+                    .findById(1L)
+                    .orElse(
+                        bankAccountRepository.save(new BankAccount().id(1L).balance(10 * DEFAULT_TRANSACTION_VALUE).type(Type.PLACEHOLDER))
+                    )
+            )
+            .destination(
+                bankAccountRepository
+                    .findById(2L)
+                    .orElse(
+                        bankAccountRepository.save(new BankAccount().id(2L).balance(10 * UPDATED_TRANSACTION_VALUE).type(Type.PLACEHOLDER))
+                    )
+            )
+            .transactionDate(Date.valueOf(LocalDate.now().plusDays(1L)));
         return transaction;
     }
 
@@ -278,7 +321,7 @@ class TransactionResourceIT {
         Transaction partialUpdatedTransaction = new Transaction();
         partialUpdatedTransaction.setId(transaction.getId());
 
-        partialUpdatedTransaction.transactionValue(UPDATED_TRANSACTION_VALUE);
+        partialUpdatedTransaction.transactionValue(UPDATED_TRANSACTION_VALUE).transactionDate(null);
 
         restTransactionMockMvc
             .perform(
