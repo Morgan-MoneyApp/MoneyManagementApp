@@ -9,16 +9,19 @@ function Accounts() {
 
   const accounts = {
     checking: {
+      icon: <FontAwesomeIcon icon={faWallet} />,
       balance: 1500,
-      onClick: goToChecking,
+      onClick: () => navigate('/checking'),
     },
     savings: {
+      icon: <FontAwesomeIcon icon={faPiggyBank} />,
       balance: 3000,
-      onClick: goToSavings,
+      onClick: () => navigate('/saving'),
     },
     market: {
+      icon: <FontAwesomeIcon icon={faLandmark} />,
       balance: 5000,
-      onClick: goToMoneyMarket,
+      onClick: () => navigate('/moneymarket'),
     },
   };
 
