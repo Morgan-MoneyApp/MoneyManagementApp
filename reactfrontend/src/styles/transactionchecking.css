@@ -37,24 +37,31 @@ table.GeneratedTable thead {
 .description-column {
   width: 300px;
 }
+
 .button-container {
   display: flex;
   justify-content: center; /* Centers buttons horizontally */
-  gap: 5px; /* Adds space between buttons */
-  margin-top: 120px; /* Lowers the buttons on the page */
+  gap: 1px; /* Reduces space between buttons for a tighter grouping */
+  margin-top: 30px; /* Keeps the buttons lower on the page */
 }
 
 button {
-  width: 200px;
-  padding: 12px; /* Adds padding inside the buttons for a better appearance */
   font-size: 16px; /* Sets a readable font size */
-  background-color: #89b4d0; /* Example button color, change as needed */
+  padding: 12px 20px; /* Adequate padding for button text */
+  background-color: var(--primary); /* Primary color, replace var(--primary) with your actual color code */
   color: white; /* Text color for the buttons */
-  border: none; /* Removes the border */
-  border-radius: 5px; /* Optionally rounds the corners of the buttons */
-  cursor: pointer; /* Changes the cursor to a pointer when over the button */
+  border: none; /* No border for a cleaner look */
+  border-radius: 8px; /* Rounded corners for a modern appearance */
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition:
+    background-color 0.3s,
+    transform 0.3s; /* Smooth transitions for interactive effects */
+  width: auto; /* Width automatically adjusts to content */
+  max-width: 300px; /* Maximum width to ensure buttons do not grow too large */
 }
 
 button:hover {
-  background-color: #2a76a5; /* Darkens the button on hover for a visual effect */
+  background-color: var(--primaryLight); /* Lighter shade on hover, replace with your color */
+  transform: scale(1.05); /* Slightly enlarges button on hover for emphasis */
 }

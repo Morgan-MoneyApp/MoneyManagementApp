@@ -35,9 +35,9 @@ function TransactionSaving() {
         </thead>
         <tbody>
           <tr>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+            <td>5/12/2024</td>
+            <td>Savings Account Transaction</td>
+            <td>$50.00</td>
           </tr>
           {/* More rows */}
         </tbody>

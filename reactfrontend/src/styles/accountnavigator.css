@@ -1,0 +1,53 @@
+.account-navigator {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Vertically centers items */
+  padding: 5px;
+  background-color: #f4f4f4;
+  overflow-x: auto; /* Allows horizontal scrolling if items overflow */
+  flex-wrap: nowrap; /* Ensures no wrapping occurs */
+  gap: 100px; /* Adds space between items */
+}
+
+.account-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: px;
+  border-radius: 8px;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    background-color 0.3s ease-in-out;
+  flex: 0 0 auto; /* Does not grow or shrink, respects content size */
+  min-width: 150px; /* Minimum width for each item */
+}
+
+.account-item span {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.account-item:hover,
+.account-item.active {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px rgba(13, 100, 132, 0.5);
+  background-color: #0d648429; /* Transparent background color adjustment */
+}
+
+.account-item.active .fa-svg {
+  color: #0d6484; /* Primary color for active state */
+  transform: scale(1.25); /* Slightly larger icon for emphasis */
+}
+
+.account-item.active::before {
+  content: '➤';
+  position: absolute;
+  left: -20px; /* Position the arrow to the left of the item */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0d6484;
+  font-size: 20px;
+}

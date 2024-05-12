@@ -35,9 +35,9 @@ function TransactionChecking() {
         </thead>
         <tbody>
           <tr>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+            <td>5/12/2024</td>
+            <td>Checking Account Transaction</td>
+            <td>$80.00</td>
           </tr>
           {/* More rows */}
         </tbody>
