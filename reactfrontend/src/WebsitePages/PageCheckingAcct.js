@@ -2,13 +2,13 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import TransactionChecking from '../components/TransactionChecking';
-import AccountBalances from '../components/AccountBalances';
+import AccountNavigator from '../components/AccountNavigator';
 
 const PageCheckingAcct = () => {
   return (
     <div>
       <Navbar />
-      <AccountBalances />
+      <AccountNavigator />
       <TransactionChecking />
       <Footer />
     </div>
