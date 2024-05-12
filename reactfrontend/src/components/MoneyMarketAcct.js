@@ -34,9 +34,9 @@ function MoneyMarketAcct() {
         </thead>
         <tbody>
           <tr>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+            <td>5/12/2024</td>
+            <td>Money Market Account Transaction</td>
+            <td>$20.00</td>
           </tr>
           {/* More rows */}
         </tbody>

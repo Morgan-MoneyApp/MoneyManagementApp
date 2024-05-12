@@ -1,13 +1,18 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import Footer from '../components/WelcomeFooter';
+import Footer from '../components/Footer';
 import TransactionSaving from '../components/TransactionSaving';
+import AccountBalances from '../components/AccountBalances';
+import AccountNavigator from '../components/AccountNavigator';
 
 const PageSavingAcct = () => {
   return (
-    <div>
+    <div className="app-container">
       <Navbar />
-      <TransactionSaving />
+      <div className="content-expand">
+        <AccountNavigator />
+        <TransactionSaving />
+      </div>
       <Footer />
     </div>
   );

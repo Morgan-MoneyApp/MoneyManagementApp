@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/transactionchecking.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';

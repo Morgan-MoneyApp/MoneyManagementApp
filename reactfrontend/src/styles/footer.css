@@ -2,12 +2,16 @@
 
 html,
 body {
-  height: 100%; /* Full height of the viewport */
-  min-height: 100vh; /* Ensure minimum height is the full viewport height */
+  height: 100%; /* Make sure the html and body are at least the height of the viewport */
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  font-family: 'Poppins', sans-serif; /* Applying global font */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#main-content {
+  min-height: calc(100vh - 120px); /* Adjust 120px to the combined height of your navbar and footer if different */
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -19,15 +23,15 @@ body {
 }
 
 .footer {
-  position: relative; /* Footer is part of normal document flow */
+  position: fixed; /* Fix the position */
   left: 0;
   bottom: 0;
-  width: 100%; /* Footer takes full width of the viewport */
-  padding: 20px 0; /* Padding top and bottom */
-  background-color: #0d6484; /* Background color */
-  color: white; /* Text color */
-  text-align: center; /* Center the text */
-  z-index: 10; /* Keep footer above other content but below modals */
+  width: 100%;
+  padding: 20px 0;
+  background-color: #0d6484;
+  color: white;
+  text-align: center;
+  z-index: 10; /* Make sure the footer is above other content */
 }
 
 .footer-col {

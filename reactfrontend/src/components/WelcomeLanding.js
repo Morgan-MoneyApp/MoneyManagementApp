@@ -44,7 +44,7 @@ const WelcomeLanding = ({ scrollToLogin }) => {
           </li>
           <li className="cs-item">
             <img className="cs-icon" loading="lazy" decoding="async" src={Market} alt="icon" width="48" height="48" />
-            <h3 className="cs-h3">Market Account</h3>
+            <h3 className="cs-h3">Money Market Account</h3>
             <p className="cs-item-text">
               Enjoy the benefits of both checking and savings accounts. Our Market Account provides higher interest rates, allowing for both
               investment growth and flexible access to your funds.

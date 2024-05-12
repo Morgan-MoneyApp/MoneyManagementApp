@@ -5,10 +5,9 @@ import Footer from '../components/Footer';
 
 const PageAccounts = () => {
   return (
-    <div>
+    <div className="page-container">
       <Navbar />
       <Accounts />
-      <Footer />
     </div>
   );
 };

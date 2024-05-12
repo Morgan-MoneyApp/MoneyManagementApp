@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
+html,
+body {
+  height: 100%; /* Ensure full height */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh; /* Full viewport height */
+  position: relative; /* Needed to position the footer absolutely within it */
+}
+
+#main-content {
+  flex: 1 0 auto; /* Takes all available space, pushing the footer down */
+  padding-bottom: 70px; /* Adjust this to the height of your footer */
+  overflow-auto:; /* Allows scrolling within the main content if needed */
+}
+
+.footer {
+  position: absolute; /* Positioned relative to .app-container */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #0d6484; /* Example background color */
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  text-align: center;
+  z-index: 10;
 }

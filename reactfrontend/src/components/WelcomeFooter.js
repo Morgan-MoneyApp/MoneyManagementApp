@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/WelcomeFooter.css'; // Ensure the CSS is updated accordingly
 
-const Footer = () => {
+const WelcomeFooter = () => {
   return (
     <footer className="animated-footer">
       <div className="footer-content">
@@ -63,4 +63,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default WelcomeFooter;
