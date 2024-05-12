@@ -14,7 +14,7 @@ const WelcomeLoginRegister = ({ loginRef }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    username: '',
+    userName: '',
     password: '',
     firstName: '',
     lastName: '',
@@ -79,6 +79,24 @@ const WelcomeLoginRegister = ({ loginRef }) => {
           <>
             <h2 className="h2">New User Registration</h2>
             <form className="login-form" onSubmit={handleSignUp}>
+              <input
+                className="input-field"
+                type="text"
+                name="userName"
+                placeholder="Username"
+                value={formData.userName}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="input-field"
+                type="text"
+                name="firstNamepassword"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
               <input
                 className="input-field"
                 type="text"

@@ -85,7 +85,7 @@ export function register(
     city: '',
     state: '',
     zipcode: '',
-    username: '',
+    userName: '',
     password: '',
   },
 ) {
