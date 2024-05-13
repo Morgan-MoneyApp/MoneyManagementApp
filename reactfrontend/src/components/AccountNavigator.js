@@ -15,19 +15,19 @@ function AccountNavigator() {
       icon: <FontAwesomeIcon icon={faMoneyBillWave} />,
       path: '/checking',
       label: 'Checking Account',
-      balance: 1500,
+      balance: '$' + 1500,
     },
     savings: {
       icon: <FontAwesomeIcon icon={faPiggyBank} />,
       path: '/saving',
       label: 'Savings Account',
-      balance: 3000,
+      balance: '$' + 3000,
     },
     market: {
       icon: <FontAwesomeIcon icon={faLandmark} />,
       path: '/moneymarket',
       label: 'Money Market Account',
-      balance: 5000,
+      balance: '$' + 5000,
     },
   });
   useEffect(() => {
@@ -38,19 +38,19 @@ function AccountNavigator() {
             icon: <FontAwesomeIcon icon={faMoneyBillWave} />,
             path: '/checking',
             label: 'Checking Account',
-            balance: res[0].balance,
+            balance: '$' + res[1].balance,
           },
           savings: {
             icon: <FontAwesomeIcon icon={faPiggyBank} />,
             path: '/saving',
             label: 'Savings Account',
-            balance: res[1].balance,
+            balance: '$' + res[2].balance,
           },
           market: {
             icon: <FontAwesomeIcon icon={faLandmark} />,
             path: '/moneymarket',
             label: 'Money Market Account',
-            balance: res[2].balance,
+            balance: '$' + res[0].balance,
           },
         });
       }
