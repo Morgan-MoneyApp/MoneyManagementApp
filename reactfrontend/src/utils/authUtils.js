@@ -48,7 +48,6 @@ export const login =
   };
 
 export function login2(input = { username: '', password: '' }, rememberMe) {
-  let result = false;
   if (input.username !== '' && input.password !== '') {
     axios
       .post(API_AUTH, { username: input.username, password: input.password, rememberMe: rememberMe })
@@ -59,7 +58,6 @@ export function login2(input = { username: '', password: '' }, rememberMe) {
         } else {
           sessionStorage.setItem('id_token', response['id_token']);
         }
-        result = true;
       })
       .catch(reason => {
         let resp = reason.response;
@@ -68,10 +66,9 @@ export function login2(input = { username: '', password: '' }, rememberMe) {
         } else if (resp.status === 401) {
           alert(resp.data.detail);
         }
-        result = false;
       });
   }
-  return result;
+  return localStorage.getItem('id_token') || sessionStorage.getItem('id_token');
 }
 
 export function register(
@@ -99,7 +96,7 @@ export function register(
     input.city &&
     input.state &&
     input.zipcode &&
-    input.username &&
+    input.userName &&
     input.password
   ) {
     axios
@@ -107,7 +104,7 @@ export function register(
         firstName: input.firstName,
         lastName: input.lastName,
         password: input.password,
-        login: input.username,
+        login: input.userName,
         email: input.email,
         dateOfBirth: input.dob,
         address: {
