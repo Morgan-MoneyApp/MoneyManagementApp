@@ -9,7 +9,7 @@ const Chatbox = () => {
   // Predefined answers
   const answers = {
     'Where can I find the routing number?': 'Our rounting number is #123456789.',
-    'How can I contact Morgan Bank?': 'You can contact our support team at support@MorganBank.com or call us at 123-456-7890.',
+    'How can I contact Morgan Bank?': 'You can contact our support team at support@MorganBank.com or call us at 123-867-5309.',
     'Is there a minimum balance required?': 'No, there is no minimum balance required for our checking accounts or savings accounts.',
     'What are the bank fees?': 'No, there is no fees to utilize or services.',
   };
@@ -24,6 +24,9 @@ const Chatbox = () => {
 
   const toggleChat = () => {
     setIsExited(!isExited);
+  };
+  const toggleMinimize = () => {
+    setIsOpen(!isOpen); //Defining toggle capability
   };
 
   const handleQuestionClick = question => {
@@ -43,9 +46,14 @@ const Chatbox = () => {
         <div className="chatbox">
           <div className="chatbox-header">
             <h2>FAQ's</h2>
-            <button className="exit-button" onClick={toggleChat}>
-              X
-            </button>
+            <div>
+              <button className="minimize-button" onClick={toggleMinimize}>
+                Minimize
+              </button>
+              <button className="exit-button" onClick={toggleChat}>
+                X
+              </button>
+            </div>
           </div>
           <div className="chatbox-messages">
             {messages.map(msg => (
