@@ -70,4 +70,10 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet id="20240513172100-2-dropdata" author="jake">
+        <delete tableName="transaction">
+            <where>id&lt;1000</where>
+        </delete>
+    </changeSet>
 </databaseChangeLog>
