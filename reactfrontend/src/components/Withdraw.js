@@ -43,13 +43,13 @@ function Withdraw({ onClose }) {
     console.log(`Withdraw from ${accountType} amount ${amount}`);
     if (accountType === 'checking') {
       let account = accounts.checking;
-      makeTransaction('deposit', { source: null, destination: account, amount: amount }).then(res => console.log(res));
+      makeTransaction('withdrawal', { source: account, destination: null, amount: amount }).then(res => console.log(res));
     } else if (accountType === 'savings') {
       let account = accounts.savings;
-      makeTransaction('deposit', { source: null, destination: account, amount: amount }).then(res => console.log(res));
+      makeTransaction('withdrawal', { source: account, destination: null, amount: amount }).then(res => console.log(res));
     } else if (accountType === 'moneyMarket') {
       let account = accounts.moneyMarket;
-      makeTransaction('deposit', { source: null, destination: account, amount: amount }).then(res => console.log(res));
+      makeTransaction('withdrawal', { source: account, destination: null, amount: amount }).then(res => console.log(res));
     } else {
       console.error('Unexpected error');
     }
