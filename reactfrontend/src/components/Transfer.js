@@ -42,17 +42,28 @@ function Transfer({ onClose }) {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(`Transfer from ${fromAccount} to ${toAccount} amount ${amount}`);
-    if (accountType === 'checking') {
-      let account = accounts.checking;
-      makeTransaction('deposit', { source: null, destination: account, amount: amount }).then(res => console.log(res));
-    } else if (accountType === 'savings') {
-      let account = accounts.savings;
-      makeTransaction('deposit', { source: null, destination: account, amount: amount }).then(res => console.log(res));
-    } else if (accountType === 'moneyMarket') {
-      let account = accounts.moneyMarket;
-      makeTransaction('deposit', { source: null, destination: account, amount: amount }).then(res => console.log(res));
+    let fromAcc, toAcc;
+    if (fromAccount === 'checking') {
+      fromAcc = accounts.checking;
+    } else if (fromAccount === 'savings') {
+      fromAcc = accounts.savings;
+    } else if (fromAccount === 'moneyMarket') {
+      fromAcc = accounts.moneyMarket;
     } else {
-      console.error('Unexpected error');
+      console.error('Invalid source account');
+      return;
+    }
+    if (toAccount === 'checking') {
+      toAcc = accounts.checking;
+      makeTransaction('transfer', { source: fromAcc, destination: toAcc, amount: amount }).then(res => console.log(res));
+    } else if (toAccount === 'savings') {
+      toAcc = accounts.savings;
+      makeTransaction('transfer', { source: fromAcc, destination: toAcc, amount: amount }).then(res => console.log(res));
+    } else if (toAccount === 'moneyMarket') {
+      toAcc = accounts.moneyMarket;
+      makeTransaction('transfer', { source: fromAcc, destination: toAcc, amount: amount }).then(res => console.log(res));
+    } else {
+      console.error('Invalid destination account');
     }
     onClose(); // Close the modal after submitting
   };
@@ -77,9 +88,9 @@ function Transfer({ onClose }) {
             To:
             <select value={toAccount} onChange={e => setToAccount(e.target.value)}>
               <option value="">Select Account</option>
-              <option value="checking">Checking (${accountBalances.checking.toLocaleString()})</option>
-              <option value="savings">Savings (${accountBalances.savings.toLocaleString()})</option>
-              <option value="moneyMarket">Money Market (${accountBalances.moneyMarket.toLocaleString()})</option>
+              <option value="checking">Checking (${balances.checking.toLocaleString()})</option>
+              <option value="savings">Savings (${balances.savings.toLocaleString()})</option>
+              <option value="moneyMarket">Money Market (${balances.moneyMarket.toLocaleString()})</option>
             </select>
           </label>
           <label>

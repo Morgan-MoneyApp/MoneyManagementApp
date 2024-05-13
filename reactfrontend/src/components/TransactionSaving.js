@@ -32,6 +32,7 @@ function TransactionSaving() {
 
   const handleCloseModal = () => {
     setActiveModal('');
+    window.location.reload();
   };
 
   return (
