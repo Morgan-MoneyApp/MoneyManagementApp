@@ -4,11 +4,12 @@
   right: 20px;
   font-family: Arial, sans-serif;
   transition: transform 0.3s ease-in-out;
+  z-index: 1000; /* Set a high z-index value to ensure it appears in front of nav bar*/
 }
 
 .chat-container.hidden {
-  transform: scale(0);
-  opacity: 0;
+  height: 40px;
+  opacity: 40;
   transition:
     transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
@@ -35,7 +36,7 @@
 }
 
 .chatbox-header {
-  background-color: #6acab2a9;
+  background-color: #89b4d0;
   color: white;
   padding: 10px;
   display: flex;
@@ -60,24 +61,30 @@
 
 .message.bot {
   background-color: #2a76a578;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .chatbox-options {
   padding: 10px;
-  border-top: 1px solid #747474dd;
+  border-top: 1px solid #2a76a5;
   display: flex;
   flex-direction: column;
 }
 
 .faq-button {
-  background-color: #6acab2a9;
+  background-color: #89b4d0;
   color: rgb(255, 255, 255);
   font-size: 15px;
 }
 
 .exit-button {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: fit-content;
-  font-size: 25px;
+  font-size: 15px;
+  background-color: rgba(101, 98, 98, 0.389);
+}
+.minimize-button {
   background-color: rgba(101, 98, 98, 0.389);
 }
