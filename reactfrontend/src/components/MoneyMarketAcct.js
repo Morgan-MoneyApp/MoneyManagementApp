@@ -32,6 +32,7 @@ function MoneyMarketAcct() {
 
   const handleCloseModal = () => {
     setActiveModal('');
+    window.location.reload();
   };
 
   return (

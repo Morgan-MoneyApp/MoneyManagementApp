@@ -32,6 +32,7 @@ function TransactionChecking() {
 
   const handleCloseModal = () => {
     setActiveModal('');
+    window.location.reload();
   };
 
   return (
