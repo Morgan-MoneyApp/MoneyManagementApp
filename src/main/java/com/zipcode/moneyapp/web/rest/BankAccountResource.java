@@ -300,7 +300,7 @@ public class BankAccountResource {
 
         transaction.source(source).destination(dest);
 
-        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
 
         transactionRepository.save(transaction);
         // If the transaction source is the account in the Optional<>
@@ -345,6 +345,13 @@ public class BankAccountResource {
 
         // Sort by transaction date
         transactions.sort(Comparator.comparing(Transaction::getTransactionDate).reversed());
+
+        //For any transactions without a description, retroactively generate a description
+        transactions.forEach(t -> {
+            if (t.getDescription() == null || t.getDescription().isEmpty()) {
+                t.generateDescription();
+            }
+        });
 
         // Check if the list is in reverse chronological order
         System.out.println(transactions);
