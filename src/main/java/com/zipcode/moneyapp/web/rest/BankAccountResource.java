@@ -13,9 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Date;
 import java.time.Instant;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -302,7 +300,7 @@ public class BankAccountResource {
 
         transaction.source(source).destination(dest);
 
-        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime()));
+        transaction.transactionDate(new java.sql.Date(Date.from(Instant.now()).getTime())).generateDescription();
 
         transactionRepository.save(transaction);
         // If the transaction source is the account in the Optional<>
@@ -322,5 +320,43 @@ public class BankAccountResource {
             // Else, an unknown error occurred, return a 418 error
             return new ResponseEntity<>("Unknown request error!", HttpStatus.I_AM_A_TEAPOT);
         }
+    }
+
+    @GetMapping("/{id}/transaction-log")
+    public ResponseEntity<List<Transaction>> getTransactionLog(@PathVariable("id") Long id) {
+        // Create list of transactions
+        List<Transaction> transactions = new ArrayList<>();
+
+        // Get bank account by ID
+        Optional<BankAccount> bankAccountOptional = bankAccountRepository.findById(id);
+
+        // If no bank account
+        if (bankAccountOptional.isEmpty()) {
+            // 404
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        // Else, get the bank account from the Optional<>
+        BankAccount bankAccount = bankAccountOptional.get();
+
+        // Add all the transactions, in and out, to the list
+        transactions.addAll(bankAccount.getTransactionsIns());
+        transactions.addAll(bankAccount.getTransactionsOuts());
+
+        // Sort by transaction date
+        transactions.sort(Comparator.comparing(Transaction::getTransactionDate).reversed());
+
+        //For any transactions without a description, retroactively generate a description
+        transactions.forEach(t -> {
+            if (t.getDescription() == null || t.getDescription().isEmpty()) {
+                t.generateDescription();
+            }
+        });
+
+        // Check if the list is in reverse chronological order
+        System.out.println(transactions);
+
+        // Return the list with an HTTP OK status
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 }

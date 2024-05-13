@@ -37,17 +37,17 @@ function Accounts() {
         setAccountList({
           checking: {
             icon: <FontAwesomeIcon icon={faWallet} />,
-            balance: formatCurrency(res[0].balance),
+            balance: formatCurrency(res[1].balance),
             onClick: () => navigate('/checking'),
           },
           savings: {
             icon: <FontAwesomeIcon icon={faPiggyBank} />,
-            balance: formatCurrency(res[1].balance),
+            balance: formatCurrency(res[2].balance),
             onClick: () => navigate('/saving'),
           },
           market: {
             icon: <FontAwesomeIcon icon={faLandmark} />,
-            balance: formatCurrency(res[2].balance),
+            balance: formatCurrency(res[0].balance),
             onClick: () => navigate('/moneymarket'),
           },
         });
