@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { serializeAxiosError } from '../utils/errorUtils';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { serializeAxiosError } from '../utils/errorUtils';
 
-const AUTH_TOKEN_KEY = 'jhi-authenticationToken';
+// const AUTH_TOKEN_KEY = 'jhi-authenticationToken';
 
 const API_URL = 'http://localhost:8080';
 
@@ -10,42 +10,42 @@ const API_AUTH = API_URL + '/api/authenticate';
 
 const API_REG = API_URL + '/api/register';
 
-export const getSession = () => (dispatch, getState) => {
-  dispatch(getAccount());
-};
-
-export const getAccount = createAsyncThunk('authentication/get_account', async () => axios.get(API_URL + '/api/account'), {
-  serializeError: serializeAxiosError,
-});
-
-export const authenticate = createAsyncThunk('authentication/login', async auth => axios.post(API_URL + '/api/authenticate', auth), {
-  serializeError: serializeAxiosError,
-});
-
-export const login =
-  (username, password, rememberMe = false) =>
-  async dispatch => {
-    const result = await dispatch(authenticate({ username, password, rememberMe }));
-    const response = result.payload;
-    const bearerToken = response?.headers?.authorization;
-    if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
-      const jwt = bearerToken.slice(7, bearerToken.length);
-      if (rememberMe) {
-        Storage.local.set(AUTH_TOKEN_KEY, jwt);
-      } else {
-        Storage.session.set(AUTH_TOKEN_KEY, jwt);
-      }
-    } else if (bearerToken) {
-      if (rememberMe) {
-        localStorage.setItem(AUTH_TOKEN_KEY, bearerToken);
-        // Storage.local.set(AUTH_TOKEN_KEY, bearerToken);
-      } else {
-        sessionStorage.setItem(AUTH_TOKEN_KEY, bearerToken);
-        // Storage.session.set(AUTH_TOKEN_KEY, bearerToken);
-      }
-    }
-    dispatch(getSession());
-  };
+// export const getSession = () => (dispatch, getState) => {
+//   dispatch(getAccount());
+// };
+//
+// export const getAccount = createAsyncThunk('authentication/get_account', async () => axios.get(API_URL + '/api/account'), {
+//   serializeError: serializeAxiosError,
+// });
+//
+// export const authenticate = createAsyncThunk('authentication/login', async auth => axios.post(API_URL + '/api/authenticate', auth), {
+//   serializeError: serializeAxiosError,
+// });
+//
+// export const login =
+//   (username, password, rememberMe = false) =>
+//   async dispatch => {
+//     const result = await dispatch(authenticate({ username, password, rememberMe }));
+//     const response = result.payload;
+//     const bearerToken = response?.headers?.authorization;
+//     if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
+//       const jwt = bearerToken.slice(7, bearerToken.length);
+//       if (rememberMe) {
+//         Storage.local.set(AUTH_TOKEN_KEY, jwt);
+//       } else {
+//         Storage.session.set(AUTH_TOKEN_KEY, jwt);
+//       }
+//     } else if (bearerToken) {
+//       if (rememberMe) {
+//         localStorage.setItem(AUTH_TOKEN_KEY, bearerToken);
+//         // Storage.local.set(AUTH_TOKEN_KEY, bearerToken);
+//       } else {
+//         sessionStorage.setItem(AUTH_TOKEN_KEY, bearerToken);
+//         // Storage.session.set(AUTH_TOKEN_KEY, bearerToken);
+//       }
+//     }
+//     dispatch(getSession());
+//   };
 
 export function login2(input = { username: '', password: '' }, rememberMe) {
   if (input.username !== '' && input.password !== '') {
