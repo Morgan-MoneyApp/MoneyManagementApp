@@ -29,8 +29,13 @@
   border-radius: 5px;
 }
 
+.input-field::placeholder {
+  font-size: 1.75em; /* Adjust the size as needed */
+  color: #8b8585; /* Optional: you can also change the color */
+}
+
 .cs-button-solid {
-  font-size: 10px;
+  font-size: 1.5rem !important; /* Adjust the size as needed */
   line-height: clamp(2.875rem, 5.5vw, 3.5rem);
   text-decoration: none;
   font-weight: 700;
@@ -71,4 +76,12 @@
 .cs-button-solid:hover {
   background-color: var(--primaryLight);
   transform: scale(1.05);
+}
+.input-field[type='date'] {
+  font-size: 1.4rem; /* Adjust the size as needed */
+  color: #8b8585;
+}
+.h2 {
+  color: #2a76a5;
+  font-size: 1.74rem;
 }

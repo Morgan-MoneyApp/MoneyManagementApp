@@ -1,8 +1,8 @@
 {
-  "name": "moneyapp",
-  "version": "0.0.1-SNAPSHOT",
+  "name": "morgan-bank",
+  "version": "1.0.0",
   "private": true,
-  "description": "Description for Moneyapp",
+  "description": "Description for Morgan Bank",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",

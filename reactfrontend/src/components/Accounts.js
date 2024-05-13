@@ -6,20 +6,27 @@ import '../styles/accounts.css'; // Make sure this includes .cs-button-solid or 
 import { getAccounts } from '../utils/accUtils';
 
 function Accounts() {
+  const navigate = useNavigate();
+
+  // Helper function to format numbers as currency
+  const formatCurrency = value => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+  };
+
   const [accountList, setAccountList] = useState({
     checking: {
       icon: <FontAwesomeIcon icon={faWallet} />,
-      balance: 1500,
+      balance: formatCurrency(1500),
       onClick: () => navigate('/checking'),
     },
     savings: {
       icon: <FontAwesomeIcon icon={faPiggyBank} />,
-      balance: 3000,
+      balance: formatCurrency(3000),
       onClick: () => navigate('/saving'),
     },
     market: {
       icon: <FontAwesomeIcon icon={faLandmark} />,
-      balance: 5000,
+      balance: formatCurrency(5000),
       onClick: () => navigate('/moneymarket'),
     },
   });
@@ -30,43 +37,23 @@ function Accounts() {
         setAccountList({
           checking: {
             icon: <FontAwesomeIcon icon={faWallet} />,
-            balance: res[0].balance,
+            balance: formatCurrency(res[1].balance),
             onClick: () => navigate('/checking'),
           },
           savings: {
             icon: <FontAwesomeIcon icon={faPiggyBank} />,
-            balance: res[1].balance,
+            balance: formatCurrency(res[2].balance),
             onClick: () => navigate('/saving'),
           },
           market: {
             icon: <FontAwesomeIcon icon={faLandmark} />,
-            balance: res[2].balance,
+            balance: formatCurrency(res[0].balance),
             onClick: () => navigate('/moneymarket'),
           },
         });
       }
     });
   }, []);
-
-  const navigate = useNavigate();
-
-  // const accounts = {
-  //   checking: {
-  //     icon: <FontAwesomeIcon icon={faWallet} />,
-  //     balance: 1500,
-  //     onClick: () => navigate('/checking'),
-  //   },
-  //   savings: {
-  //     icon: <FontAwesomeIcon icon={faPiggyBank} />,
-  //     balance: 3000,
-  //     onClick: () => navigate('/saving'),
-  //   },
-  //   market: {
-  //     icon: <FontAwesomeIcon icon={faLandmark} />,
-  //     balance: 5000,
-  //     onClick: () => navigate('/moneymarket'),
-  //   },
-  // };
 
   return (
     <div className="outer-div">
@@ -82,7 +69,7 @@ function Accounts() {
           <div key={key} className="account-card">
             {icon}
             <h2>{key.charAt(0).toUpperCase() + key.slice(1)} Account</h2>
-            <p>Balance: ${balance}</p>
+            <p>Balance: {balance}</p>
             <button className="cs-button-solid" onClick={onClick}>
               View Transactions
             </button>

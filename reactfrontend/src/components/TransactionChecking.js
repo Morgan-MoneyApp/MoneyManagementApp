@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
-import '../styles/transactionchecking.css';
+import React, { useState, useEffect } from 'react';
+import '../styles/transactiontable.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
 import Transfer from './Transfer.js';
+import { getTransactions } from '../utils/accUtils';
+import { getAccounts } from '../utils/accUtils';
 
 function TransactionChecking() {
   const [activeModal, setActiveModal] = useState('');
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    // Fetch transaction history when component mounts
+    const fetchTransactions = async () => {
+      try {
+        const account = await getAccounts();
+        const idToken = account[1].id;
+        const transactionsData = await getTransactions(idToken);
+        setTransactions(transactionsData);
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
 
   const handleOpenModal = modalType => {
     setActiveModal(modalType);
@@ -13,6 +32,7 @@ function TransactionChecking() {
 
   const handleCloseModal = () => {
     setActiveModal('');
+    window.location.reload();
   };
 
   return (
@@ -35,11 +55,13 @@ function TransactionChecking() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>5/12/2024</td>
-              <td>Checking Account Transaction</td>
-              <td>$80.00</td>
-            </tr>
+            {transactions.map((transaction, index) => (
+              <tr key={index}>
+                <td>{transaction.transactionDate}</td>
+                <td>{transaction.description}</td>
+                <td>{transaction.transactionValue}</td>
+              </tr>
+            ))}
             {/* More rows */}
           </tbody>
         </table>

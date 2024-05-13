@@ -145,7 +145,7 @@ public class TransactionResource {
                 }
 
                 if (transaction.getTransactionDate() != null) {
-                    existingTransaction.setTransactionDate(Date.valueOf("" + transaction.getTransactionDate()));
+                    existingTransaction.setTransactionDate(new Date(transaction.getTransactionDate().getTime()));
                 }
 
                 return existingTransaction;

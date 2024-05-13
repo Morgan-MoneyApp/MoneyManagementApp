@@ -81,7 +81,7 @@
     color: #fff;
   }
   #hero-1618 .cs-button-solid {
-    font-size: 1rem;
+    font-size: 1.5rem;
     /* 46px - 56px */
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
     text-decoration: none;
@@ -156,7 +156,7 @@
   }
   #hero-1618 .cs-item-text {
     /* 14px - 16px */
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-size: clamp(0.875rem);
     line-height: 1.5em;
     max-width: 28.125rem;
     margin: 0;

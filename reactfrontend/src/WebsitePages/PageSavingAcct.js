@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import TransactionSaving from '../components/TransactionSaving';
 import AccountBalances from '../components/AccountBalances';
 import AccountNavigator from '../components/AccountNavigator';
+import SavingsTracker from '../components/SavingTracker';
 
 const PageSavingAcct = () => {
   return (
@@ -11,9 +12,10 @@ const PageSavingAcct = () => {
       <Navbar />
       <div className="content-expand">
         <AccountNavigator />
+        {/* <SavingsTracker /> */}
         <TransactionSaving />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
