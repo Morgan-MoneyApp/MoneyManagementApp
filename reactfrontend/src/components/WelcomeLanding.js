@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/welcomelanding.css';
 import Grouplaptop from '../images/grouplaptop1.png';
-import PiggyIcon from '../../../piggyicon.png';
+import PiggyIcon from '../images/piggyicon.png';
 import Checking from '../images/checking.png';
 import Market from '../images/market.png';
 
