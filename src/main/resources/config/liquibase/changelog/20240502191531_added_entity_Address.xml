@@ -62,4 +62,10 @@
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
+
+    <changeSet id="20240513171800-1-dropdata" author="jake">
+        <delete tableName="address">
+            <where>id&lt;1000</where>
+        </delete>
+    </changeSet>
 </databaseChangeLog>

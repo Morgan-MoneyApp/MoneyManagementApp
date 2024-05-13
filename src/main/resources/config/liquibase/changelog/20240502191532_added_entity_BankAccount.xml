@@ -60,4 +60,10 @@
     <changeSet id="20240509134800" author="Matt/Jake">
         <addDefaultValue tableName="bank_account" columnName="routing_number" defaultValue="123456789"/>
     </changeSet>
+
+    <changeSet id="20240513172100-1-dropdata" author="jake">
+        <delete tableName="bank_account">
+            <where>id&lt;1000</where>
+        </delete>
+    </changeSet>
 </databaseChangeLog>
