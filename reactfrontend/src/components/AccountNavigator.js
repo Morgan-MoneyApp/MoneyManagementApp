@@ -38,19 +38,19 @@ function AccountNavigator() {
             icon: <FontAwesomeIcon icon={faMoneyBillWave} />,
             path: '/checking',
             label: 'Checking Account',
-            balance: res[0].balance,
+            balance: `$${res[0].balance.toLocaleString()}`,
           },
           savings: {
             icon: <FontAwesomeIcon icon={faPiggyBank} />,
             path: '/saving',
             label: 'Savings Account',
-            balance: res[1].balance,
+            balance: `$${res[1].balance.toLocaleString()}`,
           },
           market: {
             icon: <FontAwesomeIcon icon={faLandmark} />,
             path: '/moneymarket',
             label: 'Money Market Account',
-            balance: res[2].balance,
+            balance: `$${res[2].balance.toLocaleString()}`,
           },
         });
       }

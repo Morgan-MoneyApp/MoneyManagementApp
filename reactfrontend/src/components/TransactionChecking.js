@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/transactionchecking.css';
+import '../styles/transactiontable.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
 import Transfer from './Transfer.js';

@@ -15,15 +15,6 @@
     opacity 0.3s ease-in-out;
 }
 
-.chat-icon {
-  color: white;
-  padding: 0px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  display: block;
-}
-
 .chatbox {
   width: 300px;
   background-color: white;
@@ -87,4 +78,36 @@
 }
 .minimize-button {
   background-color: rgba(101, 98, 98, 0.389);
+}
+
+.chat-container.chat-exited .chat-icon {
+  display: none;
+}
+
+.chat-container.hidden {
+  transform: translateY(100%);
+  opacity: 0.5;
+}
+
+.chat-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #89b4d0;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.chat-icon img {
+  width: 100%;
+  height: auto;
 }

@@ -11,7 +11,7 @@ const PageMoneyMarketAcct = () => {
       <Navbar />
       <AccountNavigator />
       <MoneyMarketAcct />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
