@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBillWave, faPiggyBank, faLandmark } from '@fortawesome/free-solid-svg-icons';
 import { getAccounts } from '../utils/accUtils';
-
 import '../styles/accountnavigator.css';
 
 function AccountNavigator() {
@@ -38,19 +37,19 @@ function AccountNavigator() {
             icon: <FontAwesomeIcon icon={faMoneyBillWave} />,
             path: '/checking',
             label: 'Checking Account',
-            balance: '$' + res[1].balance,
+            balance: `$${res[1].balance.toLocaleString()}`,
           },
           savings: {
             icon: <FontAwesomeIcon icon={faPiggyBank} />,
             path: '/saving',
             label: 'Savings Account',
-            balance: '$' + res[2].balance,
+            balance: `$${res[2].balance.toLocaleString()}`,
           },
           market: {
             icon: <FontAwesomeIcon icon={faLandmark} />,
             path: '/moneymarket',
             label: 'Money Market Account',
-            balance: '$' + res[0].balance,
+            balance: `$${res[0].balance.toLocaleString()}`,
           },
         });
       }
