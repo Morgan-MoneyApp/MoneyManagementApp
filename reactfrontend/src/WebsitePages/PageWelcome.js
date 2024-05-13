@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import WelcomeNavbar from '../components/WelcomeNavbar';
 import '../styles/pagewelcome.css';
 import PictureCollage from '../components/PictureCollage';
+import ChatBox from '../components/ChatBox';
 
 const PageWelcome = () => {
   const loginRef = useRef(null);
@@ -15,6 +16,7 @@ const PageWelcome = () => {
       <WelcomeLanding scrollToLogin={() => loginRef.current?.scrollIntoView({ behavior: 'smooth' })} />
       <div className="main-container">
         <PictureCollage />
+        <ChatBox />
         <WelcomeLoginRegister loginRef={loginRef} />
       </div>
       {/* <Footer /> */}
