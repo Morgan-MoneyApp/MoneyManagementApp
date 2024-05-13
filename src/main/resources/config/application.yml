@@ -190,9 +190,9 @@ jhipster:
   api-docs:
     default-include-pattern: /api/**
     management-include-pattern: /management/**
-    title: Moneyapp API
-    description: Moneyapp API documentation
-    version: 0.0.1
+    title: Morgan Bank API
+    description: Morgan Bank API documentation
+    version: 1.0.0
     terms-of-service-url:
     contact-name:
     contact-url:
