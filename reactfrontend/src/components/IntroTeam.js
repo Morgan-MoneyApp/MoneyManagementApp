@@ -1,13 +1,13 @@
 import React from 'react';
-import '../styles/team.css';
+import '../styles/IntroTeam.css';
 
-const Intro = () => {
+const IntroTeam = () => {
   return (
-    <div>
-      <h1>Get to know your team better! We are here for you!</h1>
+    <div className="container2">
+      <h1>Get to know the team better. We are here for you!</h1>
       <p> </p>
     </div>
   );
 };
 
-export default Intro;
+export default IntroTeam;

@@ -7,7 +7,7 @@ import IntroTeam from './components/IntroTeam';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <IntroTeam />
+    <App />
+    {/* <IntroTeam /> */}
   </React.StrictMode>,
 );
