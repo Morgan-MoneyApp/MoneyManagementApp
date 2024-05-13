@@ -10,7 +10,7 @@ const PageMeetTheTeam = () => {
       <Navbar />
       <IntroTeam />
       <Team />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
