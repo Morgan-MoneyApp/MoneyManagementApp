@@ -91,7 +91,7 @@ const WelcomeLoginRegister = ({ loginRef }) => {
               <input
                 className="input-field"
                 type="text"
-                name="firstNamepassword"
+                name="password"
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}

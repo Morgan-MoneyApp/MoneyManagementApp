@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWallet, faPiggyBank, faLandmark } from '@fortawesome/free-solid-svg-icons';
 import '../styles/accounts.css'; // Make sure this includes .cs-button-solid or import the specific CSS file
+import { getAccounts } from '../utils/accUtils';
 
 function Accounts() {
+  getAccounts();
   const navigate = useNavigate();
 
   const accounts = {
