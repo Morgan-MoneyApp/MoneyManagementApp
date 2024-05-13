@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zipcode.moneyapp</groupId>
-    <artifactId>moneyapp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>morganbank</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Moneyapp</name>
-    <description>Description for Moneyapp</description>
+    <name>Morgan Bank</name>
+    <description>Description for Morgan Bank</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
