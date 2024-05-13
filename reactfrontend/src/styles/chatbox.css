@@ -27,7 +27,7 @@
 }
 
 .chatbox-header {
-  background-color: #89b4d0;
+  background-color: #0d6484;
   color: white;
   padding: 10px;
   display: flex;
@@ -63,7 +63,7 @@
 }
 
 .faq-button {
-  background-color: #89b4d0;
+  background-color: #0d6484;
   color: rgb(255, 255, 255);
   font-size: 15px;
 }
@@ -77,7 +77,7 @@
   background-color: rgba(101, 98, 98, 0.389);
 }
 .minimize-button {
-  background-color: rgba(101, 98, 98, 0.389);
+  background-color: rgba(54, 46, 46, 0.754);
 }
 
 .chat-container.chat-exited .chat-icon {
@@ -92,7 +92,7 @@
 .chat-icon {
   width: 40px;
   height: 40px;
-  background-color: #89b4d0;
+  background-color: #0d6484;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   cursor: pointer;
   position: fixed;

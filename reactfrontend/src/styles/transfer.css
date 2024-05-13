@@ -38,12 +38,13 @@ form {
 }
 
 label {
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
 }
 
 select,
 input[type='number'] {
+  font-size: 1.25rem;
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -58,18 +59,4 @@ input[type='number']:hover,
 select:focus,
 input[type='number']:focus {
   border-color: #555; /* Darker border on hover/focus */
-}
-
-button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
