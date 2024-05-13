@@ -269,8 +269,17 @@ public class BankAccountResource {
         //        Optional<BankAccount> ob = bankAccountRepository.findById(id);
         //        Optional<BankAccount> src = bankAccountRepository.findById(transaction.getSource().getId());
         //        Optional<BankAccount> dst = bankAccountRepository.findById(transaction.getDestination().getId());
-        Long sID = transaction.getSource().getId();
-        Long dID = transaction.getDestination().getId();
+        Long sID, dID;
+        try {
+            sID = transaction.getSource().getId();
+        } catch (NullPointerException npx) {
+            sID = null;
+        }
+        try {
+            dID = transaction.getDestination().getId();
+        } catch (NullPointerException npx) {
+            dID = null;
+        }
         BankAccount source = null, dest = null;
 
         //            source = bankAccountRepository.findById(sID).orElse(null);
