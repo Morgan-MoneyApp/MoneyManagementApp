@@ -24,7 +24,9 @@ export async function getAccounts() {
 export async function getTransactions(id) {
   let result;
   result = await axios
-    .get(API_ACC + '/' + id + '/transaction-log', { headers: { Authorization: 'Bearer ' + localStorage.getItem('id_token') } })
+    .get(API_ACC + '/' + id + '/transaction-log', {
+      headers: { Authorization: 'Bearer ' + localStorage.getItem('id_token') },
+    })
     .then(res => res.data)
     .then(res => {
       console.log(res);
