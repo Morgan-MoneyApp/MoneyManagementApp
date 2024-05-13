@@ -50,9 +50,6 @@ const Chatbox = () => {
               <button className="minimize-button" onClick={toggleMinimize}>
                 Minimize
               </button>
-              <button className="exit-button" onClick={toggleChat}>
-                X
-              </button>
             </div>
           </div>
           <div className="chatbox-messages">

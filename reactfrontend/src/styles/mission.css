@@ -1,0 +1,61 @@
+/*-- -------------------------- -->
+<---           Quote            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #quote-561 {
+    padding: var(--sectionPadding);
+    background-color: #f7f7f7;
+  }
+  #quote-561 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #quote-561 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: flex-start;
+    /* 16px - 20px */
+    gap: clamp(1rem, 2vw, 1.25rem);
+  }
+
+  #quote-561 .cs-topper:before {
+    /* yellow line */
+    content: '';
+    width: 3.125rem;
+    height: 2px;
+    background: var(--secondary);
+    opacity: 1;
+    display: block;
+  }
+  #quote-561 .cs-quote {
+    /* 31px - 49px */
+    font-size: clamp(1.9375rem, 5.1vw, 3.0625rem);
+    line-height: 1.2em;
+    font-weight: 900;
+    margin: 0;
+    color: var(--headerColor);
+  }
+  #quote-561 .cs-name {
+    /* 16px - 20px */
+    font-size: clamp(1rem, 1.7vw, 1.25rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--secondary);
+    display: block;
+    letter-spacing: 0.01em;
+  }
+}

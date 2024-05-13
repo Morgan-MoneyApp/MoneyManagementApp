@@ -10,7 +10,7 @@ const PageCheckingAcct = () => {
       <Navbar />
       <AccountNavigator />
       <TransactionChecking />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

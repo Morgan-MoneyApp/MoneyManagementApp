@@ -8,7 +8,7 @@ const PageGoalSaving = () => {
     <div>
       <Navbar />
       <SavingTracker />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

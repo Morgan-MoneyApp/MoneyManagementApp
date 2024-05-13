@@ -23,14 +23,14 @@ body {
 }
 
 .footer {
-  position: fixed; /* Fix the position */
+  position: relative; /* Fix the position */
   left: 0;
   bottom: 0;
   width: 100%;
   padding: 20px 0;
   background-color: #0d6484;
   color: white;
-  text-align: center;
+  text-align: left;
   z-index: 10; /* Make sure the footer is above other content */
 }
 
@@ -68,6 +68,7 @@ ul {
   text-transform: capitalize; /* Capitalize heading text */
   font-weight: 500; /* Font weight for heading */
   margin-bottom: 35px; /* Space below heading */
+  font-size: 1.25rem !important;
 }
 
 .footer-col h4::before {
@@ -88,10 +89,11 @@ ul {
   font-weight: 300; /* Font weight for links */
   display: block; /* Make links block to occupy full available width */
   transition: all 0.3s ease; /* Smooth transition for hover effects */
+  font-size: 1.25rem !important;
 }
 
 .footer-col ul li:not(:last-child) {
-  margin-bottom: 10px; /* Space between list items */
+  margin-bottom: 2px; /* Space between list items */
 }
 
 .footer-col ul li a:hover {

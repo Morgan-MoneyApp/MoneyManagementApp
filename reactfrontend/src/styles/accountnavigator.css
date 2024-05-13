@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Vertically centers items */
-  padding: 5px;
+  padding: 10px;
+  font-size: 2rem;
   background-color: #f4f4f4;
   overflow-x: auto; /* Allows horizontal scrolling if items overflow */
   flex-wrap: nowrap; /* Ensures no wrapping occurs */
@@ -25,7 +26,7 @@
 }
 
 .account-item span {
-  font-size: 14px;
+  font-size: 1.25rem;
   color: #333;
   text-align: center;
 }
