@@ -3,6 +3,8 @@ import '../styles/transactionchecking.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
 import Transfer from './Transfer.js';
+import { getTransactions } from '../utils/accUtils';
+
 function MoneyMarketAcct() {
   const [activeModal, setActiveModal] = useState('');
 
