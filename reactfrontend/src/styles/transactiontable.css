@@ -26,7 +26,8 @@
 }
 
 button {
-  font-size: 16px;
+  background-color: #0d6484 !important;
+  font-size: 20px;
   padding: 12px 20px;
   background-color: var(--primary); /* Primary color, replace var(--primary) with your actual color code */
   color: white; /* Text color for the buttons */
@@ -42,7 +43,8 @@ button {
 }
 
 button:hover {
-  background-color: var(--primaryLight); /* Lighter shade on hover, replace with your color */
+  font-weight: bold; /* Makes the button text bolder on hover */
+  background-color: #000 !important; /* Lighter shade on hover, replace with your color */
   transform: scale(1.05); /* Slightly enlarges button on hover for emphasis */
 }
 
