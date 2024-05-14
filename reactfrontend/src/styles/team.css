@@ -14,7 +14,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 48%; /* Adjusts to fit 2 per row with some space in between */
-  margin: 1%; /* Small margin for spacing */
+  margin: 1.09%; /* Small margin for spacing */
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -35,6 +35,7 @@
 .member-info {
   flex: 1;
   padding: 10px;
+  font-size: 1.5rem;
 }
 
 .member-info a {
@@ -51,4 +52,11 @@
 
 .member-info svg {
   margin-right: 8px; /* Space between icon and text */
+  font-size: 30px;
+}
+.member-info {
+  font-size: 25px;
+}
+p {
+  font-size: 30px;
 }
