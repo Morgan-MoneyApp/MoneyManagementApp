@@ -346,7 +346,7 @@ public class BankAccountResource {
         }
 
         // Else, get the bank account from the Optional<>
-        BankAccount bankAccount = bankAccountOptional.get();
+        BankAccount bankAccount = bankAccountOptional.orElseThrow();
 
         // Add all the transactions, in and out, to the list
         transactions.addAll(bankAccount.getTransactionsIns());
