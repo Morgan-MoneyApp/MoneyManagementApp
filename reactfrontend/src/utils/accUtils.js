@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:8309';
 
 const API_ACC = API_URL + '/api/bank-accounts';
 
