@@ -31,9 +31,12 @@ function Accounts() {
     },
   });
 
+  const [accountHolder, setAccountHolder] = useState('');
+
   useEffect(() => {
     getAccounts().then(res => {
       if (res) {
+        setAccountHolder(res[0].accountHolder.firstName);
         setAccountList({
           checking: {
             icon: <FontAwesomeIcon icon={faWallet} />,
@@ -58,7 +61,7 @@ function Accounts() {
   return (
     <div className="outer-div">
       <div className="content-div">
-        <p className="welcome">Welcome to your account dashboard!</p>
+        <p className="welcome">Welcome to your account dashboard, {accountHolder}!</p>
         <p>
           Here, you can manage all your banking needs in one convenient place. Simply select the account you wish to view, and click "View
           Transactions" to see all recent activity and manage your finances effectively.
