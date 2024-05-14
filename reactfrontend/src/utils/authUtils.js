@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // const AUTH_TOKEN_KEY = 'jhi-authenticationToken';
 
-const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:8309';
 
 const API_AUTH = API_URL + '/api/authenticate';
 

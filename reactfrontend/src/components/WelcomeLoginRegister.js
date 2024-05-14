@@ -49,9 +49,10 @@ const WelcomeLoginRegister = ({ loginRef }) => {
 
   const handleSignUp = e => {
     register(formData);
+    navigate('/');
     // console.log(formData);
     // alert('Account Created!');
-    navigate('/accounts');
+    // navigate('/accounts');
   };
 
   const toggleForm = () => {
