@@ -22,15 +22,16 @@ const PageWelcome = () => {
         <PictureCollage />
         <ChatBox />
         <WelcomeLoginRegister loginRef={loginRef} />
-        <div>
-          <PageMedia />
-        </div>
 
         {/* <Homereversese/>
         <News/>
         <Mission/> */}
       </div>
       {/* <Footer /> */}
+
+      <div className="cs-container">
+        <PageMedia />
+      </div>
     </div>
   );
 };

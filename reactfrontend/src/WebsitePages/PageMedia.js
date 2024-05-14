@@ -6,8 +6,8 @@ const PageMedia = () => {
   return (
     <div>
       <HomeReverseInfo />
-      <Mission />
       <News />
+      <Mission />
     </div>
   );
 };
