@@ -3,15 +3,13 @@ import '../styles/transactiontable.css';
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
 import Transfer from './Transfer.js';
-import { getTransactions } from '../utils/accUtils';
-import { getAccounts } from '../utils/accUtils';
+import { getTransactions, getAccounts } from '../utils/accUtils';
 
 function TransactionChecking() {
   const [activeModal, setActiveModal] = useState('');
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    // Fetch transaction history when component mounts
     const fetchTransactions = async () => {
       try {
         const account = await getAccounts();
@@ -32,7 +30,7 @@ function TransactionChecking() {
 
   const handleCloseModal = () => {
     setActiveModal('');
-    window.location.reload();
+    window.location.reload(); // Rethink for better state management
   };
 
   return (
@@ -59,10 +57,11 @@ function TransactionChecking() {
               <tr key={index}>
                 <td>{transaction.transactionDate}</td>
                 <td>{transaction.description}</td>
-                <td>{transaction.transactionValue}</td>
+                <td style={{ color: parseFloat(transaction.transactionValue) > 0 ? 'green' : 'red' }}>
+                  {transaction.transactionType === 'withdrawal' ? `-${transaction.transactionValue}` : transaction.transactionValue}
+                </td>
               </tr>
             ))}
-            {/* More rows */}
           </tbody>
         </table>
       </div>
