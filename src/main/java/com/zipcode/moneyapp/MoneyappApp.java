@@ -50,7 +50,14 @@ public class MoneyappApp {
                         "http://127.0.0.1:8309",
                         "http://127.0.0.1:8310",
                         "http://127.0.0.1:8311",
-                        "http://morganbank.zipcode.rocks"
+                        "http://morganbank.zipcode.rocks",
+                        "https://localhost:8309",
+                        "https://localhost:8310",
+                        "https://localhost:8311",
+                        "https://127.0.0.1:8309",
+                        "https://127.0.0.1:8310",
+                        "https://127.0.0.1:8311",
+                        "https://morganbank.zipcode.rocks"
                     );
             }
         };

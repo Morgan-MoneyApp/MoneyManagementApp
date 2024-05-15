@@ -967,7 +967,7 @@
                 <profile.test>testprod</profile.test>
                 <liquibase-plugin.hibernate-dialect>org.hibernate.dialect.MySQL8Dialect</liquibase-plugin.hibernate-dialect>
                 <liquibase-plugin.driver>com.mysql.cj.jdbc.Driver</liquibase-plugin.driver>
-                <liquibase-plugin.url>jdbc:mysql://localhost:3306/moneyapp</liquibase-plugin.url>
+                <liquibase-plugin.url>jdbc:mysql://localhost:8311/moneyapp</liquibase-plugin.url>
                 <liquibase-plugin.username>root</liquibase-plugin.username>
                 <liquibase-plugin.password/>
             </properties>
