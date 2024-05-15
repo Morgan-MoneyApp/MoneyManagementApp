@@ -8,10 +8,10 @@
   --bodyTextColor: #4e4b66;
   --bodyTextColorWhite: #fafbfc;
   /* 13px - 16px */
-  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+  --topperFontSize: 2.5rem;
   /* 31px - 49px */
-  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-  --bodyFontSize: 1rem;
+  --headerFontSize: 4.5rem;
+  --bodyFontSize: 2.5rem;
   /* 60px - 100px top and bottom */
   --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
   :root {
@@ -32,7 +32,7 @@
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 0.25rem;
-  display: block;
+  display: flex;
 }
 .cs-title {
   font-size: var(--headerFontSize);
@@ -42,7 +42,6 @@
   max-width: 43.75rem;
   margin: 0 0 1rem 0;
   color: var(--headerColor);
-  position: relative;
 }
 .cs-text {
   font-size: var(--bodyFontSize);

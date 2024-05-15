@@ -15,20 +15,21 @@ const PageWelcome = () => {
   const loginRef = useRef(null);
 
   return (
-    <div className="page-container">
-      <WelcomeNavbar />
-      <WelcomeLanding scrollToLogin={() => loginRef.current?.scrollIntoView({ behavior: 'smooth' })} />
-      <div className="main-container">
-        <PictureCollage />
-        <ChatBox />
-        <WelcomeLoginRegister loginRef={loginRef} />
+    <div>
+      <div className="page-container">
+        <WelcomeNavbar />
+        <WelcomeLanding scrollToLogin={() => loginRef.current?.scrollIntoView({ behavior: 'smooth' })} />
+        <div className="main-container">
+          <PictureCollage />
+          <ChatBox />
+          <WelcomeLoginRegister loginRef={loginRef} />
 
-        {/* <Homereversese/>
+          {/* <Homereversese/>
         <News/>
         <Mission/> */}
+        </div>
+        {/* <Footer /> */}
       </div>
-      {/* <Footer /> */}
-
       <div className="cs-container">
         <PageMedia />
       </div>
