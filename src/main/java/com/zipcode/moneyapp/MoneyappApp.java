@@ -23,6 +23,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
 
@@ -34,6 +36,25 @@ public class MoneyappApp {
 
     private final Environment env;
     private final BankAccountRepository bankAccountRepository;
+
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry
+                    .addMapping("/**")
+                    .allowedOrigins(
+                        "http://localhost:8309",
+                        "http://localhost:8310",
+                        "http://localhost:8311",
+                        "http://127.0.0.1:8309",
+                        "http://127.0.0.1:8310",
+                        "http://127.0.0.1:8311",
+                        "http://morganbank.zipcode.rocks"
+                    );
+            }
+        };
+    }
 
     public MoneyappApp(Environment env, BankAccountRepository bankAccountRepository) {
         this.env = env;
