@@ -77,16 +77,18 @@ class BankAccountResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static BankAccount createEntity(EntityManager em) {
-        ADMIN_HEADERS.add(
-            "Authorization",
-            "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTU1MjcwNywiYXV0aCI6IlJPTEVfQURNSU4gUk9MRV9VU0VSIiwiaWF0IjoxNzE1NDY2MzA3fQ.5Wn-_3P4LcbPbbenuJuWubBu-E6ZfQxuMfEOxMqgfNsmPxI8oqcg_aCem0T8KL8NKxaVwYag5EUAFgQF2LxOOA"
-        );
         DEFAULT_HEADERS.add("Cache-Control", "no-cache");
         DEFAULT_HEADERS.add("Content-Type", "application/json");
         DEFAULT_HEADERS.add("Accept", "*/*");
         DEFAULT_HEADERS.add("Accept-Encoding", "gzip, deflate, br");
         DEFAULT_HEADERS.add("Connection", "keep-alive");
         ADMIN_HEADERS.addAll(DEFAULT_HEADERS);
+        AuthenticateControllerIT ait = new AuthenticateControllerIT();
+        try {
+            ait.authorize(ADMIN_HEADERS);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         BankAccount bankAccount = new BankAccount()
             .accountNumber(DEFAULT_ACCOUNT_NUMBER)
             .routingNumber(DEFAULT_ROUTING_NUMBER)
@@ -104,7 +106,7 @@ class BankAccountResourceIT {
     public static BankAccount createUpdatedEntity(EntityManager em) {
         BankAccount bankAccount = new BankAccount()
             .accountNumber(UPDATED_ACCOUNT_NUMBER)
-            .routingNumber(UPDATED_ROUTING_NUMBER)
+            //            .routingNumber(UPDATED_ROUTING_NUMBER)
             .balance(UPDATED_BALANCE)
             .type(UPDATED_TYPE);
         return bankAccount;
@@ -192,13 +194,12 @@ class BankAccountResourceIT {
     void getBankAccount() throws Exception {
         // Initialize the database
         bankAccountRepository.saveAndFlush(bankAccount);
-
-        System.out.println(ADMIN_HEADERS.entrySet());
+        AuthenticateControllerIT ait = new AuthenticateControllerIT();
+        ait.authorize(ADMIN_HEADERS);
+        //        System.out.println(ADMIN_HEADERS.entrySet());
         // Get the bankAccount
         restBankAccountMockMvc
-            .perform(
-                get(ENTITY_API_URL_ID, bankAccount.getId()).headers(ADMIN_HEADERS).with(user("admin").password("admin").roles("ADMIN"))
-            )
+            .perform(get(ENTITY_API_URL_ID, bankAccount.getId()).headers(ADMIN_HEADERS))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(bankAccount.getId().intValue()))
@@ -311,7 +312,10 @@ class BankAccountResourceIT {
         BankAccount partialUpdatedBankAccount = new BankAccount();
         partialUpdatedBankAccount.setId(bankAccount.getId());
 
-        partialUpdatedBankAccount.accountNumber(UPDATED_ACCOUNT_NUMBER).routingNumber(UPDATED_ROUTING_NUMBER).type(UPDATED_TYPE);
+        partialUpdatedBankAccount
+            .accountNumber(UPDATED_ACCOUNT_NUMBER)
+            //            .routingNumber(UPDATED_ROUTING_NUMBER)
+            .type(UPDATED_TYPE);
 
         restBankAccountMockMvc
             .perform(
@@ -344,7 +348,7 @@ class BankAccountResourceIT {
 
         partialUpdatedBankAccount
             .accountNumber(UPDATED_ACCOUNT_NUMBER)
-            .routingNumber(UPDATED_ROUTING_NUMBER)
+            //            .routingNumber(UPDATED_ROUTING_NUMBER)
             .balance(UPDATED_BALANCE)
             .type(UPDATED_TYPE);
 

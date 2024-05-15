@@ -33,23 +33,23 @@ export const RegisterPage = () => {
     state,
     zip,
   }) => {
-    console.log(firstName, lastName);
+    // console.log(firstName, lastName);
     dispatch(
       handleRegister({
         login: username,
-        email: email,
+        email,
         password: firstPassword,
-        firstName: firstName,
-        lastName: lastName,
-        dateOfBirth: dateOfBirth,
+        firstName,
+        lastName,
+        dateOfBirth,
         langKey: 'en',
         address: {
-          houseNumber: houseNumber,
-          street: street,
+          houseNumber,
+          street,
           apartmentNumber: apartmentNumber || null,
-          city: city,
-          state: state,
-          zip: zip,
+          city,
+          state,
+          zip,
         },
       }),
     );

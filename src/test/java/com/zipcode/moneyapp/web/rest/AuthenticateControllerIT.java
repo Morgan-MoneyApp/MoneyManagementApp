@@ -17,6 +17,7 @@ import com.zipcode.moneyapp.web.rest.vm.LoginVM;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
@@ -40,6 +41,34 @@ class AuthenticateControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
+
+    public HttpHeaders authorize(HttpHeaders initialHeaders, ObjectMapper otherOM) throws Exception {
+        LoginVM loginVM = new LoginVM();
+        loginVM.setUsername("admin");
+        loginVM.setPassword("admin");
+        String authToken = mockMvc
+            .perform(post("/api/authenticate").contentType(MediaType.APPLICATION_JSON).content(otherOM.writeValueAsBytes(loginVM)))
+            .andReturn()
+            .getResponse()
+            .getHeaders("Authorization")
+            .get(0);
+        initialHeaders.add("Authorization", "Bearer " + authToken);
+        return initialHeaders;
+    }
+
+    public HttpHeaders authorize(HttpHeaders initialHeaders) throws Exception {
+        LoginVM loginVM = new LoginVM();
+        loginVM.setUsername("admin");
+        loginVM.setPassword("admin");
+        String authToken = mockMvc
+            .perform(post("/api/authenticate").contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(loginVM)))
+            .andReturn()
+            .getResponse()
+            .getHeaders("Authorization")
+            .get(0);
+        initialHeaders.add("Authorization", "Bearer " + authToken);
+        return initialHeaders;
+    }
 
     @Test
     @Transactional

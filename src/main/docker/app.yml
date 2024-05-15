@@ -23,11 +23,13 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+      frontend:
+        condition: service_healthy
   mysql:
     extends:
       file: ./mysql.yml
       service: mysql
   frontend:
-    image: registry.hub.docker.com/jakebrennan714/morganbank-frontend
+    image: registry.hub.docker.com/jakebrennan714/morganbank-frontend:amd64
     ports:
       - 127.0.0.1:8310:8310

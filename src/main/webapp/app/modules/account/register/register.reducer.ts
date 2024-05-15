@@ -34,7 +34,7 @@ export const handleRegister = createAsyncThunk(
       zip: number;
     };
   }) => {
-    console.log(data);
+    // console.log(data);
     await axios.post<any>('api/register', data);
   },
   { serializeError: serializeAxiosError },
