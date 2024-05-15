@@ -8,7 +8,7 @@ const PageMeetTheTeam = () => {
   return (
     <div>
       <Navbar />
-      <IntroTeam />
+      {/* <IntroTeam /> */}
       <Team />
       {/* <Footer /> */}
     </div>

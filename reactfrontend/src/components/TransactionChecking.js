@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/transactiontable.css';
+import '../styles/transactiontable.css'; // Ensure your CSS path is correct
+
 import Deposit from './Deposit.js';
 import Withdraw from './Withdraw.js';
 import Transfer from './Transfer.js';
@@ -57,7 +58,7 @@ function TransactionChecking() {
               <tr key={index}>
                 <td>{transaction.transactionDate}</td>
                 <td>{transaction.description}</td>
-                <td style={{ color: parseFloat(transaction.transactionValue) > 0 ? 'green' : 'red' }}>
+                <td style={{ color: transaction.transactionType === 'withdrawal' ? 'red' : 'black' }}>
                   {transaction.transactionType === 'withdrawal' ? `-${transaction.transactionValue}` : transaction.transactionValue}
                 </td>
               </tr>

@@ -1,12 +1,12 @@
 .chat-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  font-size: 1rem;
+  bottom: 10rem;
+  right: 40px;
   font-family: Arial, sans-serif;
   transition: transform 0.3s ease-in-out;
   z-index: 1000; /* Set a high z-index value to ensure it appears in front of nav bar*/
 }
-
 .chat-container.hidden {
   height: 40px;
   opacity: 40;
@@ -14,9 +14,8 @@
     transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
 }
-
 .chatbox {
-  width: 300px;
+  width: 380px;
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -25,89 +24,103 @@
   transform: translateY(0);
   transition: transform 0.3s ease-out;
 }
-
 .chatbox-header {
   background-color: #0d6484;
   color: white;
-  padding: 10px;
+  padding: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .chatbox-messages {
   height: 200px;
   overflow-y: auto;
   padding: 10px;
   background: #f9f9f9;
 }
-
 .message {
   margin: 5px;
-  padding: 8px;
-  background: #e0e0e0;
+  padding: 5px;
+  background: #e0e0e0bb;
   border-radius: 4px;
   width: fit-content;
 }
-
 .message.bot {
-  background-color: #2a76a578;
-  color: rgb(255, 255, 255);
+  background-color: #0d648440;
+  color: black;
 }
-
 .chatbox-options {
-  padding: 10px;
+  padding: 15px;
   border-top: 1px solid #2a76a5;
   display: flex;
   flex-direction: column;
 }
-
 .faq-button {
   background-color: #0d6484;
   color: rgb(255, 255, 255);
-  font-size: 15px;
+  font-size: 1.1rem;
 }
-
 .exit-button {
   position: absolute;
   top: 0;
   right: 0;
-  width: fit-content;
-  font-size: 15px;
+  width: 20px;
+  font-size: 10px;
   background-color: rgba(101, 98, 98, 0.389);
 }
 .minimize-button {
   background-color: rgba(54, 46, 46, 0.754);
+  color: white;
+  padding: 0; /* Remove padding to make the button size match its content */
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem; /* Adjust font size to match the size of the "X" */
+  cursor: pointer;
+  display: inline-flex; /* Ensure the button size fits its content */
+  align-items: center; /* Center the "X" vertically */
+  justify-content: center; /* Center the "X" horizontally */
+  width: 40px; /* Set a fixed width to prevent it from expanding */
+  height: 40px; /* Set a fixed height to prevent it from expanding */
+  margin-right: 8px; /* Add margin to push the button to the right */
 }
-
 .chat-container.chat-exited .chat-icon {
   display: none;
 }
-
 .chat-container.hidden {
   transform: translateY(100%);
   opacity: 0.5;
 }
-
 .chat-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #0d6484;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff; /* Solid color for visibility */
+  color: white; /* Ensure the question mark is visible */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Keep the diamond shape */
   cursor: pointer;
   position: fixed;
-  bottom: 20px;
+  bottom: 580px;
   right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 20px;
+  font-size: 60px; /* Adjust font size for visibility */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
-
 .chat-icon img {
   width: 100%;
   height: auto;
+}
+/* General style for all messages */
+.message {
+  font-size: 1rem; /* New smaller font size */
+  padding: 6px; /* Adjust padding if needed */
+}
+/* Specific style for user messages, if needed */
+.message.user {
+  font-size: 1rem; /* Separate size for user messages if desired */
+}
+/* Specific style for bot messages, if needed */
+.message.bot {
+  font-size: 1rem; /* Separate size for bot responses if desired */
 }

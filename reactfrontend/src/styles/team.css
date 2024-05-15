@@ -1,62 +1,86 @@
-/* Team.css */
+/* Container for team members */
 .team-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 80px;
+  justify-content: center; /* Center items horizontally */
+  align-items: flex-start; /* Align items to the top */
+  flex-wrap: wrap; /* Allows wrapping of elements */
+  padding: 1px; /* Minimal padding */
 }
 
+/* Individual team member cards */
 .team-member {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: flex-start; /* Starts content at the top */
+  width: 18%; /* Consistent width */
+  height: 400px; /* Consistent height */
+  margin: 1%; /* Spacing between cards */
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 48%; /* Adjusts to fit 2 per row with some space in between */
-  margin: 1.09%; /* Small margin for spacing */
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
+/* Hover effect for team members */
 .team-member:hover {
-  transform: translateY(-5px); /* Lifts the card up slightly */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for better effect */
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Styling for the member photos */
 .member-photo {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin: 20px;
+  margin-top: 20px; /* Adjusted space around photo */
+  margin-bottom: 10px; /* Reducing space to bring text closer */
 }
 
+/* Info section under the photo */
 .member-info {
-  flex: 1;
-  padding: 10px;
-  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-align: center;
 }
 
+/* Styling for links */
 .member-info a {
-  color: #0077b5; /* LinkedIn brand color */
+  color: #0077b5; /* LinkedIn color */
   display: flex;
   align-items: center;
-  text-decoration: none; /* Removes underline */
-  margin-top: 10px; /* Space from the bio */
+  text-decoration: none;
+  margin-top: 0px;
 }
 
 .member-info a:hover {
-  text-decoration: underline; /* Adds interaction feedback */
+  text-decoration: underline;
 }
 
+/* Icons next to links */
 .member-info svg {
-  margin-right: 8px; /* Space between icon and text */
+  margin-right: 8px;
   font-size: 30px;
 }
-.member-info {
-  font-size: 25px;
-}
+
+/* Paragraph styling under each member photo */
 p {
-  font-size: 30px;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Headings under each member photo */
+.member-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
 }

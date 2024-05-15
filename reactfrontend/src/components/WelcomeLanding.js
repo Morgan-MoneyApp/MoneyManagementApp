@@ -27,28 +27,34 @@ const WelcomeLanding = ({ scrollToLogin }) => {
         </div>
         <ul className="cs-card-group">
           <li className="cs-item">
-            <img className="cs-icon" loading="lazy" decoding="async" src={Checking} alt="icon" width="48" height="48" />
-            <h3 className="cs-h3">Checking Account</h3>
-            <p className="cs-item-text">
-              Ideal for everyday transactions, your checking account allows for easy deposits and withdrawals, making it perfect for
-              managing daily expenses.
-            </p>
+            <img className="cs-icon" src={Checking} alt="Checking Account Icon" width="48" height="48" />
+            <div className="cs-info">
+              <h3 className="cs-h3">Checking Account</h3>
+              <p className="cs-item-text">
+                Ideal for everyday transactions, your checking account allows for easy deposits and withdrawals, making it perfect for
+                managing daily expenses.
+              </p>
+            </div>
           </li>
           <li className="cs-item">
-            <img className="cs-icon" loading="lazy" decoding="async" src={PiggyIcon} alt="icon" width="48" height="48" />
-            <h3 className="cs-h3">Savings Account</h3>
-            <p className="cs-item-text">
-              Grow your funds safely with our Savings Account. It offers a secure way to accumulate interest on your savings, helping you
-              reach your financial goals.
-            </p>
+            <img className="cs-icon" src={PiggyIcon} alt="Savings Account Icon" width="48" height="48" />
+            <div className="cs-info">
+              <h3 className="cs-h3">Savings Account</h3>
+              <p className="cs-item-text">
+                Grow your funds safely with our Savings Account. It offers a secure way to accumulate interest on your savings, helping you
+                reach your financial goals.
+              </p>
+            </div>
           </li>
           <li className="cs-item">
-            <img className="cs-icon" loading="lazy" decoding="async" src={Market} alt="icon" width="48" height="48" />
-            <h3 className="cs-h3">Money Market Account</h3>
-            <p className="cs-item-text">
-              Enjoy the benefits of both checking and savings accounts. Our Market Account provides higher interest rates, allowing for both
-              investment growth and flexible access to your funds.
-            </p>
+            <img className="cs-icon" src={Market} alt="Money Market Account Icon" width="48" height="48" />
+            <div className="cs-info">
+              <h3 className="cs-h3">Money Market Account</h3>
+              <p className="cs-item-text">
+                Enjoy the benefits of both checking and savings accounts. Our Money Market Account provides higher interest rates, allowing
+                for both investment growth and flexible access to your funds.
+              </p>
+            </div>
           </li>
         </ul>
       </div>
@@ -61,4 +67,5 @@ const WelcomeLanding = ({ scrollToLogin }) => {
     </section>
   );
 };
+
 export default WelcomeLanding;
