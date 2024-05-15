@@ -2,29 +2,29 @@
   display: flex;
   justify-content: space-between; /* Spaces the two columns */
   align-items: start; /* Aligns items to the top */
-  padding: 30px;
-  padding-left: 21rem;
+  padding: 20px;
+  padding-left: 5rem;
 }
-
 .button-container {
   display: flex;
   flex-direction: column; /* Stack buttons vertically */
   gap: 10px; /* Space between buttons */
-  width: 200px; /* Fixed width for button container */
+  width: 200px; /*Fixed width for button container */
+  margin-right: auto;
 }
-
 .transaction-table-container {
   flex-grow: 0; /* Allows the table container to take up the remaining space */
   padding-left: 20px; /* Space between buttons and table */
+  font-size: 25px;
+  margin-left: auto;
 }
-
 .button-container {
   display: flex;
   flex-direction: column; /* Stack buttons vertically */
   gap: 10px; /* Space between buttons */
-  width: 200px; /* Fixed width for button container */
+  width: 200px; /*Fixed width for button container */
+  margin-right: auto;
 }
-
 button {
   background-color: #0d6484 !important;
   font-size: 20px;
@@ -41,20 +41,18 @@ button {
   width: 100%; /* Ensures all buttons expand to fill the container's width */
   text-align: center; /* Center text within the button */
 }
-
 button:hover {
   font-weight: bold; /* Makes the button text bolder on hover */
   background-color: #000 !important; /* Lighter shade on hover, replace with your color */
   transform: scale(1.05); /* Slightly enlarges button on hover for emphasis */
 }
-
 .transaction-table-container {
   flex-grow: 1; /* Allows the table container to take up the remaining space */
   padding-left: 20px; /* Space between buttons and table */
+  margin-left: auto;
 }
-
 table.GeneratedTable {
-  width: 60%; /* Fixed width */
+  width: 100%; /*Fixed width */
   background-color: #ffffff;
   border-collapse: collapse;
   border-width: 2px;
@@ -62,7 +60,6 @@ table.GeneratedTable {
   color: #585454;
   margin: 0; /* Center the table horizontally if there's extra space */
 }
-
 table.GeneratedTable td,
 table.GeneratedTable th {
   border-width: 2px;
@@ -70,7 +67,6 @@ table.GeneratedTable th {
   border-style: solid;
   padding: 5px;
 }
-
 table.GeneratedTable thead {
   background-color: #65a8d740;
 }

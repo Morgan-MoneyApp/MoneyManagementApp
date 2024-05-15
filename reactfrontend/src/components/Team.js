@@ -2,13 +2,15 @@ import React from 'react';
 import '../styles/team.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import Photo from '../images/profilepic.png';
+
+// Import images
 import AlicePhoto from '../images/AlicePhoto.jpeg';
 import JakePhoto from '../images/JakePhoto.JPG';
 import MattPhoto from '../images/MattPhoto.jpg';
 import JorrisPhoto from '../images/JorrisPhoto.jpg';
 import JenniferAzer from '../images/JenniferAzer.jpg';
 
+// Team members data
 const teamMembers = [
   {
     name: 'Alice Gonzalez',
@@ -24,7 +26,7 @@ const teamMembers = [
   },
   {
     name: 'Jennifer Azer',
-    bio: 'Jennifer is a Junior Developer, commited to bringing value to customers with her vast customer experience of 8 years from Banking,Travel,and the Aviation sector    .',
+    bio: 'Jennifer is a Junior Developer, committed to bringing value to customers with her vast customer experience of 8 years from Banking, Travel, and the Aviation sector.',
     photo: JenniferAzer,
     linkedinUrl: 'https://www.linkedin.com/in/jennifer-azer/',
   },

@@ -1,27 +1,39 @@
 .login-container {
-  width: 400px;
-  height: 750px;
-  background: #fff;
-  border-radius: 16px;
+  background: #2a76a524;
+  border-radius: 20px;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 90px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  align-items: center; /* Centers content horizontally */
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+}
+
+.login-box {
+  width: 400px; /* New smaller width for the login box */
+  height: 800px; /* New taller height for the login box */
 }
 
 .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align the form items */
+  align-items: center;
   gap: 0.1rem;
 }
 
+.input-field,
+.cs-button-solid,
+.input-field::placeholder,
+.input-field[type='date'],
+.h2 {
+  /* Shared styles for input fields, buttons, etc., remain here */
+}
+
 .input-field {
+  font-size: 2rem;
   padding: 10px;
   margin-bottom: 0.3em;
   width: 100%;
@@ -30,7 +42,7 @@
 }
 
 .input-field::placeholder {
-  font-size: 1.75em; /* Adjust the size as needed */
+  font-size: 1em; /* Adjust the size as needed */
   color: #8b8585; /* Optional: you can also change the color */
 }
 
@@ -83,5 +95,5 @@
 }
 .h2 {
   color: #2a76a5;
-  font-size: 1.74rem;
+  font-size: 2.5rem;
 }
