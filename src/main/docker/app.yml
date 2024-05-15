@@ -24,6 +24,7 @@ services:
       mysql:
         condition: service_healthy
       frontend:
+        condition: service_started
   mysql:
     extends:
       file: ./mysql.yml
