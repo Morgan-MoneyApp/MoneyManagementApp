@@ -17,7 +17,7 @@ function SideBySideSections() {
             {/* Top left image */}
             <picture className="cs-picture cs-picture1">
               {/* Mobile Image */}
-              <source media="(max-width: 600px)" srcSet={HisChild} />
+              <source media="(max-width: 6001px)" srcSet={HisChild} />
               {/* Tablet and above Image */}
               <source media="(min-width: 601px)" srcSet={HisChild} />
               <img loading="lazy" decoding="async" src={HisChild} alt="mechanic" width="413" height="500" />
@@ -39,9 +39,6 @@ function SideBySideSections() {
               saving consistently, you can ensure they have the resources they need for higher education, starting a career, or pursuing
               their passions. Secure their future and watch them thrive with early financial planning.{' '}
             </p>
-            <a href="" className="cs-button-solid">
-              Open Saving Account
-            </a>
           </div>
         </div>
       </section>
@@ -75,13 +72,9 @@ function SideBySideSections() {
               your funds, you can make purchases confidently, whether it's for a new car, a dream vacation, or everyday essentials. Say
               goodbye to hassle and hello to convenience by opening a checking account now.{' '}
             </p>
-            <a href="" className="cs-button-solid">
-              Open Checking Account
-            </a>
           </div>
         </div>
       </section>
-
       {/* Side By Side Triplet */}
       <section id="RTsbst-1594">
         <div className="cs-container">
@@ -105,15 +98,11 @@ function SideBySideSections() {
           </div>
           <div className="cs-content">
             <span className="cs-topper">We Can Help</span>
-            <h2 className="cs-title">You Succeed In An Emerging Market</h2>
+            <h2 className="cs-title">You Benefit From Our Money Market</h2>
             <p className="cs-text">
-              Achieve success in the market by staying informed, diversifying your investments, and staying patient for the long term. With
-              a strategic approach and a focus on your goals, you can navigate market fluctuations and build a strong financial future.
-              Start your journey to success in the market today and watch your investments grow over time.{' '}
+              Enjoy the benefits of both checking and savings accounts. Our Market Account provides higher interest rates, allowing for both
+              investment growth and flexible access to your funds.{' '}
             </p>
-            <a href="" className="cs-button-solid">
-              Open Market Account
-            </a>
           </div>
         </div>
       </section>
