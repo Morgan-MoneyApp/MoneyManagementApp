@@ -17,7 +17,7 @@ function SideBySideSections() {
             {/* Top left image */}
             <picture className="cs-picture cs-picture1">
               {/* Mobile Image */}
-              <source media="(max-width: 6001px)" srcSet={HisChild} />
+              <source media="(max-width: 601px)" srcSet={HisChild} />
               {/* Tablet and above Image */}
               <source media="(min-width: 601px)" srcSet={HisChild} />
               <img loading="lazy" decoding="async" src={HisChild} alt="mechanic" width="413" height="500" />
