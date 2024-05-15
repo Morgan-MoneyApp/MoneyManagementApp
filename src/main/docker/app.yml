@@ -30,6 +30,6 @@ services:
       file: ./mysql.yml
       service: mysql
   frontend:
-    image: registry.hub.docker.com/jakebrennan714/morganbank-frontend:amd64
+    image: registry.hub.docker.com/jakebrennan714/morganbank-frontend:v1.0.4
     ports:
       - 127.0.0.1:8310:8310
