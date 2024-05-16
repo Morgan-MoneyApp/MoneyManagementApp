@@ -37,31 +37,31 @@ public class MoneyappApp {
     private final Environment env;
     private final BankAccountRepository bankAccountRepository;
 
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry
-                    .addMapping("/**")
-                    .allowedOrigins(
-                        "http://localhost:8309",
-                        "http://localhost:8310",
-                        "http://localhost:8311",
-                        "http://127.0.0.1:8309",
-                        "http://127.0.0.1:8310",
-                        "http://127.0.0.1:8311",
-                        "http://morganbank.zipcode.rocks",
-                        "https://localhost:8309",
-                        "https://localhost:8310",
-                        "https://localhost:8311",
-                        "https://127.0.0.1:8309",
-                        "https://127.0.0.1:8310",
-                        "https://127.0.0.1:8311",
-                        "https://morganbank.zipcode.rocks"
-                    );
-            }
-        };
-    }
+    //    public WebMvcConfigurer corsConfigurer() {
+    //        return new WebMvcConfigurer() {
+    //            @Override
+    //            public void addCorsMappings(CorsRegistry registry) {
+    //                registry
+    //                    .addMapping("/**")
+    //                    .allowedOrigins(
+    //                        "http://localhost:8309",
+    //                        "http://localhost:8310",
+    //                        "http://localhost:8311",
+    //                        "http://127.0.0.1:8309",
+    //                        "http://127.0.0.1:8310",
+    //                        "http://127.0.0.1:8311",
+    //                        "http://morganbank.zipcode.rocks",
+    //                        "https://localhost:8309",
+    //                        "https://localhost:8310",
+    //                        "https://localhost:8311",
+    //                        "https://127.0.0.1:8309",
+    //                        "https://127.0.0.1:8310",
+    //                        "https://127.0.0.1:8311",
+    //                        "https://morganbank.zipcode.rocks"
+    //                    );
+    //            }
+    //        };
+    //    }
 
     public MoneyappApp(Environment env, BankAccountRepository bankAccountRepository) {
         this.env = env;
