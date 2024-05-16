@@ -50,16 +50,7 @@ const API_REG = API_URL + '/api/register';
 export function login2(input = { username: '', password: '' }, rememberMe) {
   if (input.username !== '' && input.password !== '') {
     axios
-      .post(
-        API_AUTH,
-        { username: input.username, password: input.password, rememberMe: rememberMe },
-        {
-          proxy: {
-            host: '127.0.0.1',
-            port: '8310',
-          },
-        },
-      )
+      .post(API_AUTH, { username: input.username, password: input.password, rememberMe: rememberMe })
       .then(response => response.data)
       .then(response => {
         if (rememberMe) {
